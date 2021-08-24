@@ -42,7 +42,7 @@ abstract class User {
 		// declare new userdao object
 		UserDao ud = new UserDao();
 		// verify the account
-		boolean x = ud.findUser(this.username, this.password, this.accountType, "login");
+		ud.findUser(this.username, this.password, this.accountType, "login");
 	}
 
 	

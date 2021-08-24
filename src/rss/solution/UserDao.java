@@ -46,7 +46,6 @@ public class UserDao {
 				tempUsername = data[0];
 				tempPassword = data[1];
 				tempAccountType = data[2];
-				System.out.println(data[0]);
 				
 				if(tempUsername.trim().equals(username.trim()) && 
 					tempAccountType.trim().equals(accountType.trim())){
@@ -94,7 +93,6 @@ public class UserDao {
 			return false;
 		}
 		
-	
 	}
 	
 	// delete user into the text file
