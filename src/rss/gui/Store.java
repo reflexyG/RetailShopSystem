@@ -5,6 +5,8 @@
  */
 package rss.gui;
 
+import java.awt.Color;
+
 /**
  *
  * @author Admin
@@ -35,13 +37,15 @@ public class Store extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tabOrder = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        pnlHome = new javax.swing.JPanel();
-        pnlOrder = new javax.swing.JPanel();
+        tabSignout = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         pnlInfo = new javax.swing.JPanel();
+        pnlOrder = new javax.swing.JPanel();
+        pnlHome = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 100));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenu.setBackground(new java.awt.Color(102, 204, 255));
@@ -54,7 +58,7 @@ public class Store extends javax.swing.JFrame {
         jLabel1.setText("fuck you, welcome back");
         pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
-        tabHome.setBackground(new java.awt.Color(153, 153, 153));
+        tabHome.setBackground(new java.awt.Color(204, 204, 204));
         tabHome.setPreferredSize(new java.awt.Dimension(0, 60));
         tabHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -85,7 +89,13 @@ public class Store extends javax.swing.JFrame {
 
         pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 200, -1));
 
+        tabInfo.setBackground(new java.awt.Color(204, 204, 204));
         tabInfo.setPreferredSize(new java.awt.Dimension(0, 60));
+        tabInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabInfoMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,10 +105,10 @@ public class Store extends javax.swing.JFrame {
         tabInfo.setLayout(tabInfoLayout);
         tabInfoLayout.setHorizontalGroup(
             tabInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabInfoLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabInfoLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         tabInfoLayout.setVerticalGroup(
             tabInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,8 +118,9 @@ public class Store extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 200, -1));
+        pnlMenu.add(tabInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 200, -1));
 
+        tabOrder.setBackground(new java.awt.Color(204, 204, 204));
         tabOrder.setPreferredSize(new java.awt.Dimension(0, 60));
         tabOrder.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,24 +149,53 @@ public class Store extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, -1));
+        pnlMenu.add(tabOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 200, -1));
+
+        tabSignout.setBackground(new java.awt.Color(204, 204, 204));
+        tabSignout.setPreferredSize(new java.awt.Dimension(0, 60));
+        tabSignout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabSignoutMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Sign Out");
+
+        javax.swing.GroupLayout tabSignoutLayout = new javax.swing.GroupLayout(tabSignout);
+        tabSignout.setLayout(tabSignoutLayout);
+        tabSignoutLayout.setHorizontalGroup(
+            tabSignoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabSignoutLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+        );
+        tabSignoutLayout.setVerticalGroup(
+            tabSignoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabSignoutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 200, -1));
 
         getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
-        pnlHome.setBackground(new java.awt.Color(255, 153, 153));
+        pnlInfo.setBackground(new java.awt.Color(255, 204, 153));
 
-        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
-        pnlHome.setLayout(pnlHomeLayout);
-        pnlHomeLayout.setHorizontalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlInfoLayout = new javax.swing.GroupLayout(pnlInfo);
+        pnlInfo.setLayout(pnlInfoLayout);
+        pnlInfoLayout.setHorizontalGroup(
+            pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
-        pnlHomeLayout.setVerticalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+        pnlInfoLayout.setVerticalGroup(
+            pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
-
-        getContentPane().add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 594, 500));
 
         pnlOrder.setBackground(new java.awt.Color(153, 255, 153));
 
@@ -163,18 +203,58 @@ public class Store extends javax.swing.JFrame {
         pnlOrder.setLayout(pnlOrderLayout);
         pnlOrderLayout.setHorizontalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         pnlOrderLayout.setVerticalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pnlOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        pnlHome.setBackground(new java.awt.Color(255, 153, 204));
 
-        pnlInfo.setBackground(new java.awt.Color(153, 153, 255));
-        pnlInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
+        pnlHome.setLayout(pnlHomeLayout);
+        pnlHomeLayout.setHorizontalGroup(
+            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        pnlHomeLayout.setVerticalGroup(
+            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pnlOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,13 +263,37 @@ public class Store extends javax.swing.JFrame {
         pnlHome.setVisible(true);
         pnlOrder.setVisible(false);
         pnlInfo.setVisible(false);
+        tabHome.setBackground(Color.WHITE);
+        tabInfo.setBackground(new Color (204,204,204));
+        tabOrder.setBackground(new Color (204,204,204));
+        tabSignout.setBackground(new Color (204,204,204));
     }//GEN-LAST:event_tabHomeMouseClicked
 
     private void tabOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabOrderMouseClicked
         pnlHome.setVisible(false);
         pnlOrder.setVisible(true);
         pnlInfo.setVisible(false);
+        tabHome.setBackground(new Color (204,204,204));
+        tabInfo.setBackground(new Color (204,204,204));
+        tabOrder.setBackground(Color.white);
+        tabSignout.setBackground(new Color (204,204,204));
+        
     }//GEN-LAST:event_tabOrderMouseClicked
+
+    private void tabInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabInfoMouseClicked
+        pnlHome.setVisible(false);
+        pnlOrder.setVisible(false);
+        pnlInfo.setVisible(true);
+        tabHome.setBackground(new Color (204,204,204));
+        tabInfo.setBackground(Color.WHITE);
+        tabOrder.setBackground(new Color (204,204,204));
+        tabSignout.setBackground(new Color (204,204,204));
+    }//GEN-LAST:event_tabInfoMouseClicked
+
+    private void tabSignoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSignoutMouseClicked
+        this.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_tabSignoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -231,6 +335,8 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlInfo;
     private javax.swing.JPanel pnlMenu;
@@ -238,5 +344,6 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JPanel tabHome;
     private javax.swing.JPanel tabInfo;
     private javax.swing.JPanel tabOrder;
+    private javax.swing.JPanel tabSignout;
     // End of variables declaration//GEN-END:variables
 }

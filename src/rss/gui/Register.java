@@ -138,23 +138,30 @@ public class Register extends javax.swing.JFrame {
     private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
         String userName, password, email;
         int phone;
-        
-        userName = txtUser.getText();
-        password = txtPass.getText();
-        email = txtEmail.getText();
-        phone = Integer.parseInt(txtPhone.getText());
-        
+
         UserDao u = new UserDao();
-            
-        if(u.addUser(userName, password,"Customer", email,phone))
-        {
-            JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
-            this.setVisible(false);
-            new Login().setVisible(true);
-        } else
-        {
-            JOptionPane.showMessageDialog(null,"Register Fail, Please Try Again","Fail ", JOptionPane.ERROR_MESSAGE);    
-        }
+        
+         if(txtUser.getText().isEmpty()| txtPass.getText().isEmpty() |
+            txtEmail.getText().isEmpty()|txtPhone.getText().isEmpty())
+         {
+            JOptionPane.showMessageDialog(null,"Missing Information!","Fail ", JOptionPane.ERROR_MESSAGE);
+         }else
+         {
+             userName = txtUser.getText();
+            password = txtPass.getText();
+            email = txtEmail.getText();
+            phone = Integer.parseInt(txtPhone.getText());
+                if(u.addUser(userName, password,"Customer", email,phone))
+            {
+                JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+                this.setVisible(false);
+                new Login().setVisible(true);
+            } else
+            {
+                JOptionPane.showMessageDialog(null,"Register Fail, Please Try Again","Fail ", JOptionPane.ERROR_MESSAGE);    
+            }
+         }
+        
         
 
         
