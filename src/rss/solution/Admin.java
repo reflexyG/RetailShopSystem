@@ -3,7 +3,7 @@ package rss.solution;
 public class Admin extends User{
 	UserDao ud = new UserDao();
 
-	public Admin(String username, String password, String email, int phone) {
+	public Admin(String username, String password) {
 	super(username, password, "Admin");
 	this.setAccountType("Admin");
 	}
