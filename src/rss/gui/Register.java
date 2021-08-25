@@ -85,6 +85,12 @@ public class Register extends javax.swing.JFrame {
         lblAccType.setText("customer");
         jPanel1.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 128, 28));
         jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 220, 25));
+
+        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 220, 25));
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 220, 25));
         jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 220, 25));
@@ -139,15 +145,28 @@ public class Register extends javax.swing.JFrame {
         phone = Integer.parseInt(txtPhone.getText());
         
         UserDao u = new UserDao();
-        
+            
         if(u.addUser(userName, password,"Customer", email,phone))
         {
             JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+            this.setVisible(false);
+            new Login().setVisible(true);
         } else
         {
             JOptionPane.showMessageDialog(null,"Register Fail, Please Try Again","Fail ", JOptionPane.ERROR_MESSAGE);    
         }
+        
+
+        
     }//GEN-LAST:event_btnRegisterMouseClicked
+
+    private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (Character.isLetter(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPhoneKeyTyped
 
     /**
      * @param args the command line arguments
