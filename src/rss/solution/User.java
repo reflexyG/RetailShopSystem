@@ -71,6 +71,11 @@ abstract class User {
 		}
 		
 	}
+	
+	public boolean login(){
+		UserDao ud = new UserDao();
+		return ud.findUser(this.username, this.password, this.accountType, "login");
+	}
 }
 
 	
