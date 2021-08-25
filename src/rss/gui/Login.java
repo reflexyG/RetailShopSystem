@@ -5,6 +5,8 @@
  */
 package rss.gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author anvegave
@@ -32,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboRole = new javax.swing.JComboBox<>();
         txtPass = new javax.swing.JTextField();
         txtId = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
@@ -62,18 +64,28 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Password : ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 130, 30));
+        cboRole.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        cboRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin" }));
+        jPanel1.add(cboRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 130, 30));
         jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 260, 30));
         jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 260, 30));
 
         btnRegister.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         btnRegister.setText("Register");
+        btnRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegisterMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 140, 40));
 
         btnLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         btnLogin.setText("Sign In");
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoginMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 140, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/home.jpg"))); // NOI18N
@@ -97,6 +109,24 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
+        this.setVisible(false);
+        new Register().setVisible(true);
+    }//GEN-LAST:event_btnRegisterMouseClicked
+
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        String Id, password, role;
+        
+        Id = txtId.getText().toString();
+        password = txtPass.getText().toString();
+        
+        if (Id == "1" && password == "1")
+        {
+            JOptionPane.showMessageDialog(null,"see your mom");
+        }
+               
+    }//GEN-LAST:event_btnLoginMouseClicked
 
 	/**
 	 * @param args the command line arguments
@@ -136,7 +166,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cboRole;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
