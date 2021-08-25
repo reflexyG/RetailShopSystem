@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package rss.gui;
+import javax.swing.JOptionPane;
+import rss.solution.*;
 
 /**
  *
@@ -89,6 +91,11 @@ public class Register extends javax.swing.JFrame {
 
         btnRegister.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnRegister.setText("Register Now");
+        btnRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegisterMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 160, 50));
 
         btnBack.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -121,6 +128,26 @@ public class Register extends javax.swing.JFrame {
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_btnBackMouseClicked
+
+    private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
+        String userName, password, email;
+        int phone;
+        
+        userName = txtUser.getText();
+        password = txtPass.getText();
+        email = txtEmail.getText();
+        phone = Integer.parseInt(txtPhone.getText());
+        
+        UserDao u = new UserDao();
+        
+        if(u.addUser(userName, password,"Customer", email,phone))
+        {
+            JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+        } else
+        {
+            JOptionPane.showMessageDialog(null,"Register Fail, Please Try Again","Fail ", JOptionPane.ERROR_MESSAGE);    
+        }
+    }//GEN-LAST:event_btnRegisterMouseClicked
 
     /**
      * @param args the command line arguments
