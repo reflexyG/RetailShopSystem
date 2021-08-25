@@ -1,6 +1,7 @@
 package rss.solution;
 
 public class Admin extends User{
+	UserDao ud = new UserDao();
 
 	public Admin(String username, String password, String email, int phone) {
 	super(username, password, email, phone);
@@ -8,9 +9,12 @@ public class Admin extends User{
 	}
 	
 	public Boolean addAdmin(String username, String password, String email, int phone){
-		UserDao ud = new UserDao();
-		ud.addUser(username, password, "Admin", email, phone);
-		return true;
+		return ud.addUser(username, password, "Admin", email, phone);
+		
+	}
+	
+	public Boolean deleteUser(String username, String type){
+		return ud.deleteUser(username, type);
 	}
 	
 
