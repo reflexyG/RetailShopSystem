@@ -40,6 +40,7 @@ abstract class User {
 		return accountType;
 	}
 	
+	// set the email and phone for the user
 	private void setDetails(String username, String password, String type){
 		
 		Boolean found = false;
