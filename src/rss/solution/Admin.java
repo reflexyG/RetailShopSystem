@@ -4,7 +4,7 @@ public class Admin extends User{
 	UserDao ud = new UserDao();
 
 	public Admin(String username, String password, String email, int phone) {
-	super(username, password, email, phone);
+	super(username, password, "Admin");
 	this.setAccountType("Admin");
 	}
 	

@@ -1,17 +1,19 @@
 package rss.solution;
 
+import java.util.Scanner;
+import java.io.*;
+
 abstract class User {
 	private final String username;
 	private final String password;
 	private String accountType;
-	private final String email;
-	private final int phone;
+	private String email;
+	private int phone;
 	
-	public User(String username, String password, String email, int phone){
+	public User(String username, String password, String type){
 		this.username = username;
 		this.password = password;
-		this.email = email;
-		this.phone = phone;
+		this.setDetails(username, password, type);
 	}
 
 	public String getUsername() {
@@ -38,14 +40,38 @@ abstract class User {
 		return accountType;
 	}
 	
-	public void login(){
-		// declare new userdao object
-		UserDao ud = new UserDao();
-		// verify the account
-		ud.findUser(this.username, this.password, this.accountType, "login");
+	private void setDetails(String username, String password, String type){
+		
+		Boolean found = false;
+		
+		try{
+			// declare new Scanner object
+			File file = new File("./abx.txt");
+			Scanner scanner = new Scanner(file);
+
+			while(scanner.hasNext() && !found){
+				// create a temperory array to store the data of user
+				// split String in each line with delimiter
+				String[] data = scanner.nextLine().split(",");
+
+				if(data[0].trim().equals(username.trim()) && 
+				data[1].trim().equals(password.trim()) &&
+					data[2].trim().equals(type.trim())){
+					
+					// set email and phone
+					this.email = data[3];
+					this.phone = Integer.parseInt(data[4]);
+					found = true;
+				}
+			}
+			scanner.close();
+		}
+		catch(IOException e){
+			System.out.println("error");
+		}
+		
 	}
+}
 
 	
-	
-	
-}
+

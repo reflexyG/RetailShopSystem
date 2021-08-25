@@ -4,10 +4,10 @@ import java.io.*;
 
 public class demo {
 	public static void main(String[] args){
-		Customer c = new Customer("user", "123", "@gmail.com", 12346123);
+		Customer c = new Customer("user1", "1234");
+		System.out.println(c.getEmail() + c.getPhone());
 		
 
-		c.login();
 		UserDao ud = new UserDao();
 		ud.addUser("user2", "fs2k", "Admin", "@gmail.com", 12346123);
 		ud.addUser("user1", "fs2k", "Customer", "@gmail.com", 12346123);
