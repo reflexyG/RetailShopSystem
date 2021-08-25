@@ -119,6 +119,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String Id, password, role;
+        Boolean verify;
         
         Customer c;
         Admin a;
@@ -126,14 +127,31 @@ public class Login extends javax.swing.JFrame {
         Id = txtId.getText().toLowerCase();
         password = txtPass.getText().toLowerCase();
         role = cboRole.getSelectedItem().toString();
-        System.out.println(Id + password + role);
         
         if (role == "Customer") 
         {
-           this.setVisible(false);
-            new Store().setVisible(true);
+           c = new Customer(Id, password);
+           verify = c.login();
+           if (verify)
+          {
+                this.setVisible(false);
+                new Store().setVisible(true);
+          }
+        }else 
+        {
+            a = new Admin(Id, password);
+           verify = a.login();
+           if (verify)
+          {
+                this.setVisible(false);
+                new Store().setVisible(true);
+          }
         }
         
+        if (!verify)
+        {
+            JOptionPane.showMessageDialog(null,"Invalid Username or Password, Please Try Again","Fail ", 3); 
+        }
         
         
         
