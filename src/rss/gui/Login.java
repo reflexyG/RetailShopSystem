@@ -151,6 +151,8 @@ public class Login extends javax.swing.JFrame {
         if (!verify)
         {
             JOptionPane.showMessageDialog(null,"Invalid Username or Password, Please Try Again","Fail ", 3); 
+            txtId.setText("");
+            txtPass.setText("");
         }
         
         
