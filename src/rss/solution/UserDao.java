@@ -6,7 +6,9 @@ import java.util.List;
 
 
 public class UserDao {
+	//txt file path
 	private String path = "./abx.txt";
+	// File object
 	private File file = new File(path);
 	private PrintWriter pw;
 	private Scanner scanner;
@@ -74,7 +76,7 @@ public class UserDao {
 	// add new user into the text file
 	public Boolean addUser(String username, String password, 
 		String type, String email, int phoneNumber){
-		
+		Boolean added = false;
 		// handle exception
 		try{
 			// declare new PrintWriter object with new Filewriter as aruguement and allow append
@@ -85,17 +87,16 @@ public class UserDao {
 				// write the user into the txt file
 				pw.println(username + "," + password + "," + type + "," + email + "," + phoneNumber);
 				pw.close();
-				return true;
-			}
-			else{
-				return false;
+				added = true;
 			}
 			
 		}
 		catch(IOException e){
 			System.out.println(e);
-			return false;
+			return added;
 		}
+		
+		return added;
 		
 	}
 	

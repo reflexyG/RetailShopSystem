@@ -9,11 +9,11 @@ public class demo {
 
 		c.login();
 		UserDao ud = new UserDao();
-		//ud.addUser("user2", "fs2k", "Admin", "@gmail.com", 12346123);
-		//ud.addUser("user1", "fs2k", "Customer", "@gmail.com", 12346123);
-		//ud.addUser("user1", "f123", "Admin", "@gmail.com", 12346123);
-		//ud.updateUser("user1", "1234", "Customer", "fuckyou@gmail.com", 5431234);
-		ud.deleteUser("user1", "Admin");
+		ud.addUser("user2", "fs2k", "Admin", "@gmail.com", 12346123);
+		ud.addUser("user1", "fs2k", "Customer", "@gmail.com", 12346123);
+		ud.addUser("user13", "f123", "Admin", "@gmail.com", 12346123);
+		ud.updateUser("user2", "1234", "Admin", "fk11you@gmail.com", 5431234);
+		//ud.deleteUser("user13", "Admin");
 	}
 	
 }
