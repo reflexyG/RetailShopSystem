@@ -61,6 +61,8 @@ public class UserDao {
 					}
 				}	
 			}
+			// discard the scanner
+			scanner.close();
 			
 		}
 		catch(IOException e){
@@ -97,9 +99,54 @@ public class UserDao {
 		
 	}
 	
-	// delete user into the text file
-	public void deleteUser(String username, String password, 
-		String type, String email, int phoneNumber){
+	// delete user in the text file
+	public Boolean deleteUser(String username, String type){
+		List<String> newData = new ArrayList<>();
+		
+		try{
+			// declare new Scanner object
+			scanner = new Scanner(file);
+			
+			while(scanner.hasNext()){
+				
+				// store each line of txt file in a String
+				String line = scanner.nextLine();
+				// split the string with delimiter
+				String[] oldData = line.split(",");
+				
+				// if username and account type is not same
+				if(!(oldData[0].trim().equals(username.trim()) && 
+					oldData[2].trim().equals(type.trim()))){
+					// add the row into the list
+					newData.add(line);
+				}
+	
+			}
+			// discard the scanner
+			scanner.close();
+
+		}
+		catch(IOException e){
+			System.out.println("Error");
+		}
+		
+		// use PrintWriter to overwrite the text file
+		try{
+			// declare new pw object
+			pw = new PrintWriter(path);
+			// write the newData into the text file
+			for(String str : newData){
+				pw.println(str);
+			}
+			pw.close();
+			
+			return true;
+			
+		}
+		catch(IOException e){
+			System.out.println("Error");
+			return false;
+		}
 		
 	}
 	
@@ -139,6 +186,8 @@ public class UserDao {
 				}
 				
 			}
+			// discard the scanner
+			scanner.close();
 
 		}
 		catch(IOException e){
