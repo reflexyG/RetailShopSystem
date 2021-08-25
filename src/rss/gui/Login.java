@@ -6,6 +6,7 @@
 package rss.gui;
 
 import javax.swing.JOptionPane;
+import rss.solution.*;
 
 /**
  *
@@ -42,6 +43,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 100));
         setMinimumSize(new java.awt.Dimension(830, 540));
         setPreferredSize(new java.awt.Dimension(800, 500));
 
@@ -118,13 +120,23 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String Id, password, role;
         
-        Id = txtId.getText().toString();
-        password = txtPass.getText().toString();
+        Customer c;
+        Admin a;
         
-        if (Id == "1" && password == "1")
+        Id = txtId.getText().toLowerCase();
+        password = txtPass.getText().toLowerCase();
+        role = cboRole.getSelectedItem().toString();
+        System.out.println(Id + password + role);
+        
+        if (role == "Customer") 
         {
-            JOptionPane.showMessageDialog(null,"see your mom");
+           this.setVisible(false);
+            new Store().setVisible(true);
         }
+        
+        
+        
+        
                
     }//GEN-LAST:event_btnLoginMouseClicked
 

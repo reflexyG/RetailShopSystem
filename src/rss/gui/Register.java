@@ -47,8 +47,8 @@ public class Register extends javax.swing.JFrame {
         jTextField4.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 100));
         setMinimumSize(new java.awt.Dimension(830, 540));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -101,7 +101,6 @@ public class Register extends javax.swing.JFrame {
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 160, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
