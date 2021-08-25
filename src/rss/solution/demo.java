@@ -8,6 +8,9 @@ public class demo {
 		System.out.println(c.getUsername() +c.getEmail() + c.getPassword() + c.getPhone() + c.getaccountType());	
 
 		c.login();
+		UserDao ud = new UserDao();
+		ud.addUser("user1", "fsk", "Customer", "@gmail.com", 12346123);	
+		ud.updateUser("user1", "1234", "Customer", "fuckyou@gmail.com", 5431234);
 		
 	}
 	

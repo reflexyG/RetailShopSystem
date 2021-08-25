@@ -8,6 +8,8 @@ public class Admin extends User{
 	}
 	
 	public Boolean addAdmin(String username, String password, String email, int phone){
+		UserDao ud = new UserDao();
+		ud.addUser(username, password, "customer", email, phone);
 		return true;
 	}
 	

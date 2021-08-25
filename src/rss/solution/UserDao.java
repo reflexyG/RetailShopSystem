@@ -1,12 +1,14 @@
 package rss.solution;
 import java.util.Scanner;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDao {
 	private String path = "./abx.txt";
 	private File file = new File(path);
-	private PrintWriter pw = null;
+	private PrintWriter pw;
 	private Scanner scanner;
 	
 	public UserDao(){
@@ -57,9 +59,9 @@ public class UserDao {
 					else if(tempPassword.trim().equals(password.trim())){
 						found = true;
 					}
-				}
-		
+				}	
 			}
+			
 		}
 		catch(IOException e){
 			System.out.println("error");
@@ -102,7 +104,64 @@ public class UserDao {
 	}
 	
 	// update user account
-	public void updateUser(String username, String password, String type){
+	public Boolean updateUser(String username, String password, 
+		String type, String email, int phoneNumber){
+		
+		// create a dynamic list to store new data
+		List<String> newData = new ArrayList<>();
+		
+		try{
+			// declare new Scanner object
+			scanner = new Scanner(file);
+			
+			while(scanner.hasNext()){
+				
+				// store each line of txt file in a String
+				String line = scanner.nextLine();
+				// split the string with delimiter
+				String[] oldData = line.split(",");
+				
+				// if username and accounttype is same
+				if(oldData[0].trim().equals(username.trim()) && 
+					oldData[2].trim().equals(type.trim())){
+					
+					//store the new data in the list
+					newData.add(
+					username + "," + 
+					password + "," +
+					type + "," +
+					email + "," +
+					phoneNumber);
+				}
+				else{
+					// store the same data in the list
+					newData.add(line);
+				}
+				
+			}
+
+		}
+		catch(IOException e){
+			System.out.println("Error");
+		}
+		
+		// use PrintWriter to overwrite the text file
+		try{
+			// declare new pw object
+			pw = new PrintWriter(path);
+			// write the newData into the text file
+			for(String str : newData){
+				pw.println(str);
+			}
+			pw.close();
+			
+			return true;
+			
+		}
+		catch(IOException e){
+			System.out.println("Error");
+			return false;
+		}
 		
 	}
 	
