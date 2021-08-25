@@ -1,23 +1,15 @@
 package rss.solution;
 
-public class User {
-	private String username;
-	private String password;
+abstract class User {
+	private final String username;
+	private final String password;
 	private String accountType;
-	private String email;
-	private int phone;
+	private final String email;
+	private final int phone;
 	
-	public User(String username, String password, String accountType){
+	public User(String username, String password, String email, int phone){
 		this.username = username;
 		this.password = password;
-		this.accountType = accountType;
-
-	}
-	
-	public User(String username, String password, String accountType, String email, int phone){
-		this.username = username;
-		this.password = password;
-		this.accountType = accountType;
 		this.email = email;
 		this.phone = phone;
 	}
@@ -42,8 +34,7 @@ public class User {
 		this.accountType = type;
 	}
 	
-	public String getaccountType(String type){
-		this.accountType = type;
+	public String getaccountType(){
 		return accountType;
 	}
 	
