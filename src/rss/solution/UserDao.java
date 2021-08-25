@@ -81,7 +81,7 @@ public class UserDao {
 		try{
 			// declare new PrintWriter object with new Filewriter as aruguement and allow append
 			pw = new PrintWriter(new FileWriter(file, true));
-			// pw = new PrintWriter(file);
+
 			// check if the user is in the txt file
 			if(!findUser(username, password, type, "add")){
 				// write the user into the txt file
