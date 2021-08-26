@@ -299,7 +299,7 @@
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Image/1_(1).jpg"/>
+              <Image iconType="3" name="/Image/shopicon.jpg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -344,7 +344,7 @@
                   </Group>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                  <Component id="pnlInfo" alignment="0" pref="530" max="32767" attributes="0"/>
+                  <Component id="pnlInfo" alignment="0" pref="510" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -495,7 +495,7 @@
                           <Component id="btnCancel" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="btnConfirm" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

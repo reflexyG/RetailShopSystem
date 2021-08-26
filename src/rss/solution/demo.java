@@ -24,7 +24,7 @@ public class demo {
 		System.out.println(pd.updateProduct("P1123483", "pizza", "cheese", true, 30, 30.00));
 		//System.out.println(pd.p.getId()+ pd.p.getName() + pd.p.getDescription() + pd.p.getQuantity());
 		
-		
+		ud.addUser("anvegave", "1234567","Admin","email", 123445);
 	}
 	
 }
