@@ -18,6 +18,9 @@ public class Store extends javax.swing.JFrame {
      */
     public Store() {
         initComponents();
+        pnlHome.setVisible(true);
+        pnlOrder.setVisible(false);
+        pnlInfo.setVisible(false);
     }
 
     /**
@@ -29,6 +32,7 @@ public class Store extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         pnlMenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tabHome = new javax.swing.JPanel();
@@ -39,24 +43,65 @@ public class Store extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tabSignout = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        pnlInfo = new javax.swing.JPanel();
-        pnlOrder = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        pnlInfo = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        label1 = new javax.swing.JLabel();
+        lbloldPhone = new javax.swing.JLabel();
+        label2 = new javax.swing.JLabel();
+        txtNewPhone = new javax.swing.JTextField();
+        label3 = new javax.swing.JLabel();
+        lbloldMail = new javax.swing.JLabel();
+        label4 = new javax.swing.JLabel();
+        txtNewMail = new javax.swing.JTextField();
+        label5 = new javax.swing.JLabel();
+        lbloldPass = new javax.swing.JLabel();
+        label6 = new javax.swing.JLabel();
+        txtNewPass = new javax.swing.JTextField();
+        btnCancel = new javax.swing.JButton();
+        btnConfirm = new javax.swing.JButton();
+        pnlOrder = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        txtSearchOrder = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        btnSearchOrder = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        txtDelOrder = new javax.swing.JTextField();
+        btnDelOrder = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 100));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlMenu.setBackground(new java.awt.Color(102, 204, 255));
+        pnlMenu.setBackground(new java.awt.Color(153, 204, 255));
         pnlMenu.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         pnlMenu.setName(""); // NOI18N
         pnlMenu.setPreferredSize(new java.awt.Dimension(200, 500));
         pnlMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel1.setText("fuck you, welcome back");
-        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome back to");
+        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
 
         tabHome.setBackground(new java.awt.Color(204, 204, 204));
         tabHome.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -182,46 +227,186 @@ public class Store extends javax.swing.JFrame {
 
         pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 200, -1));
 
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Anvegave Retail Store");
+        pnlMenu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 40));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_(1).jpg"))); // NOI18N
+        pnlMenu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 100, 100));
+
         getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
-        pnlInfo.setBackground(new java.awt.Color(255, 204, 153));
+        pnlHome.setBackground(new java.awt.Color(204, 204, 204));
+        pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Elephant", 2, 28)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Welcome to \nAnvegave Retail Store");
+        pnlHome.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 560, 100));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jButton1.setText("Browse Store Now");
+        pnlHome.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 190, 62));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/shop.jpg"))); // NOI18N
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 600, 360));
+
+        pnlInfo.setBackground(new java.awt.Color(204, 204, 204));
+        pnlInfo.setPreferredSize(new java.awt.Dimension(600, 500));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Information Update");
+
+        label1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        label1.setText("Current Phone No:");
+
+        lbloldPhone.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lbloldPhone.setText("old number");
+
+        label2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        label2.setText("New Phone No:");
+
+        txtNewPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewPhoneActionPerformed(evt);
+            }
+        });
+
+        label3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        label3.setText("Current E-mail     :");
+
+        lbloldMail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lbloldMail.setText("old email");
+
+        label4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        label4.setText("New E-mail     :");
+
+        label5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        label5.setText("Current Password:");
+
+        lbloldPass.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lbloldPass.setText("old password");
+
+        label6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        label6.setText("New Password:");
+
+        btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+
+        btnConfirm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        btnConfirm.setText("Confirm");
 
         javax.swing.GroupLayout pnlInfoLayout = new javax.swing.GroupLayout(pnlInfo);
         pnlInfo.setLayout(pnlInfoLayout);
         pnlInfoLayout.setHorizontalGroup(
             pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGroup(pnlInfoLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlInfoLayout.createSequentialGroup()
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(181, 181, 181)
+                        .addComponent(btnConfirm, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                        .addGap(81, 81, 81))
+                    .addGroup(pnlInfoLayout.createSequentialGroup()
+                        .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlInfoLayout.createSequentialGroup()
+                                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbloldPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbloldMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbloldPass, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(label6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNewPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                    .addComponent(txtNewPass)
+                                    .addComponent(txtNewMail)))
+                            .addGroup(pnlInfoLayout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlInfoLayout.setVerticalGroup(
             pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(pnlInfoLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbloldPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbloldMail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewMail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbloldPass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewPass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76)
+                .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        pnlOrder.setBackground(new java.awt.Color(153, 255, 153));
+        pnlOrder.setBackground(new java.awt.Color(204, 204, 204));
+        pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
-        pnlOrder.setLayout(pnlOrderLayout);
-        pnlOrderLayout.setHorizontalGroup(
-            pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        pnlOrderLayout.setVerticalGroup(
-            pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 36)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("My Order");
+        pnlOrder.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 0, 361, -1));
 
-        pnlHome.setBackground(new java.awt.Color(255, 153, 204));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        javax.swing.GroupLayout pnlHomeLayout = new javax.swing.GroupLayout(pnlHome);
-        pnlHome.setLayout(pnlHomeLayout);
-        pnlHomeLayout.setHorizontalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        pnlHomeLayout.setVerticalGroup(
-            pnlHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        pnlOrder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 500, 350));
+
+        txtSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        pnlOrder.add(txtSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 180, 30));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel12.setText("Search Order:");
+        pnlOrder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 430, 80, 32));
+
+        btnSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnSearchOrder.setText("Search");
+        pnlOrder.add(btnSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 90, 30));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel13.setText("Delete Order ID:");
+        pnlOrder.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 90, 40));
+        pnlOrder.add(txtDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 180, 30));
+
+        btnDelOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnDelOrder.setText("Confirm");
+        pnlOrder.add(btnDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 90, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,10 +419,7 @@ public class Store extends javax.swing.JFrame {
                     .addComponent(pnlOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,10 +430,7 @@ public class Store extends javax.swing.JFrame {
                     .addComponent(pnlOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 500));
@@ -295,6 +474,10 @@ public class Store extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_tabSignoutMouseClicked
 
+    private void txtNewPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewPhoneActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,12 +514,37 @@ public class Store extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton btnDelOrder;
+    private javax.swing.JButton btnSearchOrder;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel label1;
+    private javax.swing.JLabel label2;
+    private javax.swing.JLabel label3;
+    private javax.swing.JLabel label4;
+    private javax.swing.JLabel label5;
+    private javax.swing.JLabel label6;
+    private javax.swing.JLabel lbloldMail;
+    private javax.swing.JLabel lbloldPass;
+    private javax.swing.JLabel lbloldPhone;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlInfo;
     private javax.swing.JPanel pnlMenu;
@@ -345,5 +553,10 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JPanel tabInfo;
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabSignout;
+    private javax.swing.JTextField txtDelOrder;
+    private javax.swing.JTextField txtNewMail;
+    private javax.swing.JTextField txtNewPass;
+    private javax.swing.JTextField txtNewPhone;
+    private javax.swing.JTextField txtSearchOrder;
     // End of variables declaration//GEN-END:variables
 }

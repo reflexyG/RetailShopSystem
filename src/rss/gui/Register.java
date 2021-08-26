@@ -158,7 +158,7 @@ public class Register extends javax.swing.JFrame {
                 new Login().setVisible(true);
             } else
             {
-                JOptionPane.showMessageDialog(null,"Register Fail, Please Try Again","Fail ", JOptionPane.ERROR_MESSAGE);    
+                JOptionPane.showMessageDialog(null,"Register Fail, username exist","Fail ", JOptionPane.ERROR_MESSAGE);    
             }
          }
         
