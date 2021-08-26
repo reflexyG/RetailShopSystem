@@ -18,9 +18,10 @@ public class demo {
 		ProductDao pd = new ProductDao();
 		//pd.addProduct("toys", "adult toys", false, 0);
 		//pd.addProduct("pizza", "adult pizza", false, 20);
-		//pd.getProduct("P79522");
-		pd.deleteProduct("P39039");
-		pd.updateProduct("P62493", "burger", "xxx", false, 20);
+		System.out.println(pd.getProduct("P13283"));
+		//System.out.println(pd.deleteProduct("P26414"));
+		//pd.addProduct("burger", "xxx", false, 20, 2.30);
+		System.out.println(pd.updateProduct("P1123483", "pizza", "cheese", true, 30, 30.00));
 		//System.out.println(pd.p.getId()+ pd.p.getName() + pd.p.getDescription() + pd.p.getQuantity());
 		
 		

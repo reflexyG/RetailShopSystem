@@ -104,6 +104,8 @@ public class UserDao {
 	public Boolean deleteUser(String username, String type){
 		List<String> newData = new ArrayList<>();
 		
+		Boolean deleted = false;
+		
 		try{
 			// declare new Scanner object
 			scanner = new Scanner(file);
@@ -121,6 +123,9 @@ public class UserDao {
 					// add the row into the list
 					newData.add(line);
 				}
+				else{
+					deleted = true;
+				}
 	
 			}
 			// discard the scanner
@@ -131,23 +136,28 @@ public class UserDao {
 			System.out.println("Error");
 		}
 		
-		// use PrintWriter to overwrite the text file
-		try{
-			// declare new pw object
-			pw = new PrintWriter(path);
-			// write the newData into the text file
-			for(String str : newData){
-				pw.println(str);
+		if(deleted){
+			// use PrintWriter to overwrite the text file
+			try{
+				// declare new pw object
+				pw = new PrintWriter(path);
+				// write the newData into the text file
+				for(String str : newData){
+					pw.println(str);
+				}
+				pw.close();
+
+				deleted = true;
+
+
 			}
-			pw.close();
-			
-			return true;
-			
+			catch(IOException e){
+				System.out.println("Error");
+				return deleted;
+			}
 		}
-		catch(IOException e){
-			System.out.println("Error");
-			return false;
-		}
+		
+		return deleted;
 		
 	}
 	
@@ -157,6 +167,7 @@ public class UserDao {
 		
 		// create a dynamic list to store new data
 		List<String> newData = new ArrayList<>();
+		Boolean updated = true;
 		
 		try{
 			// declare new Scanner object
@@ -180,6 +191,9 @@ public class UserDao {
 					type + "," +
 					email + "," +
 					phoneNumber);
+					
+					// set updated to true
+					updated = true;
 				}
 				else{
 					// store the same data in the list
@@ -195,23 +209,28 @@ public class UserDao {
 			System.out.println("Error");
 		}
 		
-		// use PrintWriter to overwrite the text file
-		try{
-			// declare new pw object
-			pw = new PrintWriter(path);
-			// write the newData into the text file
-			for(String str : newData){
-				pw.println(str);
+		if(updated){
+			// use PrintWriter to overwrite the text file
+			try{
+				// declare new pw object
+				pw = new PrintWriter(path);
+				// write the newData into the text file
+				for(String str : newData){
+					pw.println(str);
+				}
+				pw.close();
+
 			}
-			pw.close();
-			
-			return true;
+			catch(IOException e){
+				System.out.println("Error");
+				updated = false;
+				return updated;
+			}
 			
 		}
-		catch(IOException e){
-			System.out.println("Error");
-			return false;
-		}
+		
+		return updated;
+
 		
 	}
 	

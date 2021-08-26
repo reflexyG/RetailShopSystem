@@ -6,13 +6,15 @@ public class Product {
 	private String description;
 	private Boolean fragile;
 	private int quantity;
+	private double price;
 	
-	public Product(String id, String name, String description, Boolean fragile, int quantity){
+	public Product(String id, String name, String description, Boolean fragile, int quantity, double price){
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.fragile = fragile;
 		this.quantity = quantity;
+		this.price = price;
 	}
 
 	public String getId() {
@@ -34,4 +36,9 @@ public class Product {
 	public int getQuantity() {
 		return quantity;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+	
 }
