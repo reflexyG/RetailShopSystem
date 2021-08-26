@@ -232,7 +232,7 @@ public class Store extends javax.swing.JFrame {
         jLabel11.setText("Anvegave Retail Store");
         pnlMenu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 40));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1_(1).jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/shopicon.jpg"))); // NOI18N
         pnlMenu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 100, 100));
 
         getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
@@ -365,7 +365,7 @@ public class Store extends javax.swing.JFrame {
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pnlOrder.setBackground(new java.awt.Color(204, 204, 204));
@@ -430,7 +430,7 @@ public class Store extends javax.swing.JFrame {
                     .addComponent(pnlOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
+                .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 500));
