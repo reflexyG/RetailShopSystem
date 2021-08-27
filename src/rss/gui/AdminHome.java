@@ -20,6 +20,11 @@ public class AdminHome extends javax.swing.JFrame {
      */
     public AdminHome() {
         initComponents();
+        
+        pnlNewAdmin.setVisible(false);
+        pnlOrder.setVisible(false);
+        pnlProduct.setVisible(false);
+        pnlCust.setVisible(false);
     }
 
     /**
@@ -33,6 +38,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         pnlMenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         tabHome = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tabProduct = new javax.swing.JPanel();
@@ -41,12 +47,10 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tabSignout = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        tabMCust = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        pnlProduct = new javax.swing.JPanel();
-        pnlOrder = new javax.swing.JPanel();
         pnlNewAdmin = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -58,14 +62,18 @@ public class AdminHome extends javax.swing.JFrame {
         txtPhone = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtPass = new javax.swing.JTextField();
-        btnRegister = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        pnlProduct = new javax.swing.JPanel();
+        pnlOrder = new javax.swing.JPanel();
+        pnlCust = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 100));
         setMinimumSize(new java.awt.Dimension(800, 500));
         setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
 
         pnlMenu.setBackground(new java.awt.Color(153, 204, 255));
         pnlMenu.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -76,7 +84,10 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome back");
-        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 150, -1));
+        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/shopicon.jpg"))); // NOI18N
+        pnlMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 100, 100));
 
         tabHome.setBackground(new java.awt.Color(204, 204, 204));
         tabHome.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -95,7 +106,7 @@ public class AdminHome extends javax.swing.JFrame {
         tabHomeLayout.setHorizontalGroup(
             tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHomeLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(29, 29, 29))
         );
@@ -103,11 +114,11 @@ public class AdminHome extends javax.swing.JFrame {
             tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabHomeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 200, -1));
+        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 200, 40));
 
         tabProduct.setBackground(new java.awt.Color(204, 204, 204));
         tabProduct.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -134,11 +145,11 @@ public class AdminHome extends javax.swing.JFrame {
             tabProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabProductLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 200, -1));
+        pnlMenu.add(tabProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 200, 40));
 
         tabOrder.setBackground(new java.awt.Color(204, 204, 204));
         tabOrder.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -165,11 +176,11 @@ public class AdminHome extends javax.swing.JFrame {
             tabOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabOrderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 200, -1));
+        pnlMenu.add(tabOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 40));
 
         tabSignout.setBackground(new java.awt.Color(204, 204, 204));
         tabSignout.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -196,19 +207,116 @@ public class AdminHome extends javax.swing.JFrame {
             tabSignoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabSignoutLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 200, -1));
+        pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 200, 40));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/shopicon.jpg"))); // NOI18N
-        pnlMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 100, 100));
+        tabMCust.setBackground(new java.awt.Color(204, 204, 204));
+        tabMCust.setPreferredSize(new java.awt.Dimension(0, 60));
+        tabMCust.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabMCustMouseClicked(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Manage Customer");
+
+        javax.swing.GroupLayout tabMCustLayout = new javax.swing.GroupLayout(tabMCust);
+        tabMCust.setLayout(tabMCustLayout);
+        tabMCustLayout.setHorizontalGroup(
+            tabMCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMCustLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(35, 35, 35))
+        );
+        tabMCustLayout.setVerticalGroup(
+            tabMCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabMCustLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlMenu.add(tabMCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 200, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(600, 510));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(600, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlNewAdmin.setMinimumSize(new java.awt.Dimension(600, 504));
+        pnlNewAdmin.setPreferredSize(new java.awt.Dimension(600, 500));
+        pnlNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Elephant", 2, 36)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("New Admin");
+        pnlNewAdmin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 420, 60));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel8.setText("Username : ");
+        pnlNewAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel9.setText("Phone no. : ");
+        pnlNewAdmin.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel10.setText("E-mail        : ");
+        pnlNewAdmin.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel11.setText("Password  :");
+        pnlNewAdmin.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel12.setText("Account Type : ");
+        pnlNewAdmin.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, -1));
+
+        lblAccType.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblAccType.setText("admin");
+        pnlNewAdmin.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 128, 28));
+        pnlNewAdmin.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 220, 25));
+
+        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneKeyTyped(evt);
+            }
+        });
+        pnlNewAdmin.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 220, 25));
+        pnlNewAdmin.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 220, 25));
+        pnlNewAdmin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 220, 25));
+
+        btnAdd.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnAdd.setText("Add");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
+        pnlNewAdmin.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 160, 50));
+
+        btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelMouseClicked(evt);
+            }
+        });
+        pnlNewAdmin.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 160, 50));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register.png"))); // NOI18N
+        jLabel13.setMaximumSize(new java.awt.Dimension(600, 500));
+        jLabel13.setMinimumSize(new java.awt.Dimension(600, 500));
+        jLabel13.setPreferredSize(new java.awt.Dimension(600, 500));
+        pnlNewAdmin.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 600, 500));
+
+        jPanel1.add(pnlNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlProduct.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -220,10 +328,10 @@ public class AdminHome extends javax.swing.JFrame {
         );
         pnlProductLayout.setVerticalGroup(
             pnlProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 510));
+        jPanel1.add(pnlProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
 
         pnlOrder.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -235,90 +343,25 @@ public class AdminHome extends javax.swing.JFrame {
         );
         pnlOrderLayout.setVerticalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 510));
+        jPanel1.add(pnlOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
 
-        pnlNewAdmin.setBackground(new java.awt.Color(204, 255, 255));
+        pnlCust.setBackground(new java.awt.Color(153, 153, 255));
 
-        jPanel2.setMinimumSize(new java.awt.Dimension(600, 504));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 500));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Elephant", 2, 36)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("New Admin");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 420, 60));
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel8.setText("Username : ");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel9.setText("Phone no. : ");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel10.setText("E-mail        : ");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel11.setText("Password  :");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel12.setText("Account Type : ");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, -1));
-
-        lblAccType.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        lblAccType.setText("admin");
-        jPanel2.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 128, 28));
-        jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 220, 25));
-
-        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPhoneKeyTyped(evt);
-            }
-        });
-        jPanel2.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 220, 25));
-        jPanel2.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 220, 25));
-        jPanel2.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 220, 25));
-
-        btnRegister.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnRegister.setText("Add");
-        btnRegister.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRegisterMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 160, 50));
-
-        btnBack.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnBack.setText("Back");
-        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBackMouseClicked(evt);
-            }
-        });
-        jPanel2.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 160, 50));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register.png"))); // NOI18N
-        jLabel13.setPreferredSize(new java.awt.Dimension(600, 500));
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 600, 500));
-
-        javax.swing.GroupLayout pnlNewAdminLayout = new javax.swing.GroupLayout(pnlNewAdmin);
-        pnlNewAdmin.setLayout(pnlNewAdminLayout);
-        pnlNewAdminLayout.setHorizontalGroup(
-            pnlNewAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout pnlCustLayout = new javax.swing.GroupLayout(pnlCust);
+        pnlCust.setLayout(pnlCustLayout);
+        pnlCustLayout.setHorizontalGroup(
+            pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        pnlNewAdminLayout.setVerticalGroup(
-            pnlNewAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlCustLayout.setVerticalGroup(
+            pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 510));
+        jPanel1.add(pnlCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,7 +370,7 @@ public class AdminHome extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,7 +378,9 @@ public class AdminHome extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -345,33 +390,41 @@ public class AdminHome extends javax.swing.JFrame {
         pnlNewAdmin.setVisible(true);
         pnlOrder.setVisible(false);
         pnlProduct.setVisible(false);
+        pnlCust.setVisible(false);
         tabHome.setBackground(Color.WHITE);
         tabProduct.setBackground(new Color (204,204,204));
         tabOrder.setBackground(new Color (204,204,204));
         tabSignout.setBackground(new Color (204,204,204));
+        tabMCust.setBackground(new Color (204,204,204));
     }//GEN-LAST:event_tabHomeMouseClicked
 
     private void tabProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabProductMouseClicked
         pnlNewAdmin.setVisible(false);
         pnlOrder.setVisible(false);
         pnlProduct.setVisible(true);
+        pnlCust.setVisible(false);
         tabHome.setBackground(new Color (204,204,204));
         tabProduct.setBackground(Color.WHITE);
         tabOrder.setBackground(new Color (204,204,204));
         tabSignout.setBackground(new Color (204,204,204));
+        tabMCust.setBackground(new Color (204,204,204));
     }//GEN-LAST:event_tabProductMouseClicked
 
     private void tabOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabOrderMouseClicked
         pnlNewAdmin.setVisible(false);
         pnlOrder.setVisible(true);
         pnlProduct.setVisible(false);
+        pnlCust.setVisible(false);
         tabHome.setBackground(new Color (204,204,204));
         tabProduct.setBackground(new Color (204,204,204));
         tabOrder.setBackground(Color.white);
         tabSignout.setBackground(new Color (204,204,204));
+        tabMCust.setBackground(new Color (204,204,204));
 
     }//GEN-LAST:event_tabOrderMouseClicked
 
+
+    
     private void tabSignoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSignoutMouseClicked
         this.setVisible(false);
         new Login().setVisible(true);
@@ -385,7 +438,7 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPhoneKeyTyped
 
-    private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
         String userName, password, email;
         int phone;
 
@@ -410,12 +463,26 @@ public class AdminHome extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_btnRegisterMouseClicked
+    }//GEN-LAST:event_btnAddMouseClicked
 
-    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
-        this.setVisible(false);
-        new Login().setVisible(true);
-    }//GEN-LAST:event_btnBackMouseClicked
+    private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
+        txtUser.setText("");
+        txtPhone.setText("");
+        txtEmail.setText("");
+        txtPass.setText("");
+    }//GEN-LAST:event_btnCancelMouseClicked
+
+    private void tabMCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMCustMouseClicked
+        pnlNewAdmin.setVisible(false);
+        pnlOrder.setVisible(false);
+        pnlProduct.setVisible(false);
+        pnlCust.setVisible(true);
+        tabHome.setBackground(new Color (204,204,204));
+        tabProduct.setBackground(new Color (204,204,204));
+        tabOrder.setBackground(new Color (204,204,204));
+        tabSignout.setBackground(new Color (204,204,204));
+        tabMCust.setBackground(Color.white);
+    }//GEN-LAST:event_tabMCustMouseClicked
 
     /**
      * @param args the command line arguments
@@ -453,13 +520,16 @@ public class AdminHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -469,13 +539,16 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblAccType;
+    private javax.swing.JPanel pnlCust;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNewAdmin;
     private javax.swing.JPanel pnlOrder;
     private javax.swing.JPanel pnlProduct;
+    private javax.swing.JPanel tabCust;
+    private javax.swing.JPanel tabCust1;
     private javax.swing.JPanel tabHome;
+    private javax.swing.JPanel tabMCust;
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabProduct;
     private javax.swing.JPanel tabSignout;
