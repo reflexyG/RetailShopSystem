@@ -48,8 +48,15 @@ public class Store extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtItemId = new javax.swing.JTextField();
+        btnCheckOut = new javax.swing.JButton();
         pnlInfo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
@@ -242,15 +249,63 @@ public class Store extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Elephant", 2, 28)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Welcome to \nAnvegave Retail Store");
-        pnlHome.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 560, 100));
+        jLabel7.setText("Browse Anvegave Retail Store");
+        pnlHome.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 560, 60));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jButton1.setText("Browse Store Now");
-        pnlHome.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 190, 62));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 505, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 312, Short.MAX_VALUE)
+        );
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/shop.jpg"))); // NOI18N
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, 600, 360));
+        jTabbedPane1.addTab("Snack", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 505, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 312, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab2", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 505, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 312, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab3", jPanel4);
+
+        pnlHome.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 510, 340));
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel14.setText("Quantity :");
+        pnlHome.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 60, 30));
+        pnlHome.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 110, 30));
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel15.setText("Product ID:");
+        pnlHome.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 70, 30));
+        pnlHome.add(txtItemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 110, 30));
+
+        btnCheckOut.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnCheckOut.setText("Check Out");
+        pnlHome.add(btnCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 110, 40));
 
         pnlInfo.setBackground(new java.awt.Color(204, 204, 204));
         pnlInfo.setPreferredSize(new java.awt.Dimension(600, 500));
@@ -365,10 +420,11 @@ public class Store extends javax.swing.JFrame {
                 .addGroup(pnlInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pnlOrder.setBackground(new java.awt.Color(204, 204, 204));
+        pnlOrder.setPreferredSize(new java.awt.Dimension(600, 500));
         pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 36)); // NOI18N
@@ -386,27 +442,27 @@ public class Store extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        pnlOrder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 500, 350));
+        pnlOrder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 500, 300));
 
         txtSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        pnlOrder.add(txtSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 180, 30));
+        pnlOrder.add(txtSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel12.setText("Search Order:");
-        pnlOrder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 430, 80, 32));
+        pnlOrder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 80, 32));
 
         btnSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnSearchOrder.setText("Search");
-        pnlOrder.add(btnSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 90, 30));
+        pnlOrder.add(btnSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 90, 30));
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel13.setText("Delete Order ID:");
-        pnlOrder.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 90, 40));
-        pnlOrder.add(txtDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 180, 30));
+        pnlOrder.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 90, 40));
+        pnlOrder.add(txtDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 180, 30));
 
         btnDelOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnDelOrder.setText("Confirm");
-        pnlOrder.add(btnDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 90, 30));
+        pnlOrder.add(btnDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 90, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -430,7 +486,7 @@ public class Store extends javax.swing.JFrame {
                     .addComponent(pnlOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
+                .addComponent(pnlInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 500));
@@ -515,26 +571,31 @@ public class Store extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnDelOrder;
     private javax.swing.JButton btnSearchOrder;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
@@ -554,9 +615,11 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabSignout;
     private javax.swing.JTextField txtDelOrder;
+    private javax.swing.JTextField txtItemId;
     private javax.swing.JTextField txtNewMail;
     private javax.swing.JTextField txtNewPass;
     private javax.swing.JTextField txtNewPhone;
+    private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtSearchOrder;
     // End of variables declaration//GEN-END:variables
 }
