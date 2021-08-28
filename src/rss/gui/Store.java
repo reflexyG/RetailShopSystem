@@ -7,6 +7,7 @@ package rss.gui;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import rss.solution.*;
 
 /**
@@ -29,6 +30,8 @@ public class Store extends javax.swing.JFrame {
         lbloldPhone.setText(String.valueOf(c.getPhone()));
         lbloldMail.setText(c.getEmail());
         lbloldPass.setText(c.getPassword());
+        
+        productTableUpdate();
     }
     
     public Store() {
@@ -40,7 +43,8 @@ public class Store extends javax.swing.JFrame {
     
      String username, password;
      Customer c;
-    
+     
+    ProductDao pd = new ProductDao();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,9 +77,10 @@ public class Store extends javax.swing.JFrame {
         txtItemId = new javax.swing.JTextField();
         btnCheckOut = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbItem = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         txtFproduct = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         pnlInfo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
@@ -288,22 +293,42 @@ public class Store extends javax.swing.JFrame {
         btnCheckOut.setText("Check Out");
         pnlHome.add(btnCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 110, 40));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbItem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-
+                "Product ID", "Product Name", "Description", "Fragile", "Quantity", "Prize"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tbItem);
+        if (tbItem.getColumnModel().getColumnCount() > 0) {
+            tbItem.getColumnModel().getColumn(0).setResizable(false);
+            tbItem.getColumnModel().getColumn(1).setResizable(false);
+            tbItem.getColumnModel().getColumn(2).setResizable(false);
+            tbItem.getColumnModel().getColumn(3).setResizable(false);
+            tbItem.getColumnModel().getColumn(4).setResizable(false);
+            tbItem.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         pnlHome.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 530, 280));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel6.setText("Product Search :");
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 120, 30));
-        pnlHome.add(txtFproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 150, 30));
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 120, 30));
+        pnlHome.add(txtFproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 150, 30));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jButton1.setText("Search");
+        pnlHome.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 90, 40));
 
         pnlInfo.setBackground(new java.awt.Color(204, 204, 204));
         pnlInfo.setPreferredSize(new java.awt.Dimension(600, 500));
@@ -503,6 +528,17 @@ public class Store extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void productTableUpdate(){
+        DefaultTableModel model = (DefaultTableModel)tbItem.getModel();
+        Object[] lines = pd.getProductList();
+        model.setRowCount(0);
+        for(int i = 0; i < lines.length; i++){
+                String line = lines[i].toString().trim();
+                String[] row = line.split(",");
+                model.addRow(row);
+        }
+    }
+    
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlHome.setVisible(true);
         pnlOrder.setVisible(false);
@@ -541,11 +577,11 @@ public class Store extends javax.swing.JFrame {
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
         UserDao ud = new UserDao();
         String pass,email;
-        int phone;
+        int phone = 0;
         
         pass = txtNewPass.getText().toLowerCase();
         email = txtNewMail.getText().toLowerCase();
-        phone = Integer.parseInt(txtNewPhone.getText());
+        //phone = Integer.parseInt(txtNewPhone.getText());
         
         if(txtNewPass.getText().isEmpty())
          {
@@ -560,11 +596,20 @@ public class Store extends javax.swing.JFrame {
         if(txtNewPhone.getText().isEmpty())
         {
             phone = c.getPhone();
+            String tempPhone = String.valueOf(phone);
+            txtNewPhone.setText(tempPhone);
         }
         
         if (!ud.updateUser(username, pass,"Customer", email, phone))
         {
             JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
+        }else
+        {
+            JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
+            productTableUpdate();
+            txtNewPhone.setText("");
+            txtNewMail.setText("");
+            txtNewPass.setText("");
         }
         
     }//GEN-LAST:event_btnConfirmMouseClicked
@@ -624,6 +669,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnDelOrder;
     private javax.swing.JButton btnSearchOrder;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -644,7 +690,6 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
@@ -662,6 +707,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JPanel tabInfo;
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabSignout;
+    private javax.swing.JTable tbItem;
     private javax.swing.JTextField txtDelOrder;
     private javax.swing.JTextField txtFproduct;
     private javax.swing.JTextField txtItemId;
