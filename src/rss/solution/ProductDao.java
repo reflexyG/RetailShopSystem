@@ -74,26 +74,27 @@ public class ProductDao {
 		
 		Boolean added = false;
 		
-		// generate random product id
-		// instantiate new Random object
-		Random random = new Random();
-		// generate id for the product
-		int number = random.nextInt(99999);
-		// convert the integer into 6 characters format
-		String id = "P" + String.format("%05d", number);
-		
-		
 		// handle exception
 		try{
 			// declare new PrintWriter object with new Filewriter as aruguement and allow append
 			pw = new PrintWriter(new FileWriter(file, true));
-
-			// check if the product is in the txt file
-			if(!getProduct(id)){
-				// write the product into the txt file
-				pw.println(id + "," + name + "," + description + "," + fragile + "," + quantity + "," + price);
-				pw.close();
-				added = true;
+			
+			while(!added){
+				// generate random product id
+				// instantiate new Random object
+				Random random = new Random();
+				// generate id for the product
+				int number = random.nextInt(99999);
+				// convert the integer into 6 characters format
+				String id = "P" + String.format("%05d", number);
+				
+				// check if the product id is in the txt file
+				if(!getProduct(id)){
+					// write the product into the txt file
+					pw.println(id + "," + name + "," + description + "," + fragile + "," + quantity + "," + price);
+					pw.close();
+					added = true;
+				}
 			}
 			
 		}
@@ -161,7 +162,6 @@ public class ProductDao {
 		
 		return deleted;
 			
-		
 	}
 	
 	// update user account
@@ -237,6 +237,8 @@ public class ProductDao {
 		return updated;
 
 	}
+	
+	
 	
 }
 

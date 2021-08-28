@@ -12,6 +12,8 @@ public class UserDao {
 	private File file = new File(path);
 	private PrintWriter pw;
 	private Scanner scanner;
+	public Customer c;
+	public Admin a;
 	
 	public UserDao(){
 		// create new txt file if the txt file does not exist
@@ -53,6 +55,15 @@ public class UserDao {
 				
 				if(tempUsername.trim().equals(username.trim()) && 
 					tempAccountType.trim().equals(accountType.trim())){
+					
+					// instantiate object for admin or customer
+					if(tempAccountType.equals("Customer")){
+						c = new Customer(data[0], data[1]);
+					}
+					else{
+						a = new Admin(data[0], data[1]);
+					}
+					
 					// check the purpose for finding user
 					if(!purpose.equals("login")){
 						found = true;
@@ -61,7 +72,8 @@ public class UserDao {
 					else if(tempPassword.trim().equals(password.trim())){
 						found = true;
 					}
-				}	
+
+				}
 			}
 			// discard the scanner
 			scanner.close();

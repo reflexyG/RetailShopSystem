@@ -16,15 +16,15 @@ public class demo {
 		//ud.deleteUser("user13", "Admin");
 		
 		ProductDao pd = new ProductDao();
-		//pd.addProduct("toys", "adult toys", false, 0);
+		pd.addProduct("toysss", "atoys", false, 0, 20);
 		//pd.addProduct("pizza", "adult pizza", false, 20);
 		System.out.println(pd.getProduct("P13283"));
 		//System.out.println(pd.deleteProduct("P26414"));
 		//pd.addProduct("burger", "xxx", false, 20, 2.30);
-		System.out.println(pd.updateProduct("P1123483", "pizza", "cheese", true, 30, 30.00));
+		//System.out.println(pd.updateProduct("P1123483", "pizza", "cheese", true, 30, 30.00));
 		//System.out.println(pd.p.getId()+ pd.p.getName() + pd.p.getDescription() + pd.p.getQuantity());
 		
-		ud.addUser("anvegave", "1234567","Admin","email", 123445);
+		//ud.addUser("anvegave", "1234567","Admin","email", 123445);
 	}
 	
 }
