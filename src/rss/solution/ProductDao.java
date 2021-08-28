@@ -88,7 +88,6 @@ public class ProductDao {
 
 	}
 	
-	
 	// add new user into the text file
 	public Boolean addProduct(String name, String description, Boolean fragile, int quantity, double price){
 		
