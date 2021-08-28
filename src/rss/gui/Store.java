@@ -253,7 +253,7 @@ public class Store extends javax.swing.JFrame {
 
         pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 200, -1));
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Bodoni MT", 3, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Anvegave Retail Store");
         pnlMenu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 40));
@@ -308,7 +308,7 @@ public class Store extends javax.swing.JFrame {
         pnlInfo.setBackground(new java.awt.Color(204, 204, 204));
         pnlInfo.setPreferredSize(new java.awt.Dimension(600, 500));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bodoni MT", 1, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Information Update");
 
@@ -435,7 +435,7 @@ public class Store extends javax.swing.JFrame {
         pnlOrder.setPreferredSize(new java.awt.Dimension(600, 500));
         pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 36)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bodoni MT", 3, 36)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("My Order");
         pnlOrder.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 0, 361, -1));

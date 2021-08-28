@@ -22,7 +22,7 @@ public class AdminHome extends javax.swing.JFrame {
         initComponents();
         
         pnlNewAdmin.setVisible(false);
-        pnlOrder.setVisible(false);
+        pnlOrder.setVisible(true);
         pnlProduct.setVisible(false);
         pnlCust.setVisible(false);
     }
@@ -61,6 +61,17 @@ public class AdminHome extends javax.swing.JFrame {
         btnSearchOrder = new javax.swing.JButton();
         pnlEditCust = new javax.swing.JPanel();
         pnlAddCust = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txtCustId = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txtCustPass = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txtCustMail = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtCustPhone = new javax.swing.JTextField();
+        btnReg = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
         pnlNewAdmin = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -261,13 +272,13 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 650));
         jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
 
-        pnlCust.setBackground(new java.awt.Color(153, 153, 255));
+        pnlCust.setBackground(new java.awt.Color(204, 204, 204));
         pnlCust.setMaximumSize(new java.awt.Dimension(800, 650));
         pnlCust.setMinimumSize(new java.awt.Dimension(800, 650));
         pnlCust.setPreferredSize(new java.awt.Dimension(800, 650));
         pnlCust.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Bodoni MT", 1, 36)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Manage Customer");
         pnlCust.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 450, 50));
@@ -312,15 +323,108 @@ public class AdminHome extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Edit Customer", pnlEditCust);
 
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Add New Customer");
+
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel21.setText("Username :");
+
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel22.setText("Password :");
+
+        jLabel23.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel23.setText("E - mail    :");
+
+        jLabel24.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel24.setText("Phone      :");
+
+        txtCustPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCustPhoneKeyTyped(evt);
+            }
+        });
+
+        btnReg.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnReg.setText("Register");
+        btnReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegMouseClicked(evt);
+            }
+        });
+
+        btnClear.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnClear.setText("Cancel");
+        btnClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClearMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlAddCustLayout = new javax.swing.GroupLayout(pnlAddCust);
         pnlAddCust.setLayout(pnlAddCustLayout);
         pnlAddCustLayout.setHorizontalGroup(
             pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+            .addGroup(pnlAddCustLayout.createSequentialGroup()
+                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAddCustLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlAddCustLayout.createSequentialGroup()
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtCustPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlAddCustLayout.createSequentialGroup()
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(43, 43, 43)
+                                    .addComponent(txtCustMail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlAddCustLayout.createSequentialGroup()
+                                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(txtCustPass, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnlAddCustLayout.createSequentialGroup()
+                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(txtCustId, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(pnlAddCustLayout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddCustLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnReg, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120))
         );
         pnlAddCustLayout.setVerticalGroup(
             pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
+            .addGroup(pnlAddCustLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCustId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCustPass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCustMail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCustPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addGroup(pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReg, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Add Customer", pnlAddCust);
@@ -428,7 +532,6 @@ public class AdminHome extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 800, 650));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
@@ -529,6 +632,49 @@ public class AdminHome extends javax.swing.JFrame {
         tabMCust.setBackground(Color.white);
     }//GEN-LAST:event_tabMCustMouseClicked
 
+    private void btnRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegMouseClicked
+        String userName, password, email;
+        int phone;
+
+        UserDao u = new UserDao();
+        
+         if(txtUser.getText().isEmpty()| txtPass.getText().isEmpty() |
+            txtEmail.getText().isEmpty()|txtPhone.getText().isEmpty())
+         {
+            JOptionPane.showMessageDialog(null,"Missing Information!","Fail ", JOptionPane.ERROR_MESSAGE);
+         }else
+         {
+             userName = txtUser.getText();
+            password = txtPass.getText();
+            email = txtEmail.getText();
+            phone = Integer.parseInt(txtPhone.getText());
+                if(u.addUser(userName, password,"Customer", email,phone))
+            {
+                JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+                this.setVisible(false);
+                new Login().setVisible(true);
+            } else
+            {
+                JOptionPane.showMessageDialog(null,"Register Fail, username exist","Fail ", JOptionPane.ERROR_MESSAGE);    
+            }
+         }
+    }//GEN-LAST:event_btnRegMouseClicked
+
+    private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
+        txtCustId.setText("");
+        txtCustMail.setText("");
+        txtCustPass.setText("");
+        txtCustPhone.setText("");
+    }//GEN-LAST:event_btnClearMouseClicked
+
+    private void txtCustPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustPhoneKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (Character.isLetter(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCustPhoneKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -567,6 +713,8 @@ public class AdminHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnReg;
     private javax.swing.JButton btnSearchOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -577,6 +725,11 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -602,6 +755,10 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabProduct;
     private javax.swing.JPanel tabSignout;
+    private javax.swing.JTextField txtCustId;
+    private javax.swing.JTextField txtCustMail;
+    private javax.swing.JTextField txtCustPass;
+    private javax.swing.JTextField txtCustPhone;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtPhone;
