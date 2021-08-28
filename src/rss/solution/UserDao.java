@@ -85,6 +85,23 @@ public class UserDao {
 		return found;
 	}
 	
+	// get all user details from the txt file
+	public Object[] getUserList(){
+		Object[] lines = null;
+		
+		try{
+			FileReader fr = new FileReader(file);
+			BufferedReader bf = new BufferedReader(fr);
+			lines = bf.lines().toArray();
+			return lines;
+		}
+		
+		catch(IOException e){
+			return lines;
+		}
+
+	}
+	
 	// add new user into the text file
 	public Boolean addUser(String username, String password, 
 		String type, String email, int phoneNumber){
