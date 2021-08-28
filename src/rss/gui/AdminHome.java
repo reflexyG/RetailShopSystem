@@ -115,8 +115,9 @@ public class AdminHome extends javax.swing.JFrame {
         txtQupdate = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtNewDesc = new javax.swing.JTextArea();
-        btnUpdateProduct = new javax.swing.JButton();
+        btnDeleteProduct = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
+        btnUpdateProduct1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -401,10 +402,25 @@ public class AdminHome extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "UserName", "Password", "E-mail", "Phone No."
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbCustomer.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbCustomer);
+        if (tbCustomer.getColumnModel().getColumnCount() > 0) {
+            tbCustomer.getColumnModel().getColumn(0).setResizable(false);
+            tbCustomer.getColumnModel().getColumn(1).setResizable(false);
+            tbCustomer.getColumnModel().getColumn(2).setResizable(false);
+            tbCustomer.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         pnlViewCust.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 670, 340));
 
@@ -686,19 +702,28 @@ public class AdminHome extends javax.swing.JFrame {
 
         pnlEditProduct.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 220, 130));
 
-        btnUpdateProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnUpdateProduct.setText("Update");
-        btnUpdateProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnDeleteProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnDeleteProduct.setText("Delete");
+        btnDeleteProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUpdateProductMouseClicked(evt);
+                btnDeleteProductMouseClicked(evt);
             }
         });
-        pnlEditProduct.add(btnUpdateProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 130, 80));
+        pnlEditProduct.add(btnDeleteProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 130, 80));
 
         jLabel36.setFont(new java.awt.Font("Bodoni MT", 0, 24)); // NOI18N
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel36.setText("Edit Product");
         pnlEditProduct.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 260, -1));
+
+        btnUpdateProduct1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnUpdateProduct1.setText("Update");
+        btnUpdateProduct1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateProduct1MouseClicked(evt);
+            }
+        });
+        pnlEditProduct.add(btnUpdateProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 130, 80));
 
         jTabbedPane2.addTab("Edit Product", pnlEditProduct);
 
@@ -947,73 +972,22 @@ public class AdminHome extends javax.swing.JFrame {
         {
             pd.getProduct(ProductId);
             jTabbedPane2.setSelectedIndex(1);
+            pd.getProduct(ProductId);
             lblProductId.setText(ProductId);
         }
         
     }//GEN-LAST:event_tbProductMouseClicked
 
-    private void btnUpdateProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProductMouseClicked
-        ProductDao ud = new ProductDao();
-        String name, desc;
-        double price;
-        int quantity;
+    private void btnDeleteProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteProductMouseClicked
+        int response = JOptionPane.showConfirmDialog(null,"Are You Sure Want to Delete ?","Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
         
-        name = txtNewName.getText().toLowerCase();
-        desc = txtNewDesc.getText().toLowerCase();
-        
-        if (txtNewName.getText().isEmpty())
-                {
-                    name = pd.p.getName();
-                }
-
-            if (txtNewDesc.getText().isEmpty())
-                {
-                    desc = pd.p.getDescription();
-                }
-
-            if (txtNewPrice.getText().isEmpty())
-                {
-                    price = pd.p.getPrice();
-                    String tempPrice = String.valueOf(price);
-                    txtNewPrice.setText(tempPrice);
-                }
-
-            if (txtQupdate.getText().isEmpty())
-                {
-                    quantity = pd.p.getQuantity();
-                    String tempQuantity = String.valueOf(quantity);
-                    txtQupdate.setText(tempQuantity);
-                }
-            
-        try {
-            
-            quantity = Integer.parseInt(txtQupdate.getText());
-            price = Double.parseDouble(txtNewPrice.getText());
-            DecimalFormat df = new DecimalFormat("###.##");
-            price = Double.parseDouble(df.format(price));
-            
-
-            if (!pd.updateProduct(pd.p.getId(),name,desc,pd.p.getFragile(),quantity,price))
-                {
-                    JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
-                } else
-                {
-                    JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
-                    productTableUpdate();
-                    txtNewPrice.setText("");
-                    txtQupdate.setText("");
-                    txtNewName.setText("");
-                    txtNewDesc.setText("");
-                }
-            
-            } catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(null,"Invalid Number Input, Please try again","Error",0);
-            txtNewPrice.setText("");
-            txtQupdate.setText("");
+        if (response == JOptionPane.YES_OPTION)
+        {
+            pd.deleteProduct(pd.p.getId());
+            productTableUpdate();
         }
-        
-        
-    }//GEN-LAST:event_btnUpdateProductMouseClicked
+    
+    }//GEN-LAST:event_btnDeleteProductMouseClicked
 
     private void txtNewPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPriceKeyTyped
         char c = evt.getKeyChar();
@@ -1030,6 +1004,10 @@ public class AdminHome extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtQupdateKeyTyped
+
+    private void btnUpdateProduct1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProduct1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateProduct1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1070,11 +1048,12 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnNewProduct;
     private javax.swing.JButton btnReg;
     private javax.swing.JButton btnSProduct;
     private javax.swing.JButton btnSearchOrder;
-    private javax.swing.JButton btnUpdateProduct;
+    private javax.swing.JButton btnUpdateProduct1;
     private javax.swing.JComboBox<String> cboFragile;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
