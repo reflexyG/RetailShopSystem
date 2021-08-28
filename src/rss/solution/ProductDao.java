@@ -1,6 +1,8 @@
 package rss.solution;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -68,6 +70,24 @@ public class ProductDao {
 		}
 		return found;
 	}
+	
+	// get all product details from the txt file
+	public Object[] getProductList(){
+		Object[] lines = null;
+		
+		try{
+			FileReader fr = new FileReader(file);
+			BufferedReader bf = new BufferedReader(fr);
+			lines = bf.lines().toArray();
+			return lines;
+		}
+		
+		catch(IOException e){
+			return lines;
+		}
+
+	}
+	
 	
 	// add new user into the text file
 	public Boolean addProduct(String name, String description, Boolean fragile, int quantity, double price){
