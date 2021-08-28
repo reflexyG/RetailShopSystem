@@ -22,6 +22,7 @@ public class AdminHome extends javax.swing.JFrame {
      * Creates new form AdminHome
      */
     ProductDao pd = new ProductDao();
+    UserDao ud = new UserDao();
     
     public AdminHome() {
         initComponents();
@@ -75,7 +76,7 @@ public class AdminHome extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pnlViewCust = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbCustomer = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
         txtSearchCust = new javax.swing.JTextField();
         btnSearchOrder = new javax.swing.JButton();
@@ -395,7 +396,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         pnlViewCust.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -403,7 +404,7 @@ public class AdminHome extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbCustomer);
 
         pnlViewCust.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 670, 340));
 
@@ -543,7 +544,9 @@ public class AdminHome extends javax.swing.JFrame {
 
         jPanel1.add(pnlCust);
 
-        pnlProduct.setBackground(new java.awt.Color(255, 204, 204));
+        pnlProduct.setBackground(new java.awt.Color(204, 204, 204));
+        pnlProduct.setMaximumSize(new java.awt.Dimension(800, 650));
+        pnlProduct.setMinimumSize(new java.awt.Dimension(800, 650));
         pnlProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("Bodoni MT", 1, 36)); // NOI18N
@@ -754,6 +757,7 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1.add(pnlProduct);
 
         pnlOrder.setBackground(new java.awt.Color(255, 255, 204));
+        pnlOrder.setMinimumSize(new java.awt.Dimension(800, 650));
         pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(pnlOrder);
 
@@ -772,6 +776,17 @@ public class AdminHome extends javax.swing.JFrame {
                 model.addRow(row);
         }
     }
+    
+//    public void CustomerTableUpdate(){
+//        DefaultTableModel model = (DefaultTableModel)tbCustomer.getModel();
+//        Object[] lines = ud();
+//        model.setRowCount(0);
+//        for(int i = 0; i < lines.length; i++){
+//                String line = lines[i].toString().trim();
+//                String[] row = line.split(",");
+//                model.addRow(row);
+//        }
+//    }
     
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlNewAdmin.setVisible(true);
@@ -987,6 +1002,8 @@ public class AdminHome extends javax.swing.JFrame {
                     productTableUpdate();
                     txtNewPrice.setText("");
                     txtQupdate.setText("");
+                    txtNewName.setText("");
+                    txtNewDesc.setText("");
                 }
             
             } catch (NumberFormatException e){
@@ -1105,7 +1122,6 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAccType;
     private javax.swing.JLabel lblProductId;
     private javax.swing.JPanel pnlAddCust;
@@ -1122,6 +1138,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabProduct;
     private javax.swing.JPanel tabSignout;
+    private javax.swing.JTable tbCustomer;
     private javax.swing.JTable tbProduct;
     private javax.swing.JTextField txtCustId;
     private javax.swing.JTextField txtCustMail;
