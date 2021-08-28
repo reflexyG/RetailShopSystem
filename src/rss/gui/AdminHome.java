@@ -6,7 +6,10 @@
 package rss.gui;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import rss.solution.*;
 
 /**
@@ -18,6 +21,8 @@ public class AdminHome extends javax.swing.JFrame {
     /**
      * Creates new form AdminHome
      */
+    ProductDao pd = new ProductDao();
+    
     public AdminHome() {
         initComponents();
         
@@ -50,6 +55,21 @@ public class AdminHome extends javax.swing.JFrame {
         tabMCust = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        pnlNewAdmin = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lblAccType = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         pnlCust = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -72,22 +92,45 @@ public class AdminHome extends javax.swing.JFrame {
         txtCustPhone = new javax.swing.JTextField();
         btnReg = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        pnlNewAdmin = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        lblAccType = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        txtPhone = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         pnlProduct = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbProduct = new javax.swing.JTable();
+        btnSProduct = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        txtSProductID = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        pnlEditProduct = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        lblProductId = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtNewName = new javax.swing.JTextField();
+        txtNewPrice = new javax.swing.JTextField();
+        txtQupdate = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtNewDesc = new javax.swing.JTextArea();
+        btnUpdateProduct = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        txtPName = new javax.swing.JTextField();
+        txtQuantity = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtDesc = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        btnNewProduct = new javax.swing.JButton();
+        cboFragile = new javax.swing.JComboBox<>();
         pnlOrder = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -272,6 +315,73 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 650));
         jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
 
+        pnlNewAdmin.setMaximumSize(new java.awt.Dimension(800, 650));
+        pnlNewAdmin.setMinimumSize(new java.awt.Dimension(800, 650));
+        pnlNewAdmin.setPreferredSize(new java.awt.Dimension(800, 650));
+        pnlNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Elephant", 2, 36)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("New Admin");
+        pnlNewAdmin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 500, 80));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel8.setText("Username : ");
+        pnlNewAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 140, 40));
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel9.setText("Phone no. : ");
+        pnlNewAdmin.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 130, 40));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel10.setText("E-mail        : ");
+        pnlNewAdmin.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 140, 40));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel11.setText("Password  :");
+        pnlNewAdmin.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, 40));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel12.setText("Account Type : ");
+        pnlNewAdmin.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 170, 40));
+
+        lblAccType.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        lblAccType.setText("admin");
+        pnlNewAdmin.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, 50));
+        pnlNewAdmin.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 300, 40));
+
+        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneKeyTyped(evt);
+            }
+        });
+        pnlNewAdmin.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 300, 40));
+        pnlNewAdmin.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 300, 40));
+        pnlNewAdmin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 300, 40));
+
+        btnAdd.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnAdd.setText("Add");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
+        pnlNewAdmin.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 210, 60));
+
+        btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelMouseClicked(evt);
+            }
+        });
+        pnlNewAdmin.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 200, 60));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register2.png"))); // NOI18N
+        pnlNewAdmin.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
+
+        jPanel1.add(pnlNewAdmin);
+
         pnlCust.setBackground(new java.awt.Color(204, 204, 204));
         pnlCust.setMaximumSize(new java.awt.Dimension(800, 650));
         pnlCust.setMinimumSize(new java.awt.Dimension(800, 650));
@@ -433,100 +543,218 @@ public class AdminHome extends javax.swing.JFrame {
 
         jPanel1.add(pnlCust);
 
-        pnlNewAdmin.setMinimumSize(new java.awt.Dimension(600, 504));
-        pnlNewAdmin.setPreferredSize(new java.awt.Dimension(600, 500));
-        pnlNewAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Elephant", 2, 36)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("New Admin");
-        pnlNewAdmin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 500, 80));
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel8.setText("Username : ");
-        pnlNewAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 140, 40));
-
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel9.setText("Phone no. : ");
-        pnlNewAdmin.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 130, 40));
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel10.setText("E-mail        : ");
-        pnlNewAdmin.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 140, 40));
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel11.setText("Password  :");
-        pnlNewAdmin.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, 40));
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel12.setText("Account Type : ");
-        pnlNewAdmin.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 170, 40));
-
-        lblAccType.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        lblAccType.setText("admin");
-        pnlNewAdmin.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, 50));
-        pnlNewAdmin.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 300, 40));
-
-        txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPhoneKeyTyped(evt);
-            }
-        });
-        pnlNewAdmin.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 300, 40));
-        pnlNewAdmin.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 300, 40));
-        pnlNewAdmin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 300, 40));
-
-        btnAdd.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnAdd.setText("Add");
-        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAddMouseClicked(evt);
-            }
-        });
-        pnlNewAdmin.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 210, 60));
-
-        btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnCancel.setText("Cancel");
-        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelMouseClicked(evt);
-            }
-        });
-        pnlNewAdmin.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 200, 60));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register2.png"))); // NOI18N
-        pnlNewAdmin.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
-
-        jPanel1.add(pnlNewAdmin);
-
         pnlProduct.setBackground(new java.awt.Color(255, 204, 204));
+        pnlProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout pnlProductLayout = new javax.swing.GroupLayout(pnlProduct);
-        pnlProduct.setLayout(pnlProductLayout);
-        pnlProductLayout.setHorizontalGroup(
-            pnlProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        jLabel14.setFont(new java.awt.Font("Bodoni MT", 1, 36)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Manage Product");
+        pnlProduct.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 0, 500, 61));
+
+        tbProduct.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product ID", "Produc Name", "Description", "Fragile", "Quantity", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbProduct.getTableHeader().setReorderingAllowed(false);
+        tbProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProductMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbProduct);
+        if (tbProduct.getColumnModel().getColumnCount() > 0) {
+            tbProduct.getColumnModel().getColumn(0).setResizable(false);
+            tbProduct.getColumnModel().getColumn(1).setResizable(false);
+            tbProduct.getColumnModel().getColumn(2).setResizable(false);
+            tbProduct.getColumnModel().getColumn(3).setResizable(false);
+            tbProduct.getColumnModel().getColumn(4).setResizable(false);
+            tbProduct.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        btnSProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnSProduct.setText("Search");
+        btnSProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSProductMouseClicked(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel15.setText("Search Product  ID:");
+
+        jLabel29.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel29.setText("Select a product in table to edit");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                        .addComponent(btnSProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlProductLayout.setVerticalGroup(
-            pnlProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
         );
+
+        jTabbedPane2.addTab("View Product", jPanel2);
+
+        pnlEditProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel19.setText("Your Chosen Product ID:");
+        pnlEditProduct.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 212, 49));
+
+        lblProductId.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        pnlEditProduct.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 230, 50));
+
+        jLabel25.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel25.setText("Name                    :");
+        pnlEditProduct.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 129, 51));
+
+        jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel26.setText("Description         :");
+        pnlEditProduct.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 129, 49));
+
+        jLabel27.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel27.setText("Price                     :");
+        pnlEditProduct.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 129, 49));
+
+        jLabel28.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel28.setText("Quantity Update :");
+        pnlEditProduct.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 129, 49));
+        pnlEditProduct.add(txtNewName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 220, 40));
+
+        txtNewPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewPriceKeyTyped(evt);
+            }
+        });
+        pnlEditProduct.add(txtNewPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 220, 40));
+
+        txtQupdate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQupdateKeyTyped(evt);
+            }
+        });
+        pnlEditProduct.add(txtQupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 220, 40));
+
+        txtNewDesc.setColumns(20);
+        txtNewDesc.setRows(5);
+        jScrollPane3.setViewportView(txtNewDesc);
+
+        pnlEditProduct.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 220, 130));
+
+        btnUpdateProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnUpdateProduct.setText("Update");
+        btnUpdateProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateProductMouseClicked(evt);
+            }
+        });
+        pnlEditProduct.add(btnUpdateProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 130, 80));
+
+        jLabel36.setFont(new java.awt.Font("Bodoni MT", 0, 24)); // NOI18N
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel36.setText("Edit Product");
+        pnlEditProduct.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 260, -1));
+
+        jTabbedPane2.addTab("Edit Product", pnlEditProduct);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel30.setText("Fragile              :");
+        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 40));
+
+        jLabel31.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel31.setText("Product Name  :");
+        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 119, 43));
+
+        jLabel32.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel32.setText("Description     :");
+        jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 103, 50));
+
+        jLabel33.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel33.setText("Price                 :");
+        jPanel4.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 119, 43));
+
+        jLabel34.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel34.setText("Quantity          :");
+        jPanel4.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 110, 40));
+
+        jLabel35.setFont(new java.awt.Font("Bodoni MT", 0, 24)); // NOI18N
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("Add New Product");
+        jPanel4.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 21, 301, 49));
+        jPanel4.add(txtPName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 240, 43));
+        jPanel4.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 240, 43));
+        jPanel4.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 240, 43));
+
+        txtDesc.setColumns(20);
+        txtDesc.setRows(5);
+        jScrollPane4.setViewportView(txtDesc);
+
+        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 240, 80));
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jButton1.setText("Cancel");
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 130, 60));
+
+        btnNewProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnNewProduct.setText("Add");
+        jPanel4.add(btnNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 130, 60));
+
+        cboFragile.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        cboFragile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Non-Fragile", "Fragile" }));
+        jPanel4.add(cboFragile, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 160, 30));
+
+        jTabbedPane2.addTab("Add Product", jPanel4);
+
+        pnlProduct.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 72, -1, -1));
 
         jPanel1.add(pnlProduct);
 
         pnlOrder.setBackground(new java.awt.Color(255, 255, 204));
-
-        javax.swing.GroupLayout pnlOrderLayout = new javax.swing.GroupLayout(pnlOrder);
-        pnlOrder.setLayout(pnlOrderLayout);
-        pnlOrderLayout.setHorizontalGroup(
-            pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        pnlOrderLayout.setVerticalGroup(
-            pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-
+        pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(pnlOrder);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 800, 650));
@@ -534,6 +762,17 @@ public class AdminHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void productTableUpdate(){
+        DefaultTableModel model = (DefaultTableModel)tbProduct.getModel();
+        Object[] lines = pd.getProductList();
+        model.setRowCount(0);
+        for(int i = 0; i < lines.length; i++){
+                String line = lines[i].toString().trim();
+                String[] row = line.split(",");
+                model.addRow(row);
+        }
+    }
+    
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlNewAdmin.setVisible(true);
         pnlOrder.setVisible(false);
@@ -556,6 +795,11 @@ public class AdminHome extends javax.swing.JFrame {
         tabOrder.setBackground(new Color (204,204,204));
         tabSignout.setBackground(new Color (204,204,204));
         tabMCust.setBackground(new Color (204,204,204));
+        
+        productTableUpdate();
+        
+        jTabbedPane2.setEnabledAt(1, false);
+
     }//GEN-LAST:event_tabProductMouseClicked
 
     private void tabOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabOrderMouseClicked
@@ -675,6 +919,101 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCustPhoneKeyTyped
 
+    private void btnSProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSProductMouseClicked
+        
+    }//GEN-LAST:event_btnSProductMouseClicked
+
+    private void tbProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductMouseClicked
+        int index = tbProduct.getSelectedRow();
+        TableModel model = tbProduct.getModel();
+        String ProductId = model.getValueAt(index, 0).toString();
+        
+        if(!ProductId.isEmpty())
+        {
+            pd.getProduct(ProductId);
+            jTabbedPane2.setSelectedIndex(1);
+            lblProductId.setText(ProductId);
+        }
+        
+    }//GEN-LAST:event_tbProductMouseClicked
+
+    private void btnUpdateProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProductMouseClicked
+        ProductDao ud = new ProductDao();
+        String name, desc;
+        double price;
+        int quantity;
+        
+        name = txtNewName.getText().toLowerCase();
+        desc = txtNewDesc.getText().toLowerCase();
+        
+        if (txtNewName.getText().isEmpty())
+                {
+                    name = pd.p.getName();
+                }
+
+            if (txtNewDesc.getText().isEmpty())
+                {
+                    desc = pd.p.getDescription();
+                }
+
+            if (txtNewPrice.getText().isEmpty())
+                {
+                    price = pd.p.getPrice();
+                    String tempPrice = String.valueOf(price);
+                    txtNewPrice.setText(tempPrice);
+                }
+
+            if (txtQupdate.getText().isEmpty())
+                {
+                    quantity = pd.p.getQuantity();
+                    String tempQuantity = String.valueOf(quantity);
+                    txtQupdate.setText(tempQuantity);
+                }
+            
+        try {
+            
+            quantity = Integer.parseInt(txtQupdate.getText());
+            price = Double.parseDouble(txtNewPrice.getText());
+            DecimalFormat df = new DecimalFormat("###.##");
+            price = Double.parseDouble(df.format(price));
+            
+
+            if (!pd.updateProduct(pd.p.getId(),name,desc,pd.p.getFragile(),quantity,price))
+                {
+                    JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
+                } else
+                {
+                    JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
+                    productTableUpdate();
+                    txtNewPrice.setText("");
+                    txtQupdate.setText("");
+                }
+            
+            } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Invalid Number Input, Please try again","Error",0);
+            txtNewPrice.setText("");
+            txtQupdate.setText("");
+        }
+        
+        
+    }//GEN-LAST:event_btnUpdateProductMouseClicked
+
+    private void txtNewPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPriceKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (Character.isLetter(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNewPriceKeyTyped
+
+    private void txtQupdateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQupdateKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (Character.isLetter(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtQupdateKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -714,23 +1053,43 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnNewProduct;
     private javax.swing.JButton btnReg;
+    private javax.swing.JButton btnSProduct;
     private javax.swing.JButton btnSearchOrder;
+    private javax.swing.JButton btnUpdateProduct;
+    private javax.swing.JComboBox<String> cboFragile;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -738,13 +1097,21 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAccType;
+    private javax.swing.JLabel lblProductId;
     private javax.swing.JPanel pnlAddCust;
     private javax.swing.JPanel pnlCust;
     private javax.swing.JPanel pnlEditCust;
+    private javax.swing.JPanel pnlEditProduct;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNewAdmin;
     private javax.swing.JPanel pnlOrder;
@@ -755,13 +1122,23 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabProduct;
     private javax.swing.JPanel tabSignout;
+    private javax.swing.JTable tbProduct;
     private javax.swing.JTextField txtCustId;
     private javax.swing.JTextField txtCustMail;
     private javax.swing.JTextField txtCustPass;
     private javax.swing.JTextField txtCustPhone;
+    private javax.swing.JTextArea txtDesc;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextArea txtNewDesc;
+    private javax.swing.JTextField txtNewName;
+    private javax.swing.JTextField txtNewPrice;
+    private javax.swing.JTextField txtPName;
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtQupdate;
+    private javax.swing.JTextField txtSProductID;
     private javax.swing.JTextField txtSearchCust;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
