@@ -309,6 +309,7 @@ public class Store extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbItem.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbItem);
         if (tbItem.getColumnModel().getColumnCount() > 0) {
             tbItem.getColumnModel().getColumn(0).setResizable(false);
