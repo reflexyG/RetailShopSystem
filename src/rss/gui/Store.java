@@ -6,6 +6,8 @@
 package rss.gui;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import rss.solution.*;
 
 /**
  *
@@ -16,12 +18,29 @@ public class Store extends javax.swing.JFrame {
     /**
      * Creates new form Store
      */
+    public Store(String username, String password){
+        this.username = username;
+        this.password = password;
+        c = new Customer(username, password);
+        initComponents();
+        pnlHome.setVisible(true);
+        pnlOrder.setVisible(false);
+        pnlInfo.setVisible(false);
+        lbloldPhone.setText(String.valueOf(c.getPhone()));
+        lbloldMail.setText(c.getEmail());
+        lbloldPass.setText(c.getPassword());
+    }
+    
     public Store() {
         initComponents();
         pnlHome.setVisible(true);
         pnlOrder.setVisible(false);
         pnlInfo.setVisible(false);
     }
+    
+     String username, password;
+     Customer c;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,15 +67,15 @@ public class Store extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pnlHome = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtItemId = new javax.swing.JTextField();
         btnCheckOut = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        txtFproduct = new javax.swing.JTextField();
         pnlInfo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
@@ -188,10 +207,10 @@ public class Store extends javax.swing.JFrame {
         tabOrder.setLayout(tabOrderLayout);
         tabOrderLayout.setHorizontalGroup(
             tabOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabOrderLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabOrderLayout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
         tabOrderLayout.setVerticalGroup(
             tabOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,53 +264,15 @@ public class Store extends javax.swing.JFrame {
         getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         pnlHome.setBackground(new java.awt.Color(204, 204, 204));
+        pnlHome.setMaximumSize(new java.awt.Dimension(600, 500));
+        pnlHome.setMinimumSize(new java.awt.Dimension(600, 500));
+        pnlHome.setPreferredSize(new java.awt.Dimension(600, 500));
         pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Elephant", 2, 28)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Browse Anvegave Retail Store");
         pnlHome.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 560, 60));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Snack", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab2", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab3", jPanel4);
-
-        pnlHome.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 510, 340));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel14.setText("Quantity :");
@@ -306,6 +287,23 @@ public class Store extends javax.swing.JFrame {
         btnCheckOut.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnCheckOut.setText("Check Out");
         pnlHome.add(btnCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 110, 40));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        pnlHome.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 530, 280));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel6.setText("Product Search :");
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 120, 30));
+        pnlHome.add(txtFproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 150, 30));
 
         pnlInfo.setBackground(new java.awt.Color(204, 204, 204));
         pnlInfo.setPreferredSize(new java.awt.Dimension(600, 500));
@@ -323,9 +321,9 @@ public class Store extends javax.swing.JFrame {
         label2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         label2.setText("New Phone No:");
 
-        txtNewPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewPhoneActionPerformed(evt);
+        txtNewPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewPhoneKeyTyped(evt);
             }
         });
 
@@ -349,9 +347,19 @@ public class Store extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelMouseClicked(evt);
+            }
+        });
 
         btnConfirm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         btnConfirm.setText("Confirm");
+        btnConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConfirmMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlInfoLayout = new javax.swing.GroupLayout(pnlInfo);
         pnlInfo.setLayout(pnlInfoLayout);
@@ -492,6 +500,7 @@ public class Store extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
@@ -512,7 +521,6 @@ public class Store extends javax.swing.JFrame {
         tabInfo.setBackground(new Color (204,204,204));
         tabOrder.setBackground(Color.white);
         tabSignout.setBackground(new Color (204,204,204));
-        
     }//GEN-LAST:event_tabOrderMouseClicked
 
     private void tabInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabInfoMouseClicked
@@ -530,9 +538,50 @@ public class Store extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_tabSignoutMouseClicked
 
-    private void txtNewPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewPhoneActionPerformed
+    private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
+        UserDao ud = new UserDao();
+        String pass,email;
+        int phone;
+        
+        pass = txtNewPass.getText().toLowerCase();
+        email = txtNewMail.getText().toLowerCase();
+        phone = Integer.parseInt(txtNewPhone.getText());
+        
+        if(txtNewPass.getText().isEmpty())
+         {
+            pass = password;
+         }
+        
+        if(txtNewMail.getText().isEmpty())
+        {
+            email = c.getEmail();
+        }
+        
+        if(txtNewPhone.getText().isEmpty())
+        {
+            phone = c.getPhone();
+        }
+        
+        if (!ud.updateUser(username, pass,"Customer", email, phone))
+        {
+            JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
+        }
+        
+    }//GEN-LAST:event_btnConfirmMouseClicked
+
+    private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
+        txtNewPhone.setText("");
+        txtNewMail.setText("");
+        txtNewPass.setText("");
+    }//GEN-LAST:event_btnCancelMouseClicked
+
+    private void txtNewPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPhoneKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (Character.isLetter(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNewPhoneKeyTyped
 
     /**
      * @param args the command line arguments
@@ -587,16 +636,15 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
@@ -615,6 +663,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabSignout;
     private javax.swing.JTextField txtDelOrder;
+    private javax.swing.JTextField txtFproduct;
     private javax.swing.JTextField txtItemId;
     private javax.swing.JTextField txtNewMail;
     private javax.swing.JTextField txtNewPass;
