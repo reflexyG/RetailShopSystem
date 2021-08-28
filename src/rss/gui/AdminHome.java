@@ -50,6 +50,17 @@ public class AdminHome extends javax.swing.JFrame {
         tabMCust = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        pnlCust = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pnlViewCust = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel18 = new javax.swing.JLabel();
+        txtSearchCust = new javax.swing.JTextField();
+        btnSearchOrder = new javax.swing.JButton();
+        pnlEditCust = new javax.swing.JPanel();
+        pnlAddCust = new javax.swing.JPanel();
         pnlNewAdmin = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -67,13 +78,12 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         pnlProduct = new javax.swing.JPanel();
         pnlOrder = new javax.swing.JPanel();
-        pnlCust = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(300, 100));
+        setLocation(new java.awt.Point(250, 80));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenu.setBackground(new java.awt.Color(153, 204, 255));
         pnlMenu.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -84,10 +94,10 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome back");
-        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, -1));
+        pnlMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/shopicon.jpg"))); // NOI18N
-        pnlMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 100, 100));
+        pnlMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 100, 100));
 
         tabHome.setBackground(new java.awt.Color(204, 204, 204));
         tabHome.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -118,7 +128,7 @@ public class AdminHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 200, 40));
+        pnlMenu.add(tabHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 200, 60));
 
         tabProduct.setBackground(new java.awt.Color(204, 204, 204));
         tabProduct.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -149,7 +159,7 @@ public class AdminHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 200, 40));
+        pnlMenu.add(tabProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 200, 60));
 
         tabOrder.setBackground(new java.awt.Color(204, 204, 204));
         tabOrder.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -180,7 +190,7 @@ public class AdminHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 40));
+        pnlMenu.add(tabOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 60));
 
         tabSignout.setBackground(new java.awt.Color(204, 204, 204));
         tabSignout.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -211,7 +221,7 @@ public class AdminHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 200, 40));
+        pnlMenu.add(tabSignout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 200, 60));
 
         tabMCust.setBackground(new java.awt.Color(204, 204, 204));
         tabMCust.setPreferredSize(new java.awt.Dimension(0, 60));
@@ -242,12 +252,82 @@ public class AdminHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlMenu.add(tabMCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 200, 40));
+        pnlMenu.add(tabMCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 200, 60));
+
+        getContentPane().add(pnlMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(600, 500));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 500));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 650));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 650));
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+
+        pnlCust.setBackground(new java.awt.Color(153, 153, 255));
+        pnlCust.setMaximumSize(new java.awt.Dimension(800, 650));
+        pnlCust.setMinimumSize(new java.awt.Dimension(800, 650));
+        pnlCust.setPreferredSize(new java.awt.Dimension(800, 650));
+        pnlCust.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 24)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Manage Customer");
+        pnlCust.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 450, 50));
+
+        pnlViewCust.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        pnlViewCust.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 670, 340));
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel18.setText("Customer   ID :");
+        pnlViewCust.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 110, 32));
+
+        txtSearchCust.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        pnlViewCust.add(txtSearchCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 190, 40));
+
+        btnSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnSearchOrder.setText("Search");
+        pnlViewCust.add(btnSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 100, 40));
+
+        jTabbedPane1.addTab("View Customer", pnlViewCust);
+
+        javax.swing.GroupLayout pnlEditCustLayout = new javax.swing.GroupLayout(pnlEditCust);
+        pnlEditCust.setLayout(pnlEditCustLayout);
+        pnlEditCustLayout.setHorizontalGroup(
+            pnlEditCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 745, Short.MAX_VALUE)
+        );
+        pnlEditCustLayout.setVerticalGroup(
+            pnlEditCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 482, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Edit Customer", pnlEditCust);
+
+        javax.swing.GroupLayout pnlAddCustLayout = new javax.swing.GroupLayout(pnlAddCust);
+        pnlAddCust.setLayout(pnlAddCustLayout);
+        pnlAddCustLayout.setHorizontalGroup(
+            pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 745, Short.MAX_VALUE)
+        );
+        pnlAddCustLayout.setVerticalGroup(
+            pnlAddCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 482, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Add Customer", pnlAddCust);
+
+        pnlCust.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 750, 510));
+
+        jPanel1.add(pnlCust);
 
         pnlNewAdmin.setMinimumSize(new java.awt.Dimension(600, 504));
         pnlNewAdmin.setPreferredSize(new java.awt.Dimension(600, 500));
@@ -256,41 +336,41 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Elephant", 2, 36)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("New Admin");
-        pnlNewAdmin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 420, 60));
+        pnlNewAdmin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 500, 80));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel8.setText("Username : ");
-        pnlNewAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+        pnlNewAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 140, 40));
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel9.setText("Phone no. : ");
-        pnlNewAdmin.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        pnlNewAdmin.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 130, 40));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel10.setText("E-mail        : ");
-        pnlNewAdmin.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+        pnlNewAdmin.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 140, 40));
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel11.setText("Password  :");
-        pnlNewAdmin.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        pnlNewAdmin.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, 40));
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel12.setText("Account Type : ");
-        pnlNewAdmin.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, -1));
+        pnlNewAdmin.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 170, 40));
 
-        lblAccType.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblAccType.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         lblAccType.setText("admin");
-        pnlNewAdmin.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 128, 28));
-        pnlNewAdmin.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 220, 25));
+        pnlNewAdmin.add(lblAccType, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, 50));
+        pnlNewAdmin.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 300, 40));
 
         txtPhone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPhoneKeyTyped(evt);
             }
         });
-        pnlNewAdmin.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 220, 25));
-        pnlNewAdmin.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 220, 25));
-        pnlNewAdmin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 220, 25));
+        pnlNewAdmin.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 300, 40));
+        pnlNewAdmin.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 300, 40));
+        pnlNewAdmin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 300, 40));
 
         btnAdd.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnAdd.setText("Add");
@@ -299,7 +379,7 @@ public class AdminHome extends javax.swing.JFrame {
                 btnAddMouseClicked(evt);
             }
         });
-        pnlNewAdmin.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 160, 50));
+        pnlNewAdmin.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 210, 60));
 
         btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnCancel.setText("Cancel");
@@ -308,15 +388,12 @@ public class AdminHome extends javax.swing.JFrame {
                 btnCancelMouseClicked(evt);
             }
         });
-        pnlNewAdmin.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 160, 50));
+        pnlNewAdmin.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 200, 60));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register.png"))); // NOI18N
-        jLabel13.setMaximumSize(new java.awt.Dimension(600, 500));
-        jLabel13.setMinimumSize(new java.awt.Dimension(600, 500));
-        jLabel13.setPreferredSize(new java.awt.Dimension(600, 500));
-        pnlNewAdmin.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 600, 500));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/register2.png"))); // NOI18N
+        pnlNewAdmin.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 650));
 
-        jPanel1.add(pnlNewAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(pnlNewAdmin);
 
         pnlProduct.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -324,14 +401,14 @@ public class AdminHome extends javax.swing.JFrame {
         pnlProduct.setLayout(pnlProductLayout);
         pnlProductLayout.setHorizontalGroup(
             pnlProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         pnlProductLayout.setVerticalGroup(
             pnlProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
+        jPanel1.add(pnlProduct);
 
         pnlOrder.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -339,51 +416,19 @@ public class AdminHome extends javax.swing.JFrame {
         pnlOrder.setLayout(pnlOrderLayout);
         pnlOrderLayout.setHorizontalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         pnlOrderLayout.setVerticalGroup(
             pnlOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
+        jPanel1.add(pnlOrder);
 
-        pnlCust.setBackground(new java.awt.Color(153, 153, 255));
-
-        javax.swing.GroupLayout pnlCustLayout = new javax.swing.GroupLayout(pnlCust);
-        pnlCust.setLayout(pnlCustLayout);
-        pnlCustLayout.setHorizontalGroup(
-            pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        pnlCustLayout.setVerticalGroup(
-            pnlCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(pnlCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 800, 650));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
@@ -522,14 +567,15 @@ public class AdminHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnSearchOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -539,14 +585,18 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAccType;
+    private javax.swing.JPanel pnlAddCust;
     private javax.swing.JPanel pnlCust;
+    private javax.swing.JPanel pnlEditCust;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlNewAdmin;
     private javax.swing.JPanel pnlOrder;
     private javax.swing.JPanel pnlProduct;
-    private javax.swing.JPanel tabCust;
-    private javax.swing.JPanel tabCust1;
+    private javax.swing.JPanel pnlViewCust;
     private javax.swing.JPanel tabHome;
     private javax.swing.JPanel tabMCust;
     private javax.swing.JPanel tabOrder;
@@ -555,6 +605,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtSearchCust;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

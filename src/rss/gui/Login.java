@@ -111,6 +111,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
@@ -136,7 +137,7 @@ public class Login extends javax.swing.JFrame {
            if (verify)
           {
                 this.setVisible(false);
-                new Store().setVisible(true);
+                new Store(Id, password).setVisible(true);
           }
         }else 
         {
