@@ -5,6 +5,7 @@
  */
 package rss.gui;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import rss.solution.*;
 
@@ -82,6 +83,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, 140, 40));
 
+        btnLogin.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         btnLogin.setText("Sign In");
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,7 +154,7 @@ public class Login extends javax.swing.JFrame {
         
         if (!verify)
         {
-            JOptionPane.showMessageDialog(null,"Invalid Username or Password, Please Try Again","Fail ", 2); 
+            JOptionPane.showMessageDialog(null,"Invalid Username or Password, Please Try Again","Fail ", 0); 
             txtId.setText("");
             txtPass.setText("");
         }
