@@ -7,7 +7,9 @@ package rss.gui;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import rss.solution.*;
 
 /**
@@ -80,7 +82,6 @@ public class Store extends javax.swing.JFrame {
         tbItem = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         txtFproduct = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         pnlInfo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
@@ -324,12 +325,14 @@ public class Store extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel6.setText("Product Search :");
-        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 120, 30));
-        pnlHome.add(txtFproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 150, 30));
+        pnlHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 120, 30));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton1.setText("Search");
-        pnlHome.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 90, 40));
+        txtFproduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFproductKeyReleased(evt);
+            }
+        });
+        pnlHome.add(txtFproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 150, 30));
 
         pnlInfo.setBackground(new java.awt.Color(204, 204, 204));
         pnlInfo.setPreferredSize(new java.awt.Dimension(600, 500));
@@ -629,6 +632,14 @@ public class Store extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNewPhoneKeyTyped
 
+    private void txtFproductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFproductKeyReleased
+        DefaultTableModel table = (DefaultTableModel)tbItem.getModel();
+        String search = txtFproduct.getText().toLowerCase();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        tbItem.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtFproductKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -670,7 +681,6 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnDelOrder;
     private javax.swing.JButton btnSearchOrder;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

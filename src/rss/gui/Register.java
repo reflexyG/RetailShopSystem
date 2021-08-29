@@ -148,7 +148,7 @@ public class Register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Missing Information!","Fail ", JOptionPane.ERROR_MESSAGE);
          }else
          {
-             userName = txtUser.getText();
+            userName = txtUser.getText();
             password = txtPass.getText();
             email = txtEmail.getText();
             phone = Integer.parseInt(txtPhone.getText());
