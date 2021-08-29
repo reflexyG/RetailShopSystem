@@ -54,7 +54,7 @@ abstract class User {
 			while(scanner.hasNext() && !found){
 				// create a temperory array to store the data of user
 				// split String in each line with delimiter
-				String[] data = scanner.nextLine().split(",");
+				String[] data = scanner.nextLine().split(";");
 
 				if(data[0].trim().equals(username.trim()) && 
 				data[1].trim().equals(password.trim()) &&
