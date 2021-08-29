@@ -914,9 +914,7 @@ public class AdminHome extends javax.swing.JFrame {
         tabMCust.setBackground(new Color (204,204,204));
 
     }//GEN-LAST:event_tabOrderMouseClicked
-
-
-    
+ 
     private void tabSignoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSignoutMouseClicked
         this.setVisible(false);
         new Login().setVisible(true);
@@ -1066,7 +1064,7 @@ public class AdminHome extends javax.swing.JFrame {
     private void txtNewPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPriceKeyTyped
         char c = evt.getKeyChar();
         
-        if (!Character.isDigit(c)){
+        if (Character.isLetter(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtNewPriceKeyTyped
@@ -1083,9 +1081,6 @@ public class AdminHome extends javax.swing.JFrame {
         String name,desc;
         int quantity = 0;
         double price = 0;
-        
-        
-        ProductDao pd = new ProductDao();
         
         pd.getProduct(lblProductId.getText());
         name = txtNewName.getText();
@@ -1174,6 +1169,10 @@ public class AdminHome extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
                 f.updateTable(tbProduct, pd.getProductList());
+                txtPName.setText("");
+                txtPrice.setText("");
+                txtQuantity.setText("");
+                txtDesc.setText("");
             }
         }
     }//GEN-LAST:event_btnNewProductMouseClicked
@@ -1215,11 +1214,11 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelCustMouseClicked
 
     private void btnUpdateCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateCustMouseClicked
-        String pass,email;
-        int phone = 0;
+        String pass,email,phone;
         
         pass = txtNewPass.getText().toLowerCase();
         email = txtNewMail.getText().toLowerCase();
+        phone =txtNewPhone.getText().toLowerCase();
         
         if(txtNewPass.getText().isEmpty())
          {
@@ -1233,12 +1232,11 @@ public class AdminHome extends javax.swing.JFrame {
         
         if(txtNewPhone.getText().isEmpty())
         {
-            phone = ud.c.getPhone();
-            String tempPhone = String.valueOf(phone);
-            txtNewPhone.setText(tempPhone);
+            phone = String.valueOf(ud.c.getPhone());
+            txtNewPhone.setText(phone);
         }
         
-        if (!a.updateCustomer(ud.c.getUsername(), pass, email, phone))
+        if (!a.updateCustomer(ud.c.getUsername(), pass, email, Integer.parseInt(phone)))
         {
             JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
         }else
