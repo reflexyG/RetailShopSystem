@@ -33,7 +33,7 @@ public class OrderItemDao {
 		
 	}
 	
-		// get all order item from the txt file
+	// get all order item from the txt file
 	public List<OrderItem> getOrderItemList(String orderId){
 		// declare a dynamic list
 		List<OrderItem> orderItems = new ArrayList<>();

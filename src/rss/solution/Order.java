@@ -1,6 +1,4 @@
 package rss.solution;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +6,7 @@ public class Order {
 	
 	private String id;
 	private Customer c;
-	private LocalDateTime now = LocalDateTime.now();
+	private String orderTime;
 	private List<OrderItem> orderItems = new ArrayList<>();
 	private Address address;
 
@@ -32,8 +30,8 @@ public class Order {
 		return c;
 	}
 
-	public LocalDateTime getNow() {
-		return now;
+	public String getOrderTime() {
+		return orderTime;
 	}
 
 	public List<OrderItem> getOrderItems() {

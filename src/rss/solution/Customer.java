@@ -10,4 +10,9 @@ public class Customer extends User {
 		
 	}
 	
+	public Boolean updateAccount(String password, String email, int phone){
+		UserDao ud = new UserDao();
+		return ud.updateUser(this.getUsername(), password, this.getaccountType(), email, phone);
+	}
+	
 }
