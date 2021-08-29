@@ -8,8 +8,10 @@ package rss.gui;
 import java.awt.Color;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import rss.solution.*;
 
 /**
@@ -99,9 +101,8 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbProduct = new javax.swing.JTable();
-        btnSProduct = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        txtSProductID = new javax.swing.JTextField();
+        txtSProduct = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         pnlEditProduct = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -117,7 +118,7 @@ public class AdminHome extends javax.swing.JFrame {
         txtNewDesc = new javax.swing.JTextArea();
         btnDeleteProduct = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
-        btnUpdateProduct1 = new javax.swing.JButton();
+        btnUpdateProduct = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -137,8 +138,9 @@ public class AdminHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(250, 80));
-        setMinimumSize(new java.awt.Dimension(800, 500));
-        setResizable(false);
+        setMaximumSize(new java.awt.Dimension(1000, 650));
+        setMinimumSize(new java.awt.Dimension(1000, 650));
+        setPreferredSize(new java.awt.Dimension(100, 650));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenu.setBackground(new java.awt.Color(153, 204, 255));
@@ -563,6 +565,7 @@ public class AdminHome extends javax.swing.JFrame {
         pnlProduct.setBackground(new java.awt.Color(204, 204, 204));
         pnlProduct.setMaximumSize(new java.awt.Dimension(800, 650));
         pnlProduct.setMinimumSize(new java.awt.Dimension(800, 650));
+        pnlProduct.setPreferredSize(new java.awt.Dimension(800, 650));
         pnlProduct.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("Bodoni MT", 1, 36)); // NOI18N
@@ -602,16 +605,14 @@ public class AdminHome extends javax.swing.JFrame {
             tbProduct.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        btnSProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        btnSProduct.setText("Search");
-        btnSProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSProductMouseClicked(evt);
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel15.setText("Search Product :");
+
+        txtSProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSProductKeyReleased(evt);
             }
         });
-
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel15.setText("Search Product  ID:");
 
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel29.setText("Select a product in table to edit");
@@ -620,37 +621,33 @@ public class AdminHome extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(31, 31, 31)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                        .addComponent(btnSProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtSProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtSProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
@@ -716,14 +713,14 @@ public class AdminHome extends javax.swing.JFrame {
         jLabel36.setText("Edit Product");
         pnlEditProduct.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 260, -1));
 
-        btnUpdateProduct1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnUpdateProduct1.setText("Update");
-        btnUpdateProduct1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnUpdateProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnUpdateProduct.setText("Update");
+        btnUpdateProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnUpdateProduct1MouseClicked(evt);
+                btnUpdateProductMouseClicked(evt);
             }
         });
-        pnlEditProduct.add(btnUpdateProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 130, 80));
+        pnlEditProduct.add(btnUpdateProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 130, 80));
 
         jTabbedPane2.addTab("Edit Product", pnlEditProduct);
 
@@ -769,6 +766,11 @@ public class AdminHome extends javax.swing.JFrame {
 
         btnNewProduct.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnNewProduct.setText("Add");
+        btnNewProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewProductMouseClicked(evt);
+            }
+        });
         jPanel4.add(btnNewProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 130, 60));
 
         cboFragile.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
@@ -789,6 +791,7 @@ public class AdminHome extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 800, 650));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void productTableUpdate(){
@@ -801,17 +804,27 @@ public class AdminHome extends javax.swing.JFrame {
                 model.addRow(row);
         }
     }
+        
+     public void searchProduct(javax.swing.JTable tb, String key)
+     {
+        DefaultTableModel table = (DefaultTableModel)tb.getModel();
+        String search = key.toLowerCase();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        tb.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+     }
+        
     
 //    public void CustomerTableUpdate(){
 //        DefaultTableModel model = (DefaultTableModel)tbCustomer.getModel();
-//        Object[] lines = ud();
+//        Object[] lines = ud.getUserList();
 //        model.setRowCount(0);
 //        for(int i = 0; i < lines.length; i++){
 //                String line = lines[i].toString().trim();
 //                String[] row = line.split(",");
 //                model.addRow(row);
 //        }
-//    }
+//   }
     
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlNewAdmin.setVisible(true);
@@ -959,10 +972,6 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCustPhoneKeyTyped
 
-    private void btnSProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSProductMouseClicked
-        
-    }//GEN-LAST:event_btnSProductMouseClicked
-
     private void tbProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductMouseClicked
         int index = tbProduct.getSelectedRow();
         TableModel model = tbProduct.getModel();
@@ -1005,9 +1014,47 @@ public class AdminHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtQupdateKeyTyped
 
-    private void btnUpdateProduct1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProduct1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateProduct1MouseClicked
+    private void btnUpdateProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProductMouseClicked
+        
+    }//GEN-LAST:event_btnUpdateProductMouseClicked
+
+    private void btnNewProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewProductMouseClicked
+        String Name, Description, isFragile;
+        Boolean fragile;
+        int quantity;
+        double price;
+        
+        isFragile = cboFragile.getSelectedItem().toString();
+        if(isFragile.equals("Fragile"))
+        {
+            fragile = true;
+        }else
+        {
+            fragile = false;
+        }
+        
+        if(txtPName.getText().isEmpty()| txtPrice.getText().isEmpty() |
+            txtQuantity.getText().isEmpty()|txtDesc.getText().isEmpty())
+         {
+            JOptionPane.showMessageDialog(null,"Missing Information!","Fail ", JOptionPane.ERROR_MESSAGE);
+         }else
+        {
+            Name = txtPName.getText();
+            Description = txtDesc.getText();
+            quantity = Integer.parseInt(txtQuantity.getText());
+            price = Double.parseDouble(txtPrice.getText());
+            
+            if(pd.addProduct(Name, Description, fragile, quantity, price))
+            {
+                JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+            }
+        }
+    }//GEN-LAST:event_btnNewProductMouseClicked
+
+    private void txtSProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSProductKeyReleased
+
+          searchProduct(tbProduct,txtSProduct.getText());
+    }//GEN-LAST:event_txtSProductKeyReleased
 
     /**
      * @param args the command line arguments
@@ -1051,9 +1098,8 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnNewProduct;
     private javax.swing.JButton btnReg;
-    private javax.swing.JButton btnSProduct;
     private javax.swing.JButton btnSearchOrder;
-    private javax.swing.JButton btnUpdateProduct1;
+    private javax.swing.JButton btnUpdateProduct;
     private javax.swing.JComboBox<String> cboFragile;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -1134,7 +1180,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtQupdate;
-    private javax.swing.JTextField txtSProductID;
+    private javax.swing.JTextField txtSProduct;
     private javax.swing.JTextField txtSearchCust;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
