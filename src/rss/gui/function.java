@@ -27,28 +27,36 @@ public class function {
     
     public void updateTable(javax.swing.JTable tb,Object[] list)
     {
-        DefaultTableModel model = (DefaultTableModel)tb.getModel();
-        Object[] lines = list;
-        model.setRowCount(0);
-        for(int i = 0; i < lines.length; i++){
-                String line = lines[i].toString().trim();
-                String[] row = line.split(";");
-                model.addRow(row);
+        
+        if(list != null)
+        {
+            DefaultTableModel model = (DefaultTableModel)tb.getModel();
+            Object[] lines = list;
+            model.setRowCount(0);
+            for(int i = 0; i < lines.length; i++){
+                    String line = lines[i].toString().trim();
+                    String[] row = line.split(";");
+                    model.addRow(row);
+            }
         }
+        
     }
     
     public void updateCustTable(javax.swing.JTable tb,Object[] list)
     {
-        DefaultTableModel model = (DefaultTableModel)tb.getModel();
-        Object[] lines = list;
-        model.setRowCount(0);
-        for(int i = 0; i < lines.length; i++){
-                String line = lines[i].toString().trim();
-                String[] row = line.split(";");
-                if(row[2].equals("Customer"))
-                {
-                    model.addRow(row);
-                }
+        if(list != null)
+        {
+            DefaultTableModel model = (DefaultTableModel)tb.getModel();
+            Object[] lines = list;
+            model.setRowCount(0);
+            for(int i = 0; i < lines.length; i++){
+                    String line = lines[i].toString().trim();
+                    String[] row = line.split(";");
+                    if(row[2].equals("Customer"))
+                    {
+                        model.addRow(row);
+                    }
+            }
         }
-     }
+    }
 }
