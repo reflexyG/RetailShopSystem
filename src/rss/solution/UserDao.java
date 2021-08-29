@@ -153,7 +153,6 @@ public class UserDao {
 					newData.add(line);
 				}
 				else{
-					deleted = true;
 				}
 	
 			}
@@ -175,9 +174,6 @@ public class UserDao {
 					pw.println(str);
 				}
 				pw.close();
-
-				deleted = true;
-
 
 			}
 			catch(IOException e){
