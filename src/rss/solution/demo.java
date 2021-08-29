@@ -15,17 +15,21 @@ public class demo {
 		
 		
 		OrderItemDao oid = new OrderItemDao();
+		OrderDao od = new OrderDao();
+		od.setCustomer("1234", "1234");
+		Customer c = new Customer("1234", "1234");
+		c.placeOrder("1546556", "51245ablc town");
+		System.out.println(od.getOrder("O69610"));
+		
+		
+	
 		//oid.addOrderItem("12345", "12345", "toys", true, 1, 0, 0);
 		//oid.addOrderItem("12345", "123115", "pizza", true, 1, 0, 0);
 		//oid.addOrderItem("12346", "123115", "tools", true, 1, 0, 0);
 		//oid.addOrderItem("12345", "123115", "toys", true, 1, 0, 0);
 		//oid.addOrderItem("1234", "123115", "toys", true, 1, 0, 0);
 		
-		List<OrderItem> orderItems = oid.getOrderItemList("12345");
 		
-		for(OrderItem item : orderItems){
-			System.out.println(item.getProductId() + item.getName());
-		}
 		
 		
 	}

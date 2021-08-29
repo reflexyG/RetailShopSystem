@@ -51,7 +51,7 @@ public class OrderItemDao {
 			while(scanner.hasNext()){
 				// create a temperory array to store the data of orderItem
 				// split String in each line with delimiter
-				String[] data = scanner.nextLine().split(",");
+				String[] data = scanner.nextLine().split(";");
 				
 				// assign values into the temporary variables
 				tempOrderId = data[0];
@@ -92,7 +92,7 @@ public class OrderItemDao {
 			pw = new PrintWriter(new FileWriter(file, true));
 			
 			// write into the txt 
-			pw.println(orderId + "," + productId + "," + name + "," + fragile + "," + quantity + "," + price + "," + charge);
+			pw.println(orderId + ";" + productId + ";" + name + ";" + fragile + ";" + quantity + ";" + price + ";" + charge);
 			pw.close();
 			added = true;
 
@@ -119,7 +119,7 @@ public class OrderItemDao {
 				// store each line of txt file in a String
 				String line = scanner.nextLine();
 				// split the string with delimiter
-				String[] oldData = line.split(",");
+				String[] oldData = line.split(";");
 				
 				// if product id type is not same
 				if(!(oldData[0].trim().equals(productId.trim()))){

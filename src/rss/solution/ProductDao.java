@@ -42,7 +42,7 @@ public class ProductDao {
 			while(scanner.hasNext() && !found){
 				// create a temperory array to store the data of user
 				// split String in each line with delimiter
-				String[] data = scanner.nextLine().split(",");
+				String[] data = scanner.nextLine().split(";");
 				
 				// store the value
 				tempId = data[0];
@@ -110,7 +110,7 @@ public class ProductDao {
 				// check if the product id is in the txt file
 				if(!getProduct(id)){
 					// write the product into the txt file
-					pw.println(id + "," + name + "," + description + "," + fragile + "," + quantity + "," + price);
+					pw.println(id + ";" + name + ";" + description + ";" + fragile + ";" + quantity + ";" + price);
 					pw.close();
 					added = true;
 				}
@@ -139,7 +139,7 @@ public class ProductDao {
 				// store each line of txt file in a String
 				String line = scanner.nextLine();
 				// split the string with delimiter
-				String[] oldData = line.split(",");
+				String[] oldData = line.split(";");
 				
 				// if product id type is not same
 				if(!(oldData[0].trim().equals(id.trim()))){
@@ -201,18 +201,18 @@ public class ProductDao {
 				// store each line of txt file in a String
 				String line = scanner.nextLine();
 				// split the string with delimiter
-				String[] oldData = line.split(",");
+				String[] oldData = line.split(";");
 				
 				// if product id is same
 				if(oldData[0].trim().equals(id.trim())){
 					
 					//store the new data in the list
 					newData.add(
-					id + "," + 
-					name + "," +
-					description + "," +
-					fragile + "," +
-					quantity + "," +
+					id + ";" + 
+					name + ";" +
+					description + ";" +
+					fragile + ";" +
+					quantity + ";" +
 					price);
 					
 					// set update to true

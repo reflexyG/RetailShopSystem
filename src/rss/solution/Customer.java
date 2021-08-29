@@ -1,8 +1,6 @@
 package rss.solution;
 
 public class Customer extends User {
-	private String payment;
-	private String address;
 	
 	public Customer(String username, String password) {
 		super(username, password, "Customer");
@@ -15,4 +13,11 @@ public class Customer extends User {
 		return ud.updateUser(this.getUsername(), password, this.getaccountType(), email, phone);
 	}
 	
+	public Boolean placeOrder(String payment, String address){
+		OrderDao od = new OrderDao();
+		od.setCustomer(this.getUsername(), this.getPassword());
+		return od.addOrder(payment, address);
+		
+	}
+		
 }

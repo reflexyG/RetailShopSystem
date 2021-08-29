@@ -46,7 +46,7 @@ public class UserDao {
 			while(scanner.hasNext() && !found){
 				// create a temperory array to store the data of user
 				// split String in each line with delimiter
-				String[] data = scanner.nextLine().split(",");
+				String[] data = scanner.nextLine().split(";");
 				
 				// temporary store the username, password, accountType in the txt file
 				tempUsername = data[0];
@@ -114,7 +114,7 @@ public class UserDao {
 			// check if the user is in the txt file
 			if(!findUser(username, password, type, "add")){
 				// write the user into the txt file
-				pw.println(username + "," + password + "," + type + "," + email + "," + phoneNumber);
+				pw.println(username + ";" + password + ";" + type + ";" + email + ";" + phoneNumber);
 				pw.close();
 				added = true;
 			}
@@ -144,7 +144,7 @@ public class UserDao {
 				// store each line of txt file in a String
 				String line = scanner.nextLine();
 				// split the string with delimiter
-				String[] oldData = line.split(",");
+				String[] oldData = line.split(";");
 				
 				// if username and account type is not same
 				if(!(oldData[0].trim().equals(username.trim()) && 
@@ -203,7 +203,7 @@ public class UserDao {
 				// store each line of txt file in a String
 				String line = scanner.nextLine();
 				// split the string with delimiter
-				String[] oldData = line.split(",");
+				String[] oldData = line.split(";");
 				
 				// if username and accounttype is same
 				if(oldData[0].trim().equals(username.trim()) && 
@@ -211,10 +211,10 @@ public class UserDao {
 					
 					//store the new data in the list
 					newData.add(
-					username + "," + 
-					password + "," +
-					type + "," +
-					email + "," +
+					username + ";" + 
+					password + ";" +
+					type + ";" +
+					email + ";" +
 					phoneNumber);
 					
 					// set updated to true
