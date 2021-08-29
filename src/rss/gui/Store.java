@@ -585,7 +585,6 @@ public class Store extends javax.swing.JFrame {
         
         pass = txtNewPass.getText().toLowerCase();
         email = txtNewMail.getText().toLowerCase();
-        //phone = Integer.parseInt(txtNewPhone.getText());
         
         if(txtNewPass.getText().isEmpty())
          {
@@ -627,7 +626,7 @@ public class Store extends javax.swing.JFrame {
     private void txtNewPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPhoneKeyTyped
         char c = evt.getKeyChar();
         
-        if (Character.isLetter(c)){
+        if (!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtNewPhoneKeyTyped

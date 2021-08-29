@@ -25,10 +25,23 @@ public class AdminHome extends javax.swing.JFrame {
      */
     ProductDao pd = new ProductDao();
     UserDao ud = new UserDao();
+    String username, password;
+     Admin a;
     
-    public AdminHome() {
+    public AdminHome(String username, String password) {
         initComponents();
         
+        this.username = username;
+        this.password = password;
+        a = new Admin(username, password);
+        pnlNewAdmin.setVisible(false);
+        pnlOrder.setVisible(true);
+        pnlProduct.setVisible(false);
+        pnlCust.setVisible(false);
+    }
+    
+    public AdminHome(){
+        initComponents();
         pnlNewAdmin.setVisible(false);
         pnlOrder.setVisible(true);
         pnlProduct.setVisible(false);
@@ -81,8 +94,19 @@ public class AdminHome extends javax.swing.JFrame {
         tbCustomer = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
         txtSearchCust = new javax.swing.JTextField();
-        btnSearchOrder = new javax.swing.JButton();
+        jLabel39 = new javax.swing.JLabel();
         pnlEditCust = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        txtNewPass = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        txtNewPhone = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        btnDelCust = new javax.swing.JButton();
+        btnUpdateCust = new javax.swing.JButton();
+        txtNewMail = new javax.swing.JTextField();
         pnlAddCust = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -404,11 +428,11 @@ public class AdminHome extends javax.swing.JFrame {
 
             },
             new String [] {
-                "UserName", "Password", "E-mail", "Phone No."
+                "UserName", "Password", "Account Type", "E-mail", "Phone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -416,39 +440,92 @@ public class AdminHome extends javax.swing.JFrame {
             }
         });
         tbCustomer.getTableHeader().setReorderingAllowed(false);
+        tbCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbCustomerMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbCustomer);
         if (tbCustomer.getColumnModel().getColumnCount() > 0) {
             tbCustomer.getColumnModel().getColumn(0).setResizable(false);
             tbCustomer.getColumnModel().getColumn(1).setResizable(false);
             tbCustomer.getColumnModel().getColumn(2).setResizable(false);
             tbCustomer.getColumnModel().getColumn(3).setResizable(false);
+            tbCustomer.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        pnlViewCust.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 670, 340));
+        pnlViewCust.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 670, 300));
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel18.setText("Customer   ID :");
-        pnlViewCust.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 110, 32));
+        jLabel18.setText("Search Customer :");
+        pnlViewCust.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 130, 40));
 
         txtSearchCust.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        pnlViewCust.add(txtSearchCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 190, 40));
+        txtSearchCust.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchCustKeyReleased(evt);
+            }
+        });
+        pnlViewCust.add(txtSearchCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 190, 40));
 
-        btnSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        btnSearchOrder.setText("Search");
-        pnlViewCust.add(btnSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 100, 40));
+        jLabel39.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel39.setText("Select a customer in table to edit");
+        pnlViewCust.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jTabbedPane1.addTab("View Customer", pnlViewCust);
 
-        javax.swing.GroupLayout pnlEditCustLayout = new javax.swing.GroupLayout(pnlEditCust);
-        pnlEditCust.setLayout(pnlEditCustLayout);
-        pnlEditCustLayout.setHorizontalGroup(
-            pnlEditCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
-        );
-        pnlEditCustLayout.setVerticalGroup(
-            pnlEditCustLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 482, Short.MAX_VALUE)
-        );
+        pnlEditCust.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel37.setFont(new java.awt.Font("Bodoni MT", 1, 24)); // NOI18N
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Edit Customer");
+        pnlEditCust.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 260, 40));
+
+        jLabel38.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel38.setText("Selected Customer username:");
+        pnlEditCust.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 58, 260, 46));
+
+        lblUserName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        pnlEditCust.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 58, 195, 45));
+
+        jLabel40.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel40.setText("Password             :");
+        pnlEditCust.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 129, 49));
+        pnlEditCust.add(txtNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 220, 40));
+
+        jLabel41.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel41.setText("Phone                  :");
+        pnlEditCust.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 219, 120, 40));
+
+        txtNewPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewPhoneKeyTyped(evt);
+            }
+        });
+        pnlEditCust.add(txtNewPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 220, 40));
+
+        jLabel42.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel42.setText("E-mail                  :");
+        pnlEditCust.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 129, 40));
+
+        btnDelCust.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnDelCust.setText("Delete");
+        btnDelCust.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDelCustMouseClicked(evt);
+            }
+        });
+        pnlEditCust.add(btnDelCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 130, 80));
+
+        btnUpdateCust.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnUpdateCust.setText("Update");
+        btnUpdateCust.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateCustMouseClicked(evt);
+            }
+        });
+        pnlEditCust.add(btnUpdateCust, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 130, 80));
+        pnlEditCust.add(txtNewMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 220, 40));
 
         jTabbedPane1.addTab("Edit Customer", pnlEditCust);
 
@@ -794,7 +871,7 @@ public class AdminHome extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void productTableUpdate(){
+    public void ProductTableUpdate(){
         DefaultTableModel model = (DefaultTableModel)tbProduct.getModel();
         Object[] lines = pd.getProductList();
         model.setRowCount(0);
@@ -804,8 +881,24 @@ public class AdminHome extends javax.swing.JFrame {
                 model.addRow(row);
         }
     }
+    
+    public void CustTableUpdate(){
+        DefaultTableModel model = (DefaultTableModel)tbCustomer.getModel();
+        Object[] lines = ud.getUserList();
+        model.setRowCount(0);
+        for(int i = 0; i < lines.length; i++){
+                String line = lines[i].toString().trim();
+                String[] row = line.split(",");
+                if(row[2].equals("Customer"))
+                {
+                    model.addRow(row);
+                }
+                
+        }
+       
+    }
         
-     public void searchProduct(javax.swing.JTable tb, String key)
+     public void search(javax.swing.JTable tb, String key)
      {
         DefaultTableModel table = (DefaultTableModel)tb.getModel();
         String search = key.toLowerCase();
@@ -813,18 +906,6 @@ public class AdminHome extends javax.swing.JFrame {
         tb.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
      }
-        
-    
-//    public void CustomerTableUpdate(){
-//        DefaultTableModel model = (DefaultTableModel)tbCustomer.getModel();
-//        Object[] lines = ud.getUserList();
-//        model.setRowCount(0);
-//        for(int i = 0; i < lines.length; i++){
-//                String line = lines[i].toString().trim();
-//                String[] row = line.split(",");
-//                model.addRow(row);
-//        }
-//   }
     
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlNewAdmin.setVisible(true);
@@ -849,7 +930,7 @@ public class AdminHome extends javax.swing.JFrame {
         tabSignout.setBackground(new Color (204,204,204));
         tabMCust.setBackground(new Color (204,204,204));
         
-        productTableUpdate();
+        ProductTableUpdate();
         
         jTabbedPane2.setEnabledAt(1, false);
 
@@ -878,7 +959,7 @@ public class AdminHome extends javax.swing.JFrame {
     private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
         char c = evt.getKeyChar();
 
-        if (Character.isLetter(c)){
+        if (!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtPhoneKeyTyped
@@ -887,7 +968,6 @@ public class AdminHome extends javax.swing.JFrame {
         String userName, password, email;
         int phone;
 
-        UserDao u = new UserDao();
 
         if(txtUser.getText().isEmpty()| txtPass.getText().isEmpty() |
             txtEmail.getText().isEmpty()|txtPhone.getText().isEmpty())
@@ -899,12 +979,20 @@ public class AdminHome extends javax.swing.JFrame {
             password = txtPass.getText();
             email = txtEmail.getText();
             phone = Integer.parseInt(txtPhone.getText());
-            if(u.addUser(userName, password,"Admin", email,phone))
+            if(a.addAdmin(userName, password, email, phone))
             {
                 JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+                txtUser.setText("");
+                txtPhone.setText("");
+                txtEmail.setText("");
+                txtPass.setText("");
             } else
             {
                 JOptionPane.showMessageDialog(null,"Register Fail, username exist","Fail ", JOptionPane.ERROR_MESSAGE);
+                txtUser.setText("");
+                txtPhone.setText("");
+                txtEmail.setText("");
+                txtPass.setText("");
             }
         }
 
@@ -927,6 +1015,9 @@ public class AdminHome extends javax.swing.JFrame {
         tabOrder.setBackground(new Color (204,204,204));
         tabSignout.setBackground(new Color (204,204,204));
         tabMCust.setBackground(Color.white);
+        
+        CustTableUpdate();
+        jTabbedPane1.setEnabledAt(1, false);
     }//GEN-LAST:event_tabMCustMouseClicked
 
     private void btnRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegMouseClicked
@@ -935,24 +1026,30 @@ public class AdminHome extends javax.swing.JFrame {
 
         UserDao u = new UserDao();
         
-         if(txtUser.getText().isEmpty()| txtPass.getText().isEmpty() |
-            txtEmail.getText().isEmpty()|txtPhone.getText().isEmpty())
+         if(txtCustId.getText().isEmpty()| txtCustPass.getText().isEmpty() |
+            txtCustMail.getText().isEmpty()|txtCustPhone.getText().isEmpty())
          {
             JOptionPane.showMessageDialog(null,"Missing Information!","Fail ", JOptionPane.ERROR_MESSAGE);
          }else
          {
-             userName = txtUser.getText();
-            password = txtPass.getText();
-            email = txtEmail.getText();
-            phone = Integer.parseInt(txtPhone.getText());
+            userName = txtCustId.getText();
+            password = txtCustPass.getText();
+            email = txtCustMail.getText();
+            phone = Integer.parseInt(txtCustPhone.getText());
                 if(u.addUser(userName, password,"Customer", email,phone))
             {
                 JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
-                this.setVisible(false);
-                new Login().setVisible(true);
+                txtCustId.setText("");
+                txtCustPass.setText("");
+                txtCustMail.setText("");
+                txtCustPhone.setText("");
             } else
             {
                 JOptionPane.showMessageDialog(null,"Register Fail, username exist","Fail ", JOptionPane.ERROR_MESSAGE);    
+                txtCustId.setText("");
+                txtCustPass.setText("");
+                txtCustMail.setText("");
+                txtCustPhone.setText("");
             }
          }
     }//GEN-LAST:event_btnRegMouseClicked
@@ -967,7 +1064,7 @@ public class AdminHome extends javax.swing.JFrame {
     private void txtCustPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustPhoneKeyTyped
         char c = evt.getKeyChar();
         
-        if (Character.isLetter(c)){
+        if (!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtCustPhoneKeyTyped
@@ -981,7 +1078,6 @@ public class AdminHome extends javax.swing.JFrame {
         {
             pd.getProduct(ProductId);
             jTabbedPane2.setSelectedIndex(1);
-            pd.getProduct(ProductId);
             lblProductId.setText(ProductId);
         }
         
@@ -993,7 +1089,7 @@ public class AdminHome extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION)
         {
             pd.deleteProduct(pd.p.getId());
-            productTableUpdate();
+            ProductTableUpdate();
         }
     
     }//GEN-LAST:event_btnDeleteProductMouseClicked
@@ -1001,7 +1097,7 @@ public class AdminHome extends javax.swing.JFrame {
     private void txtNewPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPriceKeyTyped
         char c = evt.getKeyChar();
         
-        if (Character.isLetter(c)){
+        if (!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtNewPriceKeyTyped
@@ -1009,13 +1105,74 @@ public class AdminHome extends javax.swing.JFrame {
     private void txtQupdateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQupdateKeyTyped
         char c = evt.getKeyChar();
         
-        if (Character.isLetter(c)){
+        if (!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtQupdateKeyTyped
 
     private void btnUpdateProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProductMouseClicked
+        String name,desc;
+        int quantity = 0;
+        double price = 0;
         
+        
+        ProductDao pd = new ProductDao();
+        
+        pd.getProduct(lblProductId.getText());
+        name = txtNewName.getText();
+        desc = txtNewDesc.getText();
+        
+        if(txtNewName.getText().isEmpty())
+         {
+            name = pd.p.getName();
+         }
+        
+        if(txtNewDesc.getText().isEmpty())
+        {
+            desc = pd.p.getDescription();
+        }
+        
+        if(txtQupdate.getText().isEmpty())
+        {
+            quantity = pd.p.getQuantity();
+            String tempQuantity = String.valueOf(quantity);
+            txtQupdate.setText(tempQuantity);
+        }
+        
+        if(txtNewPrice.getText().isEmpty())
+        {
+            price = pd.p.getPrice();
+            String tempPrice = String.valueOf(price);
+            txtNewPrice.setText(tempPrice);
+        }
+         
+        try
+        {
+            price =Double.parseDouble(txtNewPrice.getText()) ;
+            quantity = Integer.parseInt(txtQupdate.getText());
+            DecimalFormat df = new DecimalFormat("###.##");
+            df.format(price);
+        }catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null,"Invalid Number Input, Please try again !","Fail", 0);
+        }
+                
+        if (!pd.updateProduct(pd.p.getId(),name,desc,pd.p.getFragile(),quantity,price))
+        {
+            JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
+            txtNewName.setText("");
+            txtQupdate.setText("");
+            txtNewDesc.setText("");
+            txtNewPrice.setText("");
+        }else
+        {
+            JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
+            ProductTableUpdate();
+            txtNewName.setText("");
+            txtQupdate.setText("");
+            txtNewDesc.setText("");
+            txtNewPrice.setText("");
+        }
     }//GEN-LAST:event_btnUpdateProductMouseClicked
 
     private void btnNewProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewProductMouseClicked
@@ -1047,14 +1204,89 @@ public class AdminHome extends javax.swing.JFrame {
             if(pd.addProduct(Name, Description, fragile, quantity, price))
             {
                 JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
+                ProductTableUpdate();
             }
         }
     }//GEN-LAST:event_btnNewProductMouseClicked
 
     private void txtSProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSProductKeyReleased
 
-          searchProduct(tbProduct,txtSProduct.getText());
+          search(tbProduct,txtSProduct.getText());
     }//GEN-LAST:event_txtSProductKeyReleased
+
+    private void tbCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCustomerMouseClicked
+        int index = tbCustomer.getSelectedRow();
+        TableModel model = tbCustomer.getModel();
+        String Id = model.getValueAt(index, 0).toString();
+        String pass = model.getValueAt(index, 1).toString();
+        
+        if(!Id.isEmpty())
+        {
+            ud.findUser(Id,pass, "Customer", "find");
+            jTabbedPane1.setSelectedIndex(1);
+            lblUserName.setText(Id);
+        }
+    }//GEN-LAST:event_tbCustomerMouseClicked
+
+    private void txtNewPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPhoneKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNewPhoneKeyTyped
+
+    private void btnDelCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDelCustMouseClicked
+        int response = JOptionPane.showConfirmDialog(null,"Are You Sure Want to Delete ?","Confirmation", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        if (response == JOptionPane.YES_OPTION)
+        {
+            a.deleteUser(ud.c.getUsername(), ud.c.getaccountType());
+            CustTableUpdate();
+        }
+    }//GEN-LAST:event_btnDelCustMouseClicked
+
+    private void btnUpdateCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateCustMouseClicked
+        String pass,email;
+        int phone = 0;
+        
+        pass = txtNewPass.getText().toLowerCase();
+        email = txtNewMail.getText().toLowerCase();
+        phone = Integer.parseInt(txtNewPhone.getText());
+        
+        if(txtNewPass.getText().isEmpty())
+         {
+            pass = ud.c.getPassword();
+         }
+        
+        if(txtNewMail.getText().isEmpty())
+        {
+            email = ud.c.getEmail();
+        }
+        
+        if(txtNewPhone.getText().isEmpty())
+        {
+            phone = ud.c.getPhone();
+            String tempPhone = String.valueOf(phone);
+            txtNewPhone.setText(tempPhone);
+        }
+        
+        if (!ud.updateUser(ud.c.getUsername(), pass,"Customer", email, phone))
+        {
+            JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
+        }else
+        {
+            JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
+            CustTableUpdate();
+            txtNewPhone.setText("");
+            txtNewMail.setText("");
+            txtNewPass.setText("");
+        }
+    }//GEN-LAST:event_btnUpdateCustMouseClicked
+
+    private void txtSearchCustKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchCustKeyReleased
+        search(tbCustomer,txtSearchCust.getText());
+    }//GEN-LAST:event_txtSearchCustKeyReleased
 
     /**
      * @param args the command line arguments
@@ -1095,10 +1327,11 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelCust;
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnNewProduct;
     private javax.swing.JButton btnReg;
-    private javax.swing.JButton btnSearchOrder;
+    private javax.swing.JButton btnUpdateCust;
     private javax.swing.JButton btnUpdateProduct;
     private javax.swing.JComboBox<String> cboFragile;
     private javax.swing.JButton jButton1;
@@ -1132,7 +1365,13 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1149,6 +1388,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lblAccType;
     private javax.swing.JLabel lblProductId;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlAddCust;
     private javax.swing.JPanel pnlCust;
     private javax.swing.JPanel pnlEditCust;
@@ -1172,7 +1412,10 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDesc;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextArea txtNewDesc;
+    private javax.swing.JTextField txtNewMail;
     private javax.swing.JTextField txtNewName;
+    private javax.swing.JTextField txtNewPass;
+    private javax.swing.JTextField txtNewPhone;
     private javax.swing.JTextField txtNewPrice;
     private javax.swing.JTextField txtPName;
     private javax.swing.JTextField txtPass;

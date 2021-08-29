@@ -14,7 +14,7 @@
       <Point value="[300, 100]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[830, 540]"/>
+      <Dimension value="[800, 500]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
