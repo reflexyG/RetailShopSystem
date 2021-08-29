@@ -25,8 +25,10 @@ public class AdminHome extends javax.swing.JFrame {
      */
     ProductDao pd = new ProductDao();
     UserDao ud = new UserDao();
-    String username, password;
-     Admin a;
+    function f = new function();
+    Admin a;
+    
+    String username, password;    
     
     public AdminHome(String username, String password) {
         initComponents();
@@ -165,6 +167,7 @@ public class AdminHome extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1000, 650));
         setMinimumSize(new java.awt.Dimension(1000, 650));
         setPreferredSize(new java.awt.Dimension(100, 650));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenu.setBackground(new java.awt.Color(153, 204, 255));
@@ -870,43 +873,7 @@ public class AdminHome extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    public void ProductTableUpdate(){
-        DefaultTableModel model = (DefaultTableModel)tbProduct.getModel();
-        Object[] lines = pd.getProductList();
-        model.setRowCount(0);
-        for(int i = 0; i < lines.length; i++){
-                String line = lines[i].toString().trim();
-                String[] row = line.split(",");
-                model.addRow(row);
-        }
-    }
-    
-    public void CustTableUpdate(){
-        DefaultTableModel model = (DefaultTableModel)tbCustomer.getModel();
-        Object[] lines = ud.getUserList();
-        model.setRowCount(0);
-        for(int i = 0; i < lines.length; i++){
-                String line = lines[i].toString().trim();
-                String[] row = line.split(",");
-                if(row[2].equals("Customer"))
-                {
-                    model.addRow(row);
-                }
-                
-        }
-       
-    }
-        
-     public void search(javax.swing.JTable tb, String key)
-     {
-        DefaultTableModel table = (DefaultTableModel)tb.getModel();
-        String search = key.toLowerCase();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        tb.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
-     }
-    
+  
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlNewAdmin.setVisible(true);
         pnlOrder.setVisible(false);
@@ -930,8 +897,7 @@ public class AdminHome extends javax.swing.JFrame {
         tabSignout.setBackground(new Color (204,204,204));
         tabMCust.setBackground(new Color (204,204,204));
         
-        ProductTableUpdate();
-        
+        f.updateTable(tbProduct,pd.getProductList());
         jTabbedPane2.setEnabledAt(1, false);
 
     }//GEN-LAST:event_tabProductMouseClicked
@@ -1016,7 +982,7 @@ public class AdminHome extends javax.swing.JFrame {
         tabSignout.setBackground(new Color (204,204,204));
         tabMCust.setBackground(Color.white);
         
-        CustTableUpdate();
+        f.updateCustTable(tbCustomer,ud.getUserList());
         jTabbedPane1.setEnabledAt(1, false);
     }//GEN-LAST:event_tabMCustMouseClicked
 
@@ -1043,6 +1009,8 @@ public class AdminHome extends javax.swing.JFrame {
                 txtCustPass.setText("");
                 txtCustMail.setText("");
                 txtCustPhone.setText("");
+                
+                f.updateCustTable(tbCustomer, ud.getUserList());
             } else
             {
                 JOptionPane.showMessageDialog(null,"Register Fail, username exist","Fail ", JOptionPane.ERROR_MESSAGE);    
@@ -1074,6 +1042,7 @@ public class AdminHome extends javax.swing.JFrame {
         TableModel model = tbProduct.getModel();
         String ProductId = model.getValueAt(index, 0).toString();
         
+
         if(!ProductId.isEmpty())
         {
             pd.getProduct(ProductId);
@@ -1088,8 +1057,8 @@ public class AdminHome extends javax.swing.JFrame {
         
         if (response == JOptionPane.YES_OPTION)
         {
-            pd.deleteProduct(pd.p.getId());
-            ProductTableUpdate();
+            a.deleteProduct(pd.p.getId());
+            f.updateTable(tbProduct,pd.getProductList());
         }
     
     }//GEN-LAST:event_btnDeleteProductMouseClicked
@@ -1157,7 +1126,7 @@ public class AdminHome extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Invalid Number Input, Please try again !","Fail", 0);
         }
                 
-        if (!pd.updateProduct(pd.p.getId(),name,desc,pd.p.getFragile(),quantity,price))
+        if (!a.updateProduct(pd.p.getId(),name,desc,pd.p.getFragile(),quantity,price))
         {
             JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
             txtNewName.setText("");
@@ -1167,7 +1136,7 @@ public class AdminHome extends javax.swing.JFrame {
         }else
         {
             JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
-            ProductTableUpdate();
+            f.updateTable(tbProduct,pd.getProductList());
             txtNewName.setText("");
             txtQupdate.setText("");
             txtNewDesc.setText("");
@@ -1201,17 +1170,16 @@ public class AdminHome extends javax.swing.JFrame {
             quantity = Integer.parseInt(txtQuantity.getText());
             price = Double.parseDouble(txtPrice.getText());
             
-            if(pd.addProduct(Name, Description, fragile, quantity, price))
+            if(a.addProduct(Name, Description, fragile, quantity, price))
             {
                 JOptionPane.showMessageDialog(null,"Register Sccessful","Successful", 1);
-                ProductTableUpdate();
+                f.updateTable(tbProduct, pd.getProductList());
             }
         }
     }//GEN-LAST:event_btnNewProductMouseClicked
 
     private void txtSProductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSProductKeyReleased
-
-          search(tbProduct,txtSProduct.getText());
+          f.search(tbProduct,txtSProduct.getText());
     }//GEN-LAST:event_txtSProductKeyReleased
 
     private void tbCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCustomerMouseClicked
@@ -1242,7 +1210,7 @@ public class AdminHome extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION)
         {
             a.deleteUser(ud.c.getUsername(), ud.c.getaccountType());
-            CustTableUpdate();
+            f.updateCustTable(tbCustomer,ud.getUserList());
         }
     }//GEN-LAST:event_btnDelCustMouseClicked
 
@@ -1252,7 +1220,6 @@ public class AdminHome extends javax.swing.JFrame {
         
         pass = txtNewPass.getText().toLowerCase();
         email = txtNewMail.getText().toLowerCase();
-        phone = Integer.parseInt(txtNewPhone.getText());
         
         if(txtNewPass.getText().isEmpty())
          {
@@ -1271,13 +1238,13 @@ public class AdminHome extends javax.swing.JFrame {
             txtNewPhone.setText(tempPhone);
         }
         
-        if (!ud.updateUser(ud.c.getUsername(), pass,"Customer", email, phone))
+        if (!a.updateCustomer(ud.c.getUsername(), pass, email, phone))
         {
             JOptionPane.showMessageDialog(null,"Update Fail, Please try again !","Fail", 3);
         }else
         {
             JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
-            CustTableUpdate();
+            f.updateCustTable(tbCustomer, ud.getUserList());
             txtNewPhone.setText("");
             txtNewMail.setText("");
             txtNewPass.setText("");
@@ -1285,7 +1252,7 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateCustMouseClicked
 
     private void txtSearchCustKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchCustKeyReleased
-        search(tbCustomer,txtSearchCust.getText());
+        f.search(tbCustomer, txtSearchCust.getText());
     }//GEN-LAST:event_txtSearchCustKeyReleased
 
     /**

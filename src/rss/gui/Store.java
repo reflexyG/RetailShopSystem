@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import rss.solution.*;
 
@@ -21,6 +22,15 @@ public class Store extends javax.swing.JFrame {
     /**
      * Creates new form Store
      */
+    
+    String username, password;
+    Customer c;
+     
+    ProductDao pd = new ProductDao();
+    UserDao ud = new UserDao();
+    function f = new function();
+    
+    
     public Store(String username, String password){
         this.username = username;
         this.password = password;
@@ -33,7 +43,7 @@ public class Store extends javax.swing.JFrame {
         lbloldMail.setText(c.getEmail());
         lbloldPass.setText(c.getPassword());
         
-        productTableUpdate();
+        f.updateTable(tbItem,pd.getProductList());
     }
     
     public Store() {
@@ -43,11 +53,6 @@ public class Store extends javax.swing.JFrame {
         pnlInfo.setVisible(false);
     }
     
-     String username, password;
-     Customer c;
-     
-    ProductDao pd = new ProductDao();
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,14 +105,18 @@ public class Store extends javax.swing.JFrame {
         btnConfirm = new javax.swing.JButton();
         pnlOrder = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        txtSearchOrder = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbOrder = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        btnSearchOrder = new javax.swing.JButton();
+        txtSearchOrder = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        txtDelOrder = new javax.swing.JTextField();
-        btnDelOrder = new javax.swing.JButton();
+        lblOrderId = new javax.swing.JLabel();
+        btnCancelOrder = new javax.swing.JButton();
+        btnUpdateOrder = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -122,6 +131,7 @@ public class Store extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 100));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlMenu.setBackground(new java.awt.Color(153, 204, 255));
@@ -469,37 +479,116 @@ public class Store extends javax.swing.JFrame {
         jLabel9.setText("My Order");
         pnlOrder.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 0, 361, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        pnlOrder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 500, 300));
-
-        txtSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        pnlOrder.add(txtSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 180, 30));
+        tbOrder.getTableHeader().setReorderingAllowed(false);
+        tbOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbOrderMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbOrder);
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel12.setText("Search Order:");
-        pnlOrder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 80, 32));
 
-        btnSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        btnSearchOrder.setText("Search");
-        pnlOrder.add(btnSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 90, 30));
+        txtSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtSearchOrder.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchOrderKeyReleased(evt);
+            }
+        });
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel13.setText("Delete Order ID:");
-        pnlOrder.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 90, 40));
-        pnlOrder.add(txtDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 180, 30));
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel16.setText("Select an order to edit");
 
-        btnDelOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        btnDelOrder.setText("Confirm");
-        pnlOrder.add(btnDelOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 90, 30));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtSearchOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearchOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("View Order", jPanel2);
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel13.setText("Selected Order ID :");
+
+        lblOrderId.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+
+        btnCancelOrder.setText("Cancel Order");
+
+        btnUpdateOrder.setText("Update");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(btnCancelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(btnUpdateOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+
+        jTabbedPane1.addTab("Edit Order", jPanel3);
+
+        pnlOrder.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 530, 420));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -532,16 +621,6 @@ public class Store extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void productTableUpdate(){
-        DefaultTableModel model = (DefaultTableModel)tbItem.getModel();
-        Object[] lines = pd.getProductList();
-        model.setRowCount(0);
-        for(int i = 0; i < lines.length; i++){
-                String line = lines[i].toString().trim();
-                String[] row = line.split(",");
-                model.addRow(row);
-        }
-    }
     
     private void tabHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabHomeMouseClicked
         pnlHome.setVisible(true);
@@ -561,6 +640,8 @@ public class Store extends javax.swing.JFrame {
         tabInfo.setBackground(new Color (204,204,204));
         tabOrder.setBackground(Color.white);
         tabSignout.setBackground(new Color (204,204,204));
+        
+        f.updateTable(tbOrder,pd.getProductList());
     }//GEN-LAST:event_tabOrderMouseClicked
 
     private void tabInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabInfoMouseClicked
@@ -579,7 +660,6 @@ public class Store extends javax.swing.JFrame {
     }//GEN-LAST:event_tabSignoutMouseClicked
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
-        UserDao ud = new UserDao();
         String pass,email;
         int phone = 0;
         
@@ -609,7 +689,6 @@ public class Store extends javax.swing.JFrame {
         }else
         {
             JOptionPane.showMessageDialog(null,"Update Complete!","Success", 1);
-            productTableUpdate();
             txtNewPhone.setText("");
             txtNewMail.setText("");
             txtNewPass.setText("");
@@ -632,12 +711,25 @@ public class Store extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNewPhoneKeyTyped
 
     private void txtFproductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFproductKeyReleased
-        DefaultTableModel table = (DefaultTableModel)tbItem.getModel();
-        String search = txtFproduct.getText().toLowerCase();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        tbItem.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
+        f.search(tbItem,txtFproduct.getText());
     }//GEN-LAST:event_txtFproductKeyReleased
+
+    private void txtSearchOrderKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchOrderKeyReleased
+        f.search(tbOrder,txtSearchOrder.getText());
+    }//GEN-LAST:event_txtSearchOrderKeyReleased
+
+    private void tbOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbOrderMouseClicked
+//        int index = tbOrder.getSelectedRow();
+//        TableModel model = tbOrder.getModel();
+//        String OrdertId = model.getValueAt(index, 0).toString();
+//        
+//        if(!OrderId.isEmpty())
+//        {
+//            (OrderId);
+//            jTabbedPane1.setSelectedIndex(1);
+//            lblOrderId.setText(OrderId);
+//        }
+    }//GEN-LAST:event_tbOrderMouseClicked
 
     /**
      * @param args the command line arguments
@@ -676,10 +768,10 @@ public class Store extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnCancelOrder;
     private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JButton btnDelOrder;
-    private javax.swing.JButton btnSearchOrder;
+    private javax.swing.JButton btnUpdateOrder;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -688,6 +780,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -697,15 +790,18 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
+    private javax.swing.JLabel lblOrderId;
     private javax.swing.JLabel lbloldMail;
     private javax.swing.JLabel lbloldPass;
     private javax.swing.JLabel lbloldPhone;
@@ -718,7 +814,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JPanel tabOrder;
     private javax.swing.JPanel tabSignout;
     private javax.swing.JTable tbItem;
-    private javax.swing.JTextField txtDelOrder;
+    private javax.swing.JTable tbOrder;
     private javax.swing.JTextField txtFproduct;
     private javax.swing.JTextField txtItemId;
     private javax.swing.JTextField txtNewMail;
