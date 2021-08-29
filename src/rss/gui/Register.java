@@ -50,7 +50,7 @@ public class Register extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 100));
-        setMinimumSize(new java.awt.Dimension(830, 540));
+        setMinimumSize(new java.awt.Dimension(800, 500));
         setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -171,7 +171,7 @@ public class Register extends javax.swing.JFrame {
     private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
         char c = evt.getKeyChar();
         
-        if (Character.isLetter(c)){
+        if (!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_txtPhoneKeyTyped
