@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -63,11 +65,11 @@ public class OrderDao {
 				
 				// store the value
 				tempId = data[0];
-				tempDateTime = data[2];
-				tempPayment = data[3];
-				tempAddress = data[4];
-				tempPrice = data[5];
-				tempStatus = data[6];
+				tempDateTime = data[1];
+				tempPayment = data[2];
+				tempAddress = data[3];
+				tempPrice = data[4];
+				tempStatus = data[5];
 				
 				
 				// check the id
@@ -105,9 +107,10 @@ public class OrderDao {
 
 	}
 	
-	public Boolean addOrder(String payment, String address, double price){
+	public String addOrder(String payment, String address, double price){
 		
 		Boolean added = false;
+		String id = "";
 		
 		// handle exception
 		try{
@@ -131,7 +134,7 @@ public class OrderDao {
 				// generate id for the product
 				int number = random.nextInt(99999);
 				// convert the integer into 6 characters format
-				String id = "O" + String.format("%05d", number);
+				id = "O" + String.format("%05d", number);
 				
 				// check if the product id is in the txt file
 				if(!getOrder(id)){
@@ -145,11 +148,85 @@ public class OrderDao {
 		}
 		catch(IOException e){
 			System.out.println(e);
-			return added;
+			return id;
 		}
 		
-		return added;
+		return id;
 		
+	}
+	
+	// update user account
+	public Boolean updateOrder(String orderId, String customerId, 
+		String currentDateTime, String payment, String address, String price, String status){
+		
+		// create a dynamic list to store new data
+		List<String> newData = new ArrayList<>();
+		
+		Boolean updated = false;
+		
+		try{
+			// declare new Scanner object
+			scanner = new Scanner(file);
+			
+			while(scanner.hasNext()){
+				
+				// store each line of txt file in a String
+				String line = scanner.nextLine();
+				// split the string with delimiter
+				String[] oldData = line.split(";");
+				
+				// if product id is same
+				if(oldData[0].trim().equals(orderId.trim())){
+					
+					//store the new data in the list
+					newData.add(
+					orderId + ";" + 
+					currentDateTime + ";" +
+					payment + ";" +
+					address + ";" +
+					price + ";" +
+					status);
+					
+					// set update to true
+					updated = true;
+				}
+				else{
+					// store the same data in the list
+					newData.add(line);
+				}
+				
+			}
+			// discard the scanner
+			scanner.close();
+
+		}
+		catch(IOException e){
+			System.out.println("Error");
+		}
+		
+		if(updated){
+			// use PrintWriter to overwrite the text file
+			try{
+				// declare new pw object
+				pw = new PrintWriter(path);
+				// write the newData into the text file
+				for(String str : newData){
+					pw.println(str);
+				}
+				pw.close();
+
+			}
+			catch(IOException e){
+				System.out.println("Error");
+				updated = false;
+				return updated;
+			}
+		
+			
+		}
+		
+		return updated;
+
 	}
 	
 	
