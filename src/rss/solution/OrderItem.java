@@ -6,16 +6,15 @@ public class OrderItem {
 	private String orderId, productId, name;
 	boolean fragile;
 	private int quantity;
-	private double price, charge;
+	private double price;
 	
-	public OrderItem(String orderId, String productId, String name, boolean fragile, int quantity, double price, double charge) {
+	public OrderItem(String orderId, String productId, String name, boolean fragile, int quantity, double price) {
 		this.orderId = orderId;
 		this.productId = productId;
 		this.name = name;
 		this.fragile = fragile;
 		this.quantity = quantity;
 		this.price = price;
-		this.charge = charge;
 	}
 
 	public String getOrderId() {
@@ -42,8 +41,4 @@ public class OrderItem {
 		return price;
 	}
 
-	public double getCharge() {
-		return charge;
-	}
-	
 }

@@ -45,7 +45,7 @@ public class OrderItemDao {
 			// declare temporary variables
 			String tempOrderId, tempProductId, tempName;
 			int tempQuantity;
-			double tempPrice, tempCharge;
+			double tempPrice;
 			Boolean tempFragile;
 			
 			while(scanner.hasNext()){
@@ -60,12 +60,10 @@ public class OrderItemDao {
 				tempFragile = Boolean.parseBoolean(data[3]);
 				tempQuantity = Integer.parseInt(data[4]);
 				tempPrice = Double.parseDouble(data[5]);
-				tempCharge = Double.parseDouble(data[6]);
-				
 				
 				// if the orderId in the text file is same
 				if(tempOrderId.trim().equals(orderId.trim())){
-					oi = new OrderItem(tempOrderId, tempProductId, tempName, tempFragile, tempQuantity, tempPrice, tempCharge);
+					oi = new OrderItem(tempOrderId, tempProductId, tempName, tempFragile, tempQuantity, tempPrice);
 					orderItems.add(oi);
 
 				}
@@ -84,7 +82,7 @@ public class OrderItemDao {
 	
 	// add new orderItem into the text file
 	public Boolean addOrderItem(String orderId, String productId, String name, Boolean fragile,
-		int quantity, double price, double charge){
+		int quantity, double price){
 		Boolean added = false;
 		// handle exception
 		try{
@@ -92,7 +90,7 @@ public class OrderItemDao {
 			pw = new PrintWriter(new FileWriter(file, true));
 			
 			// write into the txt 
-			pw.println(orderId + ";" + productId + ";" + name + ";" + fragile + ";" + quantity + ";" + price + ";" + charge);
+			pw.println(orderId + ";" + productId + ";" + name + ";" + fragile + ";" + quantity + ";" + price);
 			pw.close();
 			added = true;
 
