@@ -18,10 +18,11 @@ public class demo {
 		//OrderDao od = new OrderDao();
 		//od.setCustomer("1234", "1234");
 		Customer c = new Customer("1234", "1234");
-		System.out.println(c.placeOrder("4556", "512town", 1234));
+		c.login();
+		//System.out.println(c.placeOrder("4556", "512town", 1234));
 		
 		
-	
+			
 		//oid.addOrderItem("12345", "12345", "toys", true, 1, 0, 0);
 		//oid.addOrderItem("12345", "123115", "pizza", true, 1, 0, 0);
 		//oid.addOrderItem("12346", "123115", "tools", true, 1, 0, 0);

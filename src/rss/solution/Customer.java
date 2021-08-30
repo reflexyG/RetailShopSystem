@@ -20,13 +20,13 @@ public class Customer extends User {
 		return od.addOrder(payment, address, price);
 	}
 	
-	public Boolean updateOrder(String orderId, String currentDateTime, String payment, 
-		String address, String price, String status ){
-		// return the orderid
+	public Boolean updateOrder(String orderId, String address, String status ){
 		OrderDao od = new OrderDao();
 		// instantiate the customer object in the OrderDao
 		od.setCustomer(this.getUsername(), this.getPassword());
-		return od.updateOrder(orderId, this.getUsername(), currentDateTime, payment, address, price, status);
+		od.getOrder(orderId);
+		return od.updateOrder(orderId, this.getUsername(), od.o.getOrderTime(),
+			od.o.getPayment(), address, od.o.getPrice(), status);
 	}
 		
 }

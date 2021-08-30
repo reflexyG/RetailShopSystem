@@ -157,7 +157,7 @@ public class OrderDao {
 	
 	// update order details
 	public Boolean updateOrder(String orderId, String customerId, 
-		String currentDateTime, String payment, String address, String price, String status){
+		String currentDateTime, String payment, String address, double price, String status){
 		
 		// create a dynamic list to store new data
 		List<String> newData = new ArrayList<>();
