@@ -14,12 +14,11 @@ public class demo {
 		System.out.println(formatDateTime);
 		
 		
-		OrderItemDao oid = new OrderItemDao();
-		OrderDao od = new OrderDao();
-		od.setCustomer("1234", "1234");
+		//OrderItemDao oid = new OrderItemDao();
+		//OrderDao od = new OrderDao();
+		//od.setCustomer("1234", "1234");
 		Customer c = new Customer("1234", "1234");
-		//c.placeOrder("1546556", "51245ablc town");
-		System.out.println(od.getOrder("O69610"));
+		System.out.println(c.placeOrder("4556", "512town", 1234));
 		
 		
 	
