@@ -16,6 +16,7 @@ public class Customer extends User {
 	public String placeOrder(String payment, String address, double price){
 		OrderDao od = new OrderDao();
 		od.setCustomer(this.getUsername(), this.getPassword());
+		// return the orderid
 		return od.addOrder(payment, address, price);
 	}
 		

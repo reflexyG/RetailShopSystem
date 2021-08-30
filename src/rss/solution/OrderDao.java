@@ -55,7 +55,7 @@ public class OrderDao {
 			// declare new Scanner object
 			scanner = new Scanner(file);
 			
-			// temporary store product information
+			// temporary store order information
 			String tempId, tempDateTime, tempPayment, tempAddress, tempStatus, tempPrice;
 			
 			while(scanner.hasNext() && !found){
@@ -128,17 +128,17 @@ public class OrderDao {
 			
 			
 			while(!added){
-				// generate random product id
+				// generate random order id
 				// instantiate new Random object
 				Random random = new Random();
-				// generate id for the product
+				// generate id for the order
 				int number = random.nextInt(99999);
 				// convert the integer into 6 characters format
 				id = "O" + String.format("%05d", number);
 				
-				// check if the product id is in the txt file
+				// check if the order id is in the txt file
 				if(!getOrder(id)){
-					// write the product into the txt file
+					// write the order into the txt file
 					pw.println(id + ";" + c.getUsername() + ";" + currentDateTime + ";" + payment + ";" + address + ";" + price + ";" + "To Ship");
 					pw.close();
 					added = true;
@@ -175,7 +175,7 @@ public class OrderDao {
 				// split the string with delimiter
 				String[] oldData = line.split(";");
 				
-				// if product id is same
+				// if order id is same
 				if(oldData[0].trim().equals(orderId.trim())){
 					
 					//store the new data in the list
