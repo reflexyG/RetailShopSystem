@@ -115,9 +115,9 @@ public class UserDao {
 			if(!findUser(username, password, type, "add")){
 				// write the user into the txt file
 				pw.println(username + ";" + password + ";" + type + ";" + email + ";" + phoneNumber);
-				pw.close();
 				added = true;
 			}
+			pw.close();
 			
 		}
 		catch(IOException e){
