@@ -164,9 +164,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(250, 80));
-        setMaximumSize(new java.awt.Dimension(1000, 650));
         setMinimumSize(new java.awt.Dimension(1000, 650));
-        setPreferredSize(new java.awt.Dimension(100, 650));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -658,7 +656,7 @@ public class AdminHome extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Produc Name", "Description", "Fragile", "Quantity", "Price"
+                "ID", "Name", "Description", "Fragile", "Quantity", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -680,6 +678,7 @@ public class AdminHome extends javax.swing.JFrame {
             tbProduct.getColumnModel().getColumn(0).setResizable(false);
             tbProduct.getColumnModel().getColumn(1).setResizable(false);
             tbProduct.getColumnModel().getColumn(2).setResizable(false);
+            tbProduct.getColumnModel().getColumn(2).setPreferredWidth(500);
             tbProduct.getColumnModel().getColumn(3).setResizable(false);
             tbProduct.getColumnModel().getColumn(4).setResizable(false);
             tbProduct.getColumnModel().getColumn(5).setResizable(false);
@@ -1028,11 +1027,7 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearMouseClicked
 
     private void txtCustPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustPhoneKeyTyped
-        char c = evt.getKeyChar();
-        
-        if (!Character.isDigit(c)){
-            evt.consume();
-        }
+        f.allowDigit(evt);
     }//GEN-LAST:event_txtCustPhoneKeyTyped
 
     private void tbProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProductMouseClicked
@@ -1070,11 +1065,7 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNewPriceKeyTyped
 
     private void txtQupdateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQupdateKeyTyped
-        char c = evt.getKeyChar();
-        
-        if (!Character.isDigit(c)){
-            evt.consume();
-        }
+        f.allowDigit(evt);
     }//GEN-LAST:event_txtQupdateKeyTyped
 
     private void btnUpdateProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateProductMouseClicked
@@ -1196,11 +1187,7 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_tbCustomerMouseClicked
 
     private void txtNewPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPhoneKeyTyped
-        char c = evt.getKeyChar();
-        
-        if (!Character.isDigit(c)){
-            evt.consume();
-        }
+        f.allowDigit(evt);
     }//GEN-LAST:event_txtNewPhoneKeyTyped
 
     private void btnDelCustMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDelCustMouseClicked

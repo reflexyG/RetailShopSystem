@@ -5,6 +5,7 @@
  */
 package rss.gui;
 
+import java.awt.event.KeyEvent;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -59,4 +60,40 @@ public class function {
             }
         }
     }
+    public void limitedNo (java.awt.event.KeyEvent evt, javax.swing.JTextField txt, int count)
+    {
+        String no =txt.getText();
+        int length = no.length();
+        char c = evt.getKeyChar();
+        
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <='9')
+        {
+                if(length < count )
+                {
+                    txt.setEditable(true);
+                }else
+                {
+                    txt.setEditable(false);
+                }
+        }else
+        {
+            if (evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)
+            {
+                txt.setEditable(true);
+            }else
+            {
+                txt.setEditable(false);
+            }
+        }
+    }
+    
+    public void allowDigit(java.awt.event.KeyEvent evt)
+    {
+        char c = evt.getKeyChar();
+        
+        if (!Character.isDigit(c)){
+            evt.consume();
+        }
+    }
+    
 }

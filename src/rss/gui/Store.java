@@ -29,6 +29,7 @@ public class Store extends javax.swing.JFrame {
     ProductDao pd = new ProductDao();
     UserDao ud = new UserDao();
     function f = new function();
+    double orderTotal = 0;
         
     public Store(String username, String password){
         this.username = username;
@@ -86,8 +87,10 @@ public class Store extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCart = new javax.swing.JTable();
-        btnPay = new javax.swing.JButton();
+        btnCheckout = new javax.swing.JButton();
         btnClearCart = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
         pnlInfo = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
@@ -307,7 +310,7 @@ public class Store extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Product Name", "Description", "Fragile", "Quantity", "Price"
+                "ID", "Name", "Description", "Fragile", "Quantity", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -329,6 +332,7 @@ public class Store extends javax.swing.JFrame {
             tbItem.getColumnModel().getColumn(0).setResizable(false);
             tbItem.getColumnModel().getColumn(1).setResizable(false);
             tbItem.getColumnModel().getColumn(2).setResizable(false);
+            tbItem.getColumnModel().getColumn(2).setPreferredWidth(400);
             tbItem.getColumnModel().getColumn(3).setResizable(false);
             tbItem.getColumnModel().getColumn(4).setResizable(false);
             tbItem.getColumnModel().getColumn(5).setResizable(false);
@@ -358,8 +362,13 @@ public class Store extends javax.swing.JFrame {
             tbCart.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        btnPay.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnPay.setText("Check Out");
+        btnCheckout.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnCheckout.setText("Check Out");
+        btnCheckout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCheckoutMouseClicked(evt);
+            }
+        });
 
         btnClearCart.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnClearCart.setText("Clear Cart");
@@ -368,6 +377,11 @@ public class Store extends javax.swing.JFrame {
                 btnClearCartMouseClicked(evt);
             }
         });
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel14.setText("Total Cost :");
+
+        lblTotal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -379,20 +393,30 @@ public class Store extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnClearCart, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPay, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(27, Short.MAX_VALUE))))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPay, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(btnCheckout, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addComponent(btnClearCart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(120, 120, 120))
         );
@@ -764,11 +788,7 @@ public class Store extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void txtNewPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPhoneKeyTyped
-        char c = evt.getKeyChar();
-        
-        if (!Character.isDigit(c)){
-            evt.consume();
-        }
+        f.allowDigit(evt);
     }//GEN-LAST:event_txtNewPhoneKeyTyped
 
     private void txtFproductKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFproductKeyReleased
@@ -800,11 +820,11 @@ public class Store extends javax.swing.JFrame {
             int index = tbItem.getSelectedRow();
             TableModel model = tbItem.getModel();
             String Id = model.getValueAt(index, 0).toString();
+            boolean fragile = Boolean.parseBoolean(model.getValueAt(index, 3).toString());
             int quantity = Integer.parseInt(model.getValueAt(index, 4).toString());
             double price = Double.parseDouble(model.getValueAt(index, 5).toString());
+            int charge = 0;            
 
-
-            
             if(!Id.isEmpty())
             {
                 if(pd.getProduct(Id))
@@ -812,16 +832,26 @@ public class Store extends javax.swing.JFrame {
                     try
                     {
                        String q = JOptionPane.showInputDialog(null,"Enter Your Quantity","Quantity", JOptionPane.OK_CANCEL_OPTION);
-                       if(Integer.parseInt(q) > quantity)
+                       if(Integer.parseInt(q) > quantity | q.equals("0"))
                        {
                            JOptionPane.showMessageDialog(null,"Please Input Available Quantity!","Invalid Quantity ", JOptionPane.ERROR_MESSAGE);
                        }else
                        {
-                           int newQ = quantity -Integer.parseInt(q);
-                           double total = newQ *price;
+                           int newQ = quantity - Integer.parseInt(q);
+                           
+                           if (fragile)
+                           {
+                               charge = 5;
+                           }else
+                           {
+                               charge = 2;
+                           }
+                           double total = Integer.parseInt(q) *price;
+                           orderTotal = orderTotal + total + charge;
+                           lblTotal.setText(String.valueOf(orderTotal));
                            tbItem.setValueAt(String.valueOf(newQ),index, 4);
                            DefaultTableModel mod = (DefaultTableModel) tbCart.getModel();
-                           mod.addRow(new Object[]{Id, String.valueOf(newQ),String.valueOf(total)});
+                           mod.addRow(new Object[]{Id, String.valueOf(q),String.valueOf(total)});
                        } 
                     }catch(NumberFormatException e)
                     {
@@ -837,7 +867,33 @@ public class Store extends javax.swing.JFrame {
     private void btnClearCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearCartMouseClicked
         f.updateTable(tbItem, pd.getProductList());
         tbCart.setModel(new DefaultTableModel(null,new String[]{"Product ID", "Quantity", "Price"}));
+        lblTotal.setText("0");
     }//GEN-LAST:event_btnClearCartMouseClicked
+
+    private void btnCheckoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheckoutMouseClicked
+        String[][] order = new String[tbCart.getRowCount()][3];
+        
+        for(int i = 0; i < tbCart.getRowCount(); i ++)
+        {
+            DefaultTableModel mod = (DefaultTableModel) tbCart.getModel();
+            order[i][0] = mod.getValueAt(i, 0).toString();
+            order[i][1] = mod.getValueAt(i, 1).toString();
+            order[i][2] = mod.getValueAt(i, 2).toString();
+        }
+        
+        String[][] product =new String[tbItem.getRowCount()][6];
+        for(int i = 0; i < tbItem.getRowCount(); i ++)
+        {
+            DefaultTableModel mod = (DefaultTableModel) tbItem.getModel();
+            product[i][0] = mod.getValueAt(i, 0).toString();
+            product[i][1] = mod.getValueAt(i, 1).toString();
+            product[i][2] = mod.getValueAt(i, 2).toString();
+            product[i][3] = mod.getValueAt(i, 3).toString();
+            product[i][4] = mod.getValueAt(i, 4).toString();
+            product[i][5] = mod.getValueAt(i, 5).toString();
+        }
+        new Payment(order,product).setVisible(true);
+    }//GEN-LAST:event_btnCheckoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -877,9 +933,9 @@ public class Store extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCancelOrder;
+    private javax.swing.JButton btnCheckout;
     private javax.swing.JButton btnClearCart;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JButton btnPay;
     private javax.swing.JButton btnUpdateOrder;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -887,6 +943,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -912,6 +969,7 @@ public class Store extends javax.swing.JFrame {
     private javax.swing.JLabel label5;
     private javax.swing.JLabel label6;
     private javax.swing.JLabel lblOrderId;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lbloldMail;
     private javax.swing.JLabel lbloldPass;
     private javax.swing.JLabel lbloldPhone;
