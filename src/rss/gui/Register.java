@@ -169,11 +169,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterMouseClicked
 
     private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
-        char c = evt.getKeyChar();
-        
-        if (!Character.isDigit(c)){
-            evt.consume();
-        }
+        function f = new function();
+        f.allowDigit(evt);
     }//GEN-LAST:event_txtPhoneKeyTyped
 
     /**

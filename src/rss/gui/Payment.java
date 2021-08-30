@@ -5,6 +5,10 @@
  */
 package rss.gui;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import rss.solution.*;
+
 /**
  *
  * @author Admin
@@ -16,7 +20,26 @@ public class Payment extends javax.swing.JFrame {
      */
     public Payment() {
         initComponents();
+        pnlAddress.setVisible(true);
+        pnlPay.setVisible(false);
     }
+    
+    public Payment(String[][] order, String[][] product)
+    {
+        initComponents();
+        pnlAddress.setVisible(true);
+        pnlPay.setVisible(false);
+        this.order = order;
+        this.product = product;
+        
+    }
+    
+    String[][] order;
+    String[][] product;
+    String address;
+    function f = new function();
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,41 +51,183 @@ public class Payment extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbCart = new javax.swing.JTable();
-        btnPay = new javax.swing.JButton();
+        pnlAddress = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtPostcode = new javax.swing.JTextField();
+        txtUnit = new javax.swing.JTextField();
+        txtStreet = new javax.swing.JTextField();
+        txtState = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        btnFinish = new javax.swing.JButton();
+        pnlPay = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        btnPay = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtCCV = new javax.swing.JTextField();
+        txtOwner = new javax.swing.JTextField();
+        txtCardNo = new javax.swing.JTextField();
+        txtyy = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        cbomm = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setResizable(false);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
 
-        tbCart.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        pnlAddress.setMinimumSize(new java.awt.Dimension(400, 440));
+        pnlAddress.setPreferredSize(new java.awt.Dimension(400, 480));
+        pnlAddress.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            },
-            new String [] {
-                "Product ID", "Quantiity", "Price"
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 2, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Delivery Address");
+        pnlAddress.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 280, 60));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel7.setText("Postcode :");
+        pnlAddress.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 80, 40));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel8.setText("Unit No. :");
+        pnlAddress.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 80, 40));
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel9.setText("Street :");
+        pnlAddress.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 80, 40));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel10.setText("State :");
+        pnlAddress.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 80, 40));
+
+        txtPostcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPostcodeKeyTyped(evt);
             }
-        ));
-        tbCart.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tbCart);
-        if (tbCart.getColumnModel().getColumnCount() > 0) {
-            tbCart.getColumnModel().getColumn(0).setResizable(false);
-            tbCart.getColumnModel().getColumn(1).setResizable(false);
-            tbCart.getColumnModel().getColumn(2).setResizable(false);
-        }
+        });
+        pnlAddress.add(txtPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, 30));
+        pnlAddress.add(txtUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 190, 30));
+        pnlAddress.add(txtStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 190, 30));
+        pnlAddress.add(txtState, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 190, 30));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 72, 340, 340));
+        btnBack.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnBack.setText("Cancel");
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+        });
+        pnlAddress.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 110, 50));
 
+        btnFinish.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnFinish.setText("Finish");
+        btnFinish.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFinishMouseClicked(evt);
+            }
+        });
+        pnlAddress.add(btnFinish, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 110, 50));
+
+        jPanel1.add(pnlAddress);
+
+        pnlPay.setMinimumSize(new java.awt.Dimension(400, 480));
+        pnlPay.setPreferredSize(new java.awt.Dimension(400, 480));
+        pnlPay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 3, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Payment");
+        pnlPay.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 290, 60));
+
+        btnPay.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnPay.setText("Pay");
-        jPanel1.add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 100, 50));
+        btnPay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPayMouseClicked(evt);
+            }
+        });
+        pnlPay.add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 100, 50));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Your Cart :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 100, 50));
+        btnCancel.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelMouseClicked(evt);
+            }
+        });
+        pnlPay.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 100, 50));
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel3.setText("Expiry Date    :");
+        pnlPay.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 40));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel4.setText("Name on Card:");
+        pnlPay.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 110, 40));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel5.setText("Card No.         :");
+        pnlPay.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, 40));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel6.setText("CCV                :");
+        pnlPay.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 100, 40));
+
+        txtCCV.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtCCV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCCVKeyTyped(evt);
+            }
+        });
+        pnlPay.add(txtCCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 170, 30));
+
+        txtOwner.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtOwner.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtOwnerKeyTyped(evt);
+            }
+        });
+        pnlPay.add(txtOwner, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 30));
+
+        txtCardNo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtCardNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCardNoKeyTyped(evt);
+            }
+        });
+        pnlPay.add(txtCardNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 170, 30));
+
+        txtyy.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtyyKeyTyped(evt);
+            }
+        });
+        pnlPay.add(txtyy, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 50, 30));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("/");
+        pnlPay.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 30, 30));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("mm/yy");
+        pnlPay.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 130, 30));
+
+        cbomm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        cbomm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        pnlPay.add(cbomm, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 70, 30));
+
+        jPanel1.add(pnlPay);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,6 +243,68 @@ public class Payment extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCardNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCardNoKeyTyped
+        f.limitedNo(evt, txtCardNo, 16);
+    }//GEN-LAST:event_txtCardNoKeyTyped
+
+    private void txtCCVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCCVKeyTyped
+        f.limitedNo(evt,txtCCV,3);
+    }//GEN-LAST:event_txtCCVKeyTyped
+
+    private void txtOwnerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtOwnerKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!Character.isLetter(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtOwnerKeyTyped
+
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackMouseClicked
+
+    private void btnFinishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFinishMouseClicked
+        if (txtUnit.getText().isEmpty() || txtStreet.getText().isEmpty() 
+                || txtState.getText().isEmpty() || txtPostcode.getText().length() < 5)
+        {
+            JOptionPane.showMessageDialog(null,"Please Complete Delivery Address", "Error", 0);
+        }else
+        {
+            address = txtUnit.getText() + ", " + txtStreet.getText() + ", " + txtPostcode.getText() + ", " + txtState.getText();
+            pnlAddress.setVisible(false);
+            pnlPay.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_btnFinishMouseClicked
+
+    private void txtPostcodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPostcodeKeyTyped
+        f.limitedNo(evt, txtPostcode, 5);
+    }//GEN-LAST:event_txtPostcodeKeyTyped
+
+    private void txtyyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtyyKeyTyped
+        f.limitedNo(evt, txtyy,4);
+    }//GEN-LAST:event_txtyyKeyTyped
+
+    private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
+        this.setVisible(false);
+        txtOwner.setText("");
+        txtCardNo.setText("");
+        txtCCV.setText("");
+        txtyy.setText("");
+    }//GEN-LAST:event_btnCancelMouseClicked
+
+    private void btnPayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPayMouseClicked
+        
+        if(txtCardNo.getText().length() <16 || txtCCV.getText().length() < 3 || txtyy.getText().length() < 4 || txtOwner.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Invalid Card Information, Please Try Again","Fail ", 0);
+        }else
+        {
+            
+        }
+        
+    }//GEN-LAST:event_btnPayMouseClicked
 
     /**
      * @param args the command line arguments
@@ -115,10 +342,33 @@ public class Payment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnFinish;
     private javax.swing.JButton btnPay;
+    private javax.swing.JComboBox<String> cbomm;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tbCart;
+    private javax.swing.JPanel pnlAddress;
+    private javax.swing.JPanel pnlPay;
+    private javax.swing.JTextField txtCCV;
+    private javax.swing.JTextField txtCardNo;
+    private javax.swing.JTextField txtOwner;
+    private javax.swing.JTextField txtPostcode;
+    private javax.swing.JTextField txtState;
+    private javax.swing.JTextField txtStreet;
+    private javax.swing.JTextField txtUnit;
+    private javax.swing.JTextField txtyy;
     // End of variables declaration//GEN-END:variables
 }
