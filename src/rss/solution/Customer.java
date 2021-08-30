@@ -31,13 +31,13 @@ public class Customer extends User {
 	}
 	
 	// cancel order
-	public Boolean cancelOrder(String orderId, String status){
+	public Boolean cancelOrder(String orderId){
 		OrderDao od = new OrderDao();
 		// instantiate the customer object in the OrderDao
 		od.setCustomer(this.getUsername(), this.getPassword());
 		od.getOrder(orderId);
 		return od.updateOrder(orderId, this.getUsername(), od.o.getOrderTime(),
-			od.o.getPayment(), od.o.getAddress(), od.o.getPrice(), status);
+			od.o.getPayment(), od.o.getAddress(), od.o.getPrice(), "Cancel");
 	}
 		
 }

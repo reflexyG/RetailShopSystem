@@ -180,6 +180,7 @@ public class OrderDao {
 					//store the new data in the list
 					newData.add(
 					orderId + ";" + 
+					customerId + ";" +
 					currentDateTime + ";" +
 					payment + ";" +
 					address + ";" +
