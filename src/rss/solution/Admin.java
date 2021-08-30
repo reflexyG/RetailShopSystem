@@ -53,13 +53,13 @@ public class Admin extends User{
 	}
 	
 	// cancel order
-	public Boolean rejectOrder(String orderId){
+	public Boolean editOrder(String orderId, String status){
 		OrderDao od = new OrderDao();
 		// instantiate the customer object in the OrderDao
 		od.setCustomer(this.getUsername(), this.getPassword());
 		od.getOrder(orderId);
 		return od.updateOrder(orderId, this.getUsername(), od.o.getOrderTime(),
-			od.o.getPayment(), od.o.getAddress(), od.o.getPrice(), "Rejected");
+			od.o.getPayment(), od.o.getAddress(), od.o.getPrice(), status);
 	}
 }
 
