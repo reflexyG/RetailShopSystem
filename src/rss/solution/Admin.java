@@ -1,5 +1,7 @@
 package rss.solution;
 
+import java.util.List;
+
 public class Admin extends User{
 	UserDao ud = new UserDao();
 	ProductDao pd = new ProductDao();
@@ -42,5 +44,12 @@ public class Admin extends User{
 	public Boolean deleteProduct(String id){
 		return pd.deleteProduct(id);
 	}
+	
+	@Override
+	public List<OrderItem> viewOrderItem(String orderId){
+	OrderDao od = new OrderDao();
+	od.getOrder(orderId);
+	return od.o.getOrderItems();
+}
 
 }

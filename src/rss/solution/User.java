@@ -2,6 +2,7 @@ package rss.solution;
 
 import java.util.Scanner;
 import java.io.*;
+import java.util.List;
 
 abstract class User {
 	
@@ -77,6 +78,15 @@ abstract class User {
 	public boolean login(){
 		UserDao ud = new UserDao();
 		return ud.findUser(this.username, this.password, this.accountType, "login");
+	}
+	
+		
+	public List<OrderItem> viewOrderItem(String orderId){
+		OrderDao od = new OrderDao();
+		// instantiate the customer object in the OrderDao
+		od.setCustomer(this.getUsername(), this.getPassword());
+		od.getOrder(orderId);
+		return od.o.getOrderItems();
 	}
 }
 
