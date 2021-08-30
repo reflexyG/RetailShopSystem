@@ -18,7 +18,7 @@ public class demo {
 		OrderDao od = new OrderDao();
 		od.setCustomer("1234", "1234");
 		Customer c = new Customer("1234", "1234");
-		c.placeOrder("1546556", "51245ablc town");
+		//c.placeOrder("1546556", "51245ablc town");
 		System.out.println(od.getOrder("O69610"));
 		
 		
