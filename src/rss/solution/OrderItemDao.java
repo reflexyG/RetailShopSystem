@@ -104,7 +104,7 @@ public class OrderItemDao {
 		
 	}
 	
-	// delete user in the text file
+	// delete orderItem in the text file
 	public Boolean deleteOrderItem(String productId){
 		List<String> newData = new ArrayList<>();
 		Boolean deleted = false;

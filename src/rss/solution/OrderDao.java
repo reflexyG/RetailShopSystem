@@ -48,7 +48,7 @@ public class OrderDao {
 	// find the order from the txt file based on id
 	public Boolean getOrder(String orderId){
 
-		// set found user to false
+		// set found order to false
 		boolean found = false;
 		
 		try{
@@ -59,7 +59,7 @@ public class OrderDao {
 			String tempId, tempDateTime, tempPayment, tempAddress, tempStatus, tempPrice;
 			
 			while(scanner.hasNext() && !found){
-				// create a temperory array to store the data of user
+				// create a temperory array to store the data of order
 				// split String in each line with delimiter
 				String[] data = scanner.nextLine().split(";");
 				
@@ -90,7 +90,7 @@ public class OrderDao {
 		return found;
 	}
 	
-	// get all user details from the txt file
+	// get all order details from the txt file
 	public Object[] getOrderList(){
 		Object[] lines = null;
 		
@@ -155,7 +155,7 @@ public class OrderDao {
 		
 	}
 	
-	// update user account
+	// update order details
 	public Boolean updateOrder(String orderId, String customerId, 
 		String currentDateTime, String payment, String address, String price, String status){
 		

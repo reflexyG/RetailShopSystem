@@ -24,7 +24,7 @@ public class ProductDao {
 	// find the product from the txt file
 	public Boolean getProduct(String id){
 
-		// set found user to false
+		// set found product to false
 		boolean found = false;
 		
 		try{
@@ -40,7 +40,7 @@ public class ProductDao {
 			double tempPrice;
 			
 			while(scanner.hasNext() && !found){
-				// create a temperory array to store the data of user
+				// create a temperory array to store the data of product
 				// split String in each line with delimiter
 				String[] data = scanner.nextLine().split(";");
 				
@@ -88,7 +88,7 @@ public class ProductDao {
 
 	}
 	
-	// add new user into the text file
+	// add new product into the text file
 	public Boolean addProduct(String name, String description, Boolean fragile, int quantity, double price){
 		
 		Boolean added = false;
@@ -126,7 +126,7 @@ public class ProductDao {
 		
 	}
 	
-	// delete user in the text file
+	// delete product in the text file
 	public Boolean deleteProduct(String id){
 		List<String> newData = new ArrayList<>();
 		Boolean deleted = false;
@@ -183,7 +183,7 @@ public class ProductDao {
 			
 	}
 	
-	// update user account
+	// update product
 	public Boolean updateProduct(String id, String name, 
 		String description, Boolean fragile, int quantity, double price){
 		
