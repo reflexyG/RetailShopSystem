@@ -65,18 +65,17 @@ public class OrderDao {
 				
 				// store the value
 				tempId = data[0];
-				tempDateTime = data[1];
-				tempPayment = data[2];
-				tempAddress = data[3];
-				tempPrice = data[4];
-				tempStatus = data[5];
+				tempDateTime = data[2];
+				tempPayment = data[3];
+				tempAddress = data[4];
+				tempPrice = data[5];
+				tempStatus = data[6];
 				
 				
 				// check the id
 				if(data[0].trim().equals(orderId.trim())){
 					o = new Order(tempId, c,tempDateTime, tempPayment, tempAddress, Double.parseDouble(tempPrice), tempStatus);
 					found = true;
-				
 				}
 				
 			}
@@ -123,7 +122,7 @@ public class OrderDao {
 			LocalDateTime now = LocalDateTime.now();
 			
 			// format the date time and convert it to String
-			DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			String currentDateTime = now.format(df);
 			
 			

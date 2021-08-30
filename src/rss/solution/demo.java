@@ -14,17 +14,19 @@ public class demo {
 		System.out.println(formatDateTime);
 		
 		
-		//OrderItemDao oid = new OrderItemDao();
-		//OrderDao od = new OrderDao();
+		OrderItemDao oid = new OrderItemDao();
+		OrderDao od = new OrderDao();
 		//od.setCustomer("1234", "1234");
 		Customer c = new Customer("1234", "1234");
-		c.login();
+		//c.login();
 		//System.out.println(c.placeOrder("4556", "512town", 1234));
 		
-		
-			
-		//oid.addOrderItem("12345", "12345", "toys", true, 1, 0, 0);
-		//oid.addOrderItem("12345", "123115", "pizza", true, 1, 0, 0);
+		od.setCustomer("1223", "1234");
+		//od.addOrder("1234", "a", 0);
+		od.getOrder("O94468");
+		od.o.getAddress();
+		//oid.addOrderItem("094468", "12345", "toys", true, 1, 0);
+		//oid.addOrderItem("O67419", "123115", "pizza", true, 1, 0);
 		//oid.addOrderItem("12346", "123115", "tools", true, 1, 0, 0);
 		//oid.addOrderItem("12345", "123115", "toys", true, 1, 0, 0);
 		//oid.addOrderItem("1234", "123115", "toys", true, 1, 0, 0);

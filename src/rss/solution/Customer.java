@@ -12,7 +12,7 @@ public class Customer extends User {
 		UserDao ud = new UserDao();
 		return ud.updateUser(this.getUsername(), password, this.getaccountType(), email, phone);
 	}
-	
+		
 	public String placeOrder(String payment, String address, double price){
 		OrderDao od = new OrderDao();
 		// instantiate the customer object in the OrderDao
