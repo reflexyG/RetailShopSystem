@@ -4,17 +4,18 @@ import java.util.List;
 
 public class Order {
 	
-	private String id, payment, address;
+	private String id, payment, address, status;
 	private Customer c;
 	private String orderTime;
 	private List<OrderItem> orderItems = new ArrayList<>();
 
-	public Order(String id, Customer c, String orderTime, String payment, String address) {
+	public Order(String id, Customer c, String orderTime, String payment, String address, String status) {
 		this.id = id;
 		this.c = c;
 		this.orderTime = orderTime;
 		this.payment = payment;
 		this.address = address;
+		this.status = status;
 		setOrderItem();
 	}
 	
@@ -42,9 +43,13 @@ public class Order {
 	public String getAddress() {
 		return address;
 	}
-	
-	
-	
-	
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public String getStatus() {
+		return status;
+	}
 	
 }
