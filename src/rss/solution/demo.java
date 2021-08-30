@@ -23,8 +23,9 @@ public class demo {
 		
 		od.setCustomer("1223", "1234");
 		//od.addOrder("1234", "a", 0);
-		od.getOrder("O94468");
-		od.o.getAddress();
+		//od.getOrder("O94468");
+		//od.o.getAddress();
+		c.updateOrder("O94468", "1234");
 		//oid.addOrderItem("094468", "12345", "toys", true, 1, 0);
 		//oid.addOrderItem("O67419", "123115", "pizza", true, 1, 0);
 		//oid.addOrderItem("12346", "123115", "tools", true, 1, 0, 0);
