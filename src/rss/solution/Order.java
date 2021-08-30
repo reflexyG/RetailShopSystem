@@ -9,7 +9,7 @@ public class Order {
 	private String orderTime;
 	private List<OrderItem> orderItems = new ArrayList<>();
 
-	public Order(String id, Customer c, String orderTime, String payment, String shippingAddress) {
+	public Order(String id, Customer c, String orderTime, String payment, String address) {
 		this.id = id;
 		this.c = c;
 		this.orderTime = orderTime;
