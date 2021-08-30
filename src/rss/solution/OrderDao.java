@@ -54,7 +54,7 @@ public class OrderDao {
 			scanner = new Scanner(file);
 			
 			// temporary store product information
-			String tempId, tempDateTime, tempPayment, tempAddress, tempStatus;
+			String tempId, tempDateTime, tempPayment, tempAddress, tempStatus, tempPrice;
 			
 			while(scanner.hasNext() && !found){
 				// create a temperory array to store the data of user
@@ -66,12 +66,13 @@ public class OrderDao {
 				tempDateTime = data[2];
 				tempPayment = data[3];
 				tempAddress = data[4];
-				tempStatus = data[5];
+				tempPrice = data[5];
+				tempStatus = data[6];
 				
 				
 				// check the id
 				if(data[0].trim().equals(orderId.trim())){
-					o = new Order(tempId, c,tempDateTime, tempPayment, tempAddress, tempStatus);
+					o = new Order(tempId, c,tempDateTime, tempPayment, tempAddress, Double.parseDouble(tempPrice), tempStatus);
 					found = true;
 				
 				}
@@ -104,7 +105,7 @@ public class OrderDao {
 
 	}
 	
-	public Boolean addOrder(String payment, String address){
+	public Boolean addOrder(String payment, String address, double price){
 		
 		Boolean added = false;
 		
@@ -135,7 +136,7 @@ public class OrderDao {
 				// check if the product id is in the txt file
 				if(!getOrder(id)){
 					// write the product into the txt file
-					pw.println(id + ";" + c.getUsername() + ";" + currentDateTime + ";" + payment + ";" + address + ";" + "To Ship");
+					pw.println(id + ";" + c.getUsername() + ";" + currentDateTime + ";" + payment + ";" + address + ";" + price + ";" + "To Ship");
 					pw.close();
 					added = true;
 				}

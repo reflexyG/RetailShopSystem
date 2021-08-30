@@ -8,13 +8,15 @@ public class Order {
 	private Customer c;
 	private String orderTime;
 	private List<OrderItem> orderItems = new ArrayList<>();
+	private double price;
 
-	public Order(String id, Customer c, String orderTime, String payment, String address, String status) {
+	public Order(String id, Customer c, String orderTime, String payment, String address, double price, String status) {
 		this.id = id;
 		this.c = c;
 		this.orderTime = orderTime;
 		this.payment = payment;
 		this.address = address;
+		this.price = price;
 		this.status = status;
 		setOrderItem();
 	}
@@ -46,6 +48,10 @@ public class Order {
 
 	public String getPayment() {
 		return payment;
+	}
+	
+	public double getPrice() {
+		return price;
 	}
 
 	public String getStatus() {

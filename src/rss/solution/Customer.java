@@ -13,10 +13,10 @@ public class Customer extends User {
 		return ud.updateUser(this.getUsername(), password, this.getaccountType(), email, phone);
 	}
 	
-	public Boolean placeOrder(String payment, String address){
+	public Boolean placeOrder(String payment, String address, double price){
 		OrderDao od = new OrderDao();
 		od.setCustomer(this.getUsername(), this.getPassword());
-		return od.addOrder(payment, address);
+		return od.addOrder(payment, address, price);
 		
 	}
 		
