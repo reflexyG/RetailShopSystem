@@ -1271,6 +1271,7 @@ public class AdminHome extends javax.swing.JFrame {
             txtQupdate.setText("");
             txtNewDesc.setText("");
             txtNewPrice.setText("");
+            jTabbedPane2.setSelectedIndex(0);
         }
     }//GEN-LAST:event_btnUpdateProductMouseClicked
 

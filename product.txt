@@ -1,4 +1,4 @@
-P01863;toyz;toyz for kid.;false;1375;30.0
+P01863;toyz;toyz for kid.;false;30;30.0
 P26056;pizza;pizza hutttt.;false;20;30.69
 P16653;orange;fruit;false;10;2.0
 P32028;apple;fruit;false;10;1.6
