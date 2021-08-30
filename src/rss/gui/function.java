@@ -40,7 +40,6 @@ public class function {
                     model.addRow(row);
             }
         }
-        
     }
     
     public void updateCustTable(javax.swing.JTable tb,Object[] list)
@@ -60,6 +59,25 @@ public class function {
             }
         }
     }
+    
+    public void orderTable(javax.swing.JTable tb,Object[] list, String username)
+    {
+        if(list != null)
+        {
+            DefaultTableModel model = (DefaultTableModel)tb.getModel();
+            Object[] lines = list;
+            model.setRowCount(0);
+            for(int i = 0; i < lines.length; i++){
+                    String line = lines[i].toString().trim();
+                    String[] row = line.split(";");
+                    if(row[1].equals(username) && row[6].equals("To Ship"))
+                    {
+                        model.addRow(row);
+                    }
+            }
+        }
+    }
+    
     public void limitedNo (java.awt.event.KeyEvent evt, javax.swing.JTextField txt, int count)
     {
         String no =txt.getText();

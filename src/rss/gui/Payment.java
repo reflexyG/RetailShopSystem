@@ -7,6 +7,7 @@ package rss.gui;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import rss.solution.*;
 
 /**
@@ -24,20 +25,27 @@ public class Payment extends javax.swing.JFrame {
         pnlPay.setVisible(false);
     }
     
-    public Payment(String[][] order, String[][] product)
+    public Payment(String[][] order, String[][] products, Customer c, double price)
     {
         initComponents();
         pnlAddress.setVisible(true);
         pnlPay.setVisible(false);
         this.order = order;
-        this.product = product;
+        this.products = products;
+        this.price = price;
+        this.c = c;
         
     }
     
+    Customer c;
+    OrderItemDao oid = new OrderItemDao();
+    ProductDao pd = new ProductDao();
     String[][] order;
-    String[][] product;
+    String[][] products;
     String address;
+    double price;
     function f = new function();
+    
     
     
 
@@ -295,13 +303,37 @@ public class Payment extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void btnPayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPayMouseClicked
-        
         if(txtCardNo.getText().length() <16 || txtCCV.getText().length() < 3 || txtyy.getText().length() < 4 || txtOwner.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(null,"Invalid Card Information, Please Try Again","Fail ", 0);
         }else
         {
+            String cardId = txtCardNo.getText();
+            String lastNum = cardId.substring(cardId.length()-4);
+            String orderId = c.placeOrder(lastNum,address,price);
             
+            for (String orderItem[]:order)
+            {
+                //loop to the product array
+                for (String product[]:products)
+                {
+                    if (orderItem[0].equals(product[0]))
+                    {
+                        oid.addOrderItem(orderId, product[0], product[1], 
+                                Boolean.parseBoolean(product[3]),Integer.parseInt(orderItem[1]),Double.parseDouble(orderItem[2]));
+                    }
+                }
+            }
+            for (String product[]:products)
+            {
+                if(pd.getProduct(product[0]))
+                {
+                    pd.updateProduct(product[0], product[1], product[2], Boolean.parseBoolean(product[3]),
+                        Integer.parseInt(product[4]), Double.parseDouble(product[5]));
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Payment Successful, Thanks for your supporting","Success",1);
+            this.setVisible(false);
         }
         
     }//GEN-LAST:event_btnPayMouseClicked

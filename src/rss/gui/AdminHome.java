@@ -7,6 +7,8 @@ package rss.gui;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +27,7 @@ public class AdminHome extends javax.swing.JFrame {
      */
     ProductDao pd = new ProductDao();
     UserDao ud = new UserDao();
+    OrderDao od = new OrderDao();
     function f = new function();
     Admin a;
     
@@ -40,6 +43,9 @@ public class AdminHome extends javax.swing.JFrame {
         pnlOrder.setVisible(true);
         pnlProduct.setVisible(false);
         pnlCust.setVisible(false);
+        
+        jTabbedPane3.setEnabledAt(1, false);
+        f.updateTable(tbOrder,od.getOrderList());
     }
     
     public AdminHome(){
@@ -161,6 +167,23 @@ public class AdminHome extends javax.swing.JFrame {
         btnNewProduct = new javax.swing.JButton();
         cboFragile = new javax.swing.JComboBox<>();
         pnlOrder = new javax.swing.JPanel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tbOrder = new javax.swing.JTable();
+        jLabel43 = new javax.swing.JLabel();
+        txtSearchOrder = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tbOrderItem = new javax.swing.JTable();
+        jLabel45 = new javax.swing.JLabel();
+        btnComplete = new javax.swing.JButton();
+        lblAddress = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        lblOrderId = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(250, 80));
@@ -864,7 +887,126 @@ public class AdminHome extends javax.swing.JFrame {
 
         pnlOrder.setBackground(new java.awt.Color(255, 255, 204));
         pnlOrder.setMinimumSize(new java.awt.Dimension(800, 650));
+        pnlOrder.setPreferredSize(new java.awt.Dimension(800, 650));
         pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tbOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "User", "Date", "Card No.", "Address", "Price", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbOrder.getTableHeader().setReorderingAllowed(false);
+        tbOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbOrderMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tbOrder);
+        if (tbOrder.getColumnModel().getColumnCount() > 0) {
+            tbOrder.getColumnModel().getColumn(0).setResizable(false);
+            tbOrder.getColumnModel().getColumn(1).setResizable(false);
+            tbOrder.getColumnModel().getColumn(2).setResizable(false);
+            tbOrder.getColumnModel().getColumn(4).setResizable(false);
+            tbOrder.getColumnModel().getColumn(4).setPreferredWidth(300);
+        }
+
+        jPanel3.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 81, 690, 340));
+
+        jLabel43.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel43.setText("Search Order:");
+        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 80, 32));
+
+        txtSearchOrder.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtSearchOrder.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchOrderKeyReleased(evt);
+            }
+        });
+        jPanel3.add(txtSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 180, 30));
+
+        jLabel44.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jLabel44.setText("Select an order to edit");
+        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 11, 190, 60));
+
+        jTabbedPane3.addTab("View Order", jPanel3);
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tbOrderItem.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product ID", "Name", "Fragile", "Quantity", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbOrderItem.getTableHeader().setReorderingAllowed(false);
+        jScrollPane6.setViewportView(tbOrderItem);
+
+        jPanel6.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 674, 311));
+
+        jLabel45.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel45.setText("Selected Order Address :");
+        jPanel6.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 33));
+
+        btnComplete.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnComplete.setText("Complete Delivery");
+        btnComplete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCompleteMouseClicked(evt);
+            }
+        });
+        jPanel6.add(btnComplete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 180, 40));
+
+        lblAddress.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jPanel6.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 450, 33));
+
+        btnBack.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+        });
+        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 180, 40));
+
+        jLabel46.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel46.setText("Selected Order ID :");
+        jPanel6.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 170, 33));
+
+        lblOrderId.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jPanel6.add(lblOrderId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 150, 33));
+
+        jTabbedPane3.addTab("Order Item List", jPanel6);
+
+        pnlOrder.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 760, 550));
+
+        jLabel53.setFont(new java.awt.Font("Bodoni MT", 1, 36)); // NOI18N
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel53.setText("Manage Order");
+        pnlOrder.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 500, 61));
+
         jPanel1.add(pnlOrder);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 800, 650));
@@ -912,6 +1054,8 @@ public class AdminHome extends javax.swing.JFrame {
         tabSignout.setBackground(new Color (204,204,204));
         tabMCust.setBackground(new Color (204,204,204));
 
+        f.updateTable(tbOrder,od.getOrderList());
+        jTabbedPane3.setEnabledAt(1, false);
     }//GEN-LAST:event_tabOrderMouseClicked
  
     private void tabSignoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabSignoutMouseClicked
@@ -1240,6 +1384,54 @@ public class AdminHome extends javax.swing.JFrame {
         f.search(tbCustomer, txtSearchCust.getText());
     }//GEN-LAST:event_txtSearchCustKeyReleased
 
+    private void tbOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbOrderMouseClicked
+        jTabbedPane3.setSelectedIndex(1);
+        tbOrderItem.setModel(new DefaultTableModel(null,new String[]{"Product ID", "Name", "Fragile","Quantity", "Price"}));
+
+        int index = tbOrder.getSelectedRow();
+        TableModel model = tbOrder.getModel();
+        String orderId = model.getValueAt(index, 0).toString();
+        String address = model.getValueAt(index, 4).toString();
+        if(!orderId.isEmpty())
+        {
+            jTabbedPane1.setSelectedIndex(1);
+            lblOrderId.setText(orderId);
+            lblAddress.setText(address);
+
+
+            DefaultTableModel mod = (DefaultTableModel) tbOrderItem.getModel();
+            List<OrderItem> list= new ArrayList<>();
+            list = a.viewOrderItem(orderId);
+            Object rowData[] = new Object[5];
+            for (OrderItem item: list)
+            {
+                rowData[0] = item.getProductId();
+                rowData[1] = item.getName();
+                rowData[2] = String.valueOf(item.isFragile());
+                rowData[3] = String.valueOf(item.getQuantity());
+                rowData[4] = String.valueOf(item.getPrice());
+                mod.addRow(rowData);
+            }
+        }
+    }//GEN-LAST:event_tbOrderMouseClicked
+
+    private void txtSearchOrderKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchOrderKeyReleased
+        f.search(tbOrder,txtSearchOrder.getText());
+    }//GEN-LAST:event_txtSearchOrderKeyReleased
+
+    private void btnCompleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompleteMouseClicked
+       a.editOrder(lblOrderId.getText(), "Complete");
+    }//GEN-LAST:event_btnCompleteMouseClicked
+
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        jTabbedPane3.setSelectedIndex(0);
+        jTabbedPane3.setEnabledAt(1, false);
+        tbOrderItem.setModel(new DefaultTableModel(null,new String[]{"Product ID", "Name", "Fragile","Quantity", "Price"}));
+        lblOrderId.setText("");
+        lblAddress.setText("");
+        
+    }//GEN-LAST:event_btnBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1277,8 +1469,10 @@ public class AdminHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnDelCust;
     private javax.swing.JButton btnDeleteProduct;
     private javax.swing.JButton btnNewProduct;
@@ -1324,21 +1518,33 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lblAccType;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblOrderId;
     private javax.swing.JLabel lblProductId;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel pnlAddCust;
@@ -1356,6 +1562,8 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JPanel tabProduct;
     private javax.swing.JPanel tabSignout;
     private javax.swing.JTable tbCustomer;
+    private javax.swing.JTable tbOrder;
+    private javax.swing.JTable tbOrderItem;
     private javax.swing.JTable tbProduct;
     private javax.swing.JTextField txtCustId;
     private javax.swing.JTextField txtCustMail;
@@ -1377,6 +1585,7 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JTextField txtQupdate;
     private javax.swing.JTextField txtSProduct;
     private javax.swing.JTextField txtSearchCust;
+    private javax.swing.JTextField txtSearchOrder;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
