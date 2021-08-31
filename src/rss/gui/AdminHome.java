@@ -1341,7 +1341,7 @@ public class AdminHome extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION)
         {
             a.deleteUser(ud.c.getUsername(), ud.c.getaccountType());
-            f.updateCustTable(tbCustomer,ud.getUserList());
+            f.updateTable(tbOrder,od.getOrderList());
         }
     }//GEN-LAST:event_btnDelCustMouseClicked
 
@@ -1386,34 +1386,41 @@ public class AdminHome extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchCustKeyReleased
 
     private void tbOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbOrderMouseClicked
-        jTabbedPane3.setSelectedIndex(1);
         tbOrderItem.setModel(new DefaultTableModel(null,new String[]{"Product ID", "Name", "Fragile","Quantity", "Price"}));
 
         int index = tbOrder.getSelectedRow();
         TableModel model = tbOrder.getModel();
         String orderId = model.getValueAt(index, 0).toString();
         String address = model.getValueAt(index, 4).toString();
-        if(!orderId.isEmpty())
+        String status = model.getValueAt(index,6).toString();
+        if(status.equals("To Ship"))
         {
-            jTabbedPane1.setSelectedIndex(1);
-            lblOrderId.setText(orderId);
-            lblAddress.setText(address);
-
-
-            DefaultTableModel mod = (DefaultTableModel) tbOrderItem.getModel();
-            List<OrderItem> list= new ArrayList<>();
-            list = a.viewOrderItem(orderId);
-            Object rowData[] = new Object[5];
-            for (OrderItem item: list)
+            if(!orderId.isEmpty())
             {
-                rowData[0] = item.getProductId();
-                rowData[1] = item.getName();
-                rowData[2] = String.valueOf(item.isFragile());
-                rowData[3] = String.valueOf(item.getQuantity());
-                rowData[4] = String.valueOf(item.getPrice());
-                mod.addRow(rowData);
+                jTabbedPane3.setSelectedIndex(1);
+                lblOrderId.setText(orderId);
+                lblAddress.setText(address);
+
+
+                DefaultTableModel mod = (DefaultTableModel) tbOrderItem.getModel();
+                List<OrderItem> list= new ArrayList<>();
+                list = a.viewOrderItem(orderId);
+                Object rowData[] = new Object[5];
+                for (OrderItem item: list)
+                {
+                    rowData[0] = item.getProductId();
+                    rowData[1] = item.getName();
+                    rowData[2] = String.valueOf(item.isFragile());
+                    rowData[3] = String.valueOf(item.getQuantity());
+                    rowData[4] = String.valueOf(item.getPrice());
+                    mod.addRow(rowData);
+                }
             }
+        }else
+        {
+            JOptionPane.showMessageDialog(null,"Please Select Order with To Ship Status!","Warning", 2);
         }
+        
     }//GEN-LAST:event_tbOrderMouseClicked
 
     private void txtSearchOrderKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchOrderKeyReleased
@@ -1422,6 +1429,10 @@ public class AdminHome extends javax.swing.JFrame {
 
     private void btnCompleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompleteMouseClicked
        a.editOrder(lblOrderId.getText(), "Complete");
+       
+       JOptionPane.showMessageDialog(null,"Update Complete","Successful",1);
+       f.updateTable(tbOrder, od.getOrderList());
+       jTabbedPane3.setSelectedIndex(0);
     }//GEN-LAST:event_btnCompleteMouseClicked
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
