@@ -978,6 +978,7 @@ public class Store extends javax.swing.JFrame {
                 rowData[2] = String.valueOf(item.isFragile());
                 rowData[3] = String.valueOf(item.getQuantity());
                 rowData[4] = String.valueOf(item.getPrice());
+                
                 mod.addRow(rowData);                
             }
         }
@@ -1025,7 +1026,27 @@ public class Store extends javax.swing.JFrame {
                            lblTotal.setText(String.valueOf(orderTotal));
                            tbItem.setValueAt(String.valueOf(newQ),index, 4);
                            DefaultTableModel mod = (DefaultTableModel) tbCart.getModel();
-                           mod.addRow(new Object[]{Id, String.valueOf(q),String.valueOf(total)});
+                           Boolean exist = false;
+                           int tempIndex = 0;
+                           int tempQuantity = 0;
+                           double tempPrice = 0;
+                           
+                           for(int i; i < mod.getRowCount(); i++){
+                               if(Id.equals(mod.getValueAt(i, 0).toString()){
+                                   exist = true;
+                                   tempIndex = i;
+                                   tempQuantity = Integer.parseInt(mod.getValueAt(i,1).toString());
+                                   tempPrice = Double.parseDouble(mod.getValueAt(i,2).toString());
+                                   break;
+                               }                              
+                           }
+                                  
+                           if(exist){
+                               mod.setValueAt(String.valueOf(tempQuantity + q),i,1);
+                               mod.setValueAt(String.valueOf(tempPrice + total),i,2);
+                           }else{ 
+                               mod.addRow(new Object[]{Id, String.valueOf(q),String.valueOf(total)});
+                           }
                        } 
                     }catch(NumberFormatException e)
                     {
