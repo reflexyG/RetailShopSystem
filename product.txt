@@ -1,5 +1,0 @@
-P01863;toyz;toyz for kid.;false;20;30.0
-P26056;pizza;pizza hutttt.;false;5;30.69
-P16653;orange;fruit;false;5;2.0
-P32028;apple;fruit;false;10;1.6
-P34394;jiayue;gayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee;true;0;2.0
