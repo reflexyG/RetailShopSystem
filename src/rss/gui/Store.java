@@ -1031,8 +1031,8 @@ public class Store extends javax.swing.JFrame {
                            int tempQuantity = 0;
                            double tempPrice = 0;
                            
-                           for(int i; i < mod.getRowCount(); i++){
-                               if(Id.equals(mod.getValueAt(i, 0).toString()){
+                           for(int i = 0; i < mod.getRowCount(); i++){
+                               if(Id.equals(mod.getValueAt(i, 0).toString())){
                                    exist = true;
                                    tempIndex = i;
                                    tempQuantity = Integer.parseInt(mod.getValueAt(i,1).toString());
@@ -1041,10 +1041,13 @@ public class Store extends javax.swing.JFrame {
                                }                              
                            }
                                   
-                           if(exist){
-                               mod.setValueAt(String.valueOf(tempQuantity + q),i,1);
-                               mod.setValueAt(String.valueOf(tempPrice + total),i,2);
-                           }else{ 
+                           if(exist)
+                           {
+                               int cartQuantity = tempQuantity + Integer.parseInt(q);
+                               mod.setValueAt(String.valueOf(cartQuantity),tempIndex,1);
+                               mod.setValueAt(String.valueOf(tempPrice + total),tempIndex,2);
+                           }else
+                           { 
                                mod.addRow(new Object[]{Id, String.valueOf(q),String.valueOf(total)});
                            }
                        } 
