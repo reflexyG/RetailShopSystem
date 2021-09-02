@@ -885,7 +885,7 @@ public class AdminHome extends javax.swing.JFrame {
 
         jPanel1.add(pnlProduct);
 
-        pnlOrder.setBackground(new java.awt.Color(255, 255, 204));
+        pnlOrder.setBackground(new java.awt.Color(204, 204, 204));
         pnlOrder.setMinimumSize(new java.awt.Dimension(800, 650));
         pnlOrder.setPreferredSize(new java.awt.Dimension(800, 650));
         pnlOrder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

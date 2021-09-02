@@ -1,3 +1,1 @@
-yh;12;Customer;gg.com;4567
-qiuge;99;Customer;qiuge.com;1234567
-yh;12;Admin;gg.com;120
+anvegave;123456;Admin;anvegave@gmail.com;1235895665
